@@ -1,0 +1,1 @@
+let bye = (name) => `Bye ${name}!`;

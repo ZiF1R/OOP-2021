@@ -110,6 +110,16 @@ namespace ConsoleApp1
             Console.Write("\n- Copy: ");
             Console.WriteLine(dest);
 
+
+            // c) Создайте пустую и null строку. Продемонстрируйте что можно выполнить с такими строками
+            string password = "", passwordConfirm = null;
+
+            if (
+                password.Length != 0 && passwordConfirm.Length != 0 &&
+                password == passwordConfirm
+            ) Console.WriteLine("Success!");
+            else Console.WriteLine("Something go wrong!");
+
             Console.ReadLine();
         }
     }

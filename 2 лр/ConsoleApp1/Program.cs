@@ -68,7 +68,47 @@ namespace ConsoleApp1
             string str1 = "Hello", str2 = "hello";
             string compare = str1 == str2 ? "equal" : "not equal";
 
-            Console.WriteLine($"strings '{str1}' and '{str2}' are {compare}\n");
+            Console.WriteLine($"- Compare: strings '{str1}' and '{str2}' are {compare}\n");
+
+
+            // b) Создайте три строки на основе String. Выполните: сцепление,
+            //    копирование, выделение подстроки, разделение строки на слова,
+            //    вставки подстроки в заданную позицию, удаление заданной
+            //    подстроки.
+
+            string s1 = "Lorem ipsum dolor sit amet, ",
+                s2 = "consectetur adipiscing elit",
+                s3 = "<copied value>";
+
+            //* сцепление
+            string result = String.Concat(s1, s2);
+            Console.WriteLine("- Concat: " + result);
+
+            //* разделение строки на слова
+            Console.WriteLine("\n- Split:");
+
+            string[] words = result.Split(' ');
+            foreach (string word in words)
+                Console.WriteLine($"    <{word}>");
+
+            //* вставки подстроки в заданную позицию
+            result = result.Insert(10, "<inserted value>");
+            Console.WriteLine("\n- Insert: " + result);
+
+            //* удаление заданной подстроки
+            result = result.Remove(10, 16);
+            Console.WriteLine("\n- Remove: " + result);
+
+            //* выделение подстроки
+            Console.WriteLine("\n- Substring: " + result.Substring(0, 17));
+
+            //* копирование
+            char[] dest = { 'T', 'h', 'e', ' ', 'i', 'n', 'i', 't', 'i', 'a', 'l', ' ',
+                'a', 'r', 'r', 'a', 'y',  ' ', ' ', 'i', 'n', 'i', 't', 'i', 'a', 'l', ' ',
+                'a', 'r', 'r', 'a', 'y'};
+            s3.CopyTo(0, dest, 4, s3.Length);
+            Console.Write("\n- Copy: ");
+            Console.WriteLine(dest);
 
             Console.ReadLine();
         }

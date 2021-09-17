@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ConsoleApp1
 {
@@ -114,11 +115,21 @@ namespace ConsoleApp1
             // c) Создайте пустую и null строку. Продемонстрируйте что можно выполнить с такими строками
             string password = "", passwordConfirm = null;
 
+            Console.Write("\n- Empty and null str: ");
             if (
                 password.Length != 0 && passwordConfirm.Length != 0 &&
                 password == passwordConfirm
             ) Console.WriteLine("Success!");
             else Console.WriteLine("Something go wrong!");
+
+
+            // d) Создайте строку на основе StringBuilder. Удалите определенные
+            //    позиции и добавьте новые символы в начало и конец строки
+            StringBuilder strBld = new StringBuilder("Lorem ipsum dolor sit amet.");
+            strBld.Remove(5, 5);
+            strBld.Insert(0, "<added to start>");
+            strBld.Append("<added to end>");
+            Console.WriteLine("\n- StringBuilder: " + strBld);
 
             Console.ReadLine();
         }

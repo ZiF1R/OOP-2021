@@ -42,6 +42,11 @@ namespace ConsoleApp1
             ul = ui;
             db = fl;
 
+
+            // c) Выполните упаковку и распаковку значимых типов.
+            double a = 3.2;
+            Object obj = a; //упаковка
+            double c = (double)obj; //распаковка
         }
     }
 }

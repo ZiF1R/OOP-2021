@@ -47,6 +47,14 @@ namespace ConsoleApp1
             double a = 3.2;
             Object obj = a; //упаковка
             double c = (double)obj; //распаковка
+
+
+            // d) Продемонстрируйте работу с неявно типизированной переменной.
+            var v1 = "Hello";
+            var v2 = 123;
+
+            Console.WriteLine($"v1: {v1.GetType()}\nv2: {v2.GetType()}");
+            Console.ReadLine();
         }
     }
 }

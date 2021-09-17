@@ -54,6 +54,12 @@ namespace ConsoleApp1
             var v2 = 123;
 
             Console.WriteLine($"v1: {v1.GetType()}\nv2: {v2.GetType()}");
+
+
+            // e) Продемонстрируйте пример работы с Nullable переменной.
+            bool? flag = null;
+            flag = true;
+
             Console.ReadLine();
         }
     }

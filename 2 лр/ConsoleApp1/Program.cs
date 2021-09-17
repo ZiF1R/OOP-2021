@@ -131,6 +131,27 @@ namespace ConsoleApp1
             strBld.Append("<added to end>");
             Console.WriteLine("\n- StringBuilder: " + strBld);
 
+
+
+            //* 3. Массивы
+
+            // a) Создайте целый двумерный массив и выведите его на консоль в
+            //    отформатированном виде(матрица). 
+
+            int[,] matrix = new int[3, 3] {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 },
+            };
+
+            Console.WriteLine("\n- Matrix:\n");
+            for (int row = 0; row < 3; row++)
+            {
+                for (int column = 0; column < 3; column++)
+                    Console.Write(String.Format("{0,3}", matrix[row, column]));
+                Console.WriteLine();
+            }
+
             Console.ReadLine();
         }
     }

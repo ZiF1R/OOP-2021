@@ -53,12 +53,22 @@ namespace ConsoleApp1
             var v1 = "Hello";
             var v2 = 123;
 
-            Console.WriteLine($"v1: {v1.GetType()}\nv2: {v2.GetType()}");
+            Console.WriteLine($"v1: {v1.GetType()}\nv2: {v2.GetType()}\n");
 
 
             // e) Продемонстрируйте пример работы с Nullable переменной.
             bool? flag = null;
             flag = true;
+
+
+
+            //* 2. Строки
+
+            // a) Объявите строковые литералы. Сравните их.
+            string str1 = "Hello", str2 = "hello";
+            string compare = str1 == str2 ? "equal" : "not equal";
+
+            Console.WriteLine($"strings '{str1}' and '{str2}' are {compare}\n");
 
             Console.ReadLine();
         }

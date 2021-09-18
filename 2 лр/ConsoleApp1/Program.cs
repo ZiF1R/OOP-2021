@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -232,6 +233,21 @@ namespace ConsoleApp1
             // e) Сравните два кортежа.
             (int intVal, string strVal, char charVal, ulong ulongVal) tuple1 = (213, "string", 'a', 1234567);
             Console.WriteLine($"\n- Tuple compare: {(tuple.Equals(tuple1) ? "Equal" : "Not equal")}");
+
+
+
+            //* 5. Создайте локальную функцию в main и вызовите ее. Формальные
+            //     параметры функции – массив целых и строка. Функция должна вернуть
+            //     кортеж, содержащий: максимальный и минимальный элементы массива,
+            //     сумму элементов массива и первую букву строки
+
+            (int, int, char) func(int[] arr, string st)
+            {
+                return (arr.Max(), arr.Min(), st.First());
+            }
+
+            int[] array = { 1, 2, 3, 4, 5 };
+            Console.WriteLine("\n- Function call: " + func(array, "Hello world!"));
 
             Console.ReadLine();
         }

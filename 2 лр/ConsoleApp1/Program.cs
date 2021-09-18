@@ -29,14 +29,14 @@ namespace ConsoleApp1
 
             // b) Выполните 5 операций явного и 5 неявного приведения.
 
-                // явное
+            // явное
             int newInt = (int)db;
             double newDouble = Double.Parse("2,3");
             short newShort = System.Convert.ToInt16(newInt);
             float newFloat = (float)newDouble;
             bool newBool = bool.Parse("false");
 
-                // неявное
+            // неявное
             long newLong = newInt;
             db = i;
             db = sh;
@@ -178,6 +178,31 @@ namespace ConsoleApp1
             Console.Write("\n- Changed array: ");
             foreach (string st in strs)
                 Console.Write(st + " ");
+            Console.WriteLine("\n");
+
+
+            // c) Создайте ступечатый (не выровненный) массив вещественных
+            //    чисел с 3-мя строками, в каждой из которых 2, 3 и 4 столбцов 
+            //    соответственно. Значения массива введите с консоли.
+            double[][] steppedArr = new double [3][];
+            steppedArr[0] = new double[2];
+            steppedArr[1] = new double[3];
+            steppedArr[2] = new double[4];
+
+            for (int row = 0; row < steppedArr.Length; row++)
+                for (int column = 0; column < steppedArr[row].Length; column++)
+                {
+                    Console.Write($"Enter element [{row}][{column}]: ");
+                    steppedArr[row][column] = Double.Parse(Console.ReadLine());
+                }
+
+            Console.WriteLine("\n- Stepped array:\n");
+            for (int row = 0; row < steppedArr.Length; row++)
+            {
+                for (int column = 0; column < steppedArr[row].Length; column++)
+                    Console.Write($" {steppedArr[row][column]} ");
+                Console.WriteLine();
+            }
 
             Console.ReadLine();
         }

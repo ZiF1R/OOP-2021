@@ -223,6 +223,16 @@ namespace ConsoleApp1
             Console.Write("\n- Tuple: " + tuple);
             Console.WriteLine($" ({tuple.Item1}, {tuple.Item3}, {tuple.Item4})");
 
+
+            // d) Выполните распаковку кортежа в переменные.
+            (var q, var w, var e, var r) = tuple;
+            Console.WriteLine($"\n- Tuple unboxing: ({q}, {w}, {e}, {r})");
+
+
+            // e) Сравните два кортежа.
+            (int intVal, string strVal, char charVal, ulong ulongVal) tuple1 = (213, "string", 'a', 1234567);
+            Console.WriteLine($"\n- Tuple compare: {(tuple.Equals(tuple1) ? "Equal" : "Not equal")}");
+
             Console.ReadLine();
         }
     }

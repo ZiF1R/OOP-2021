@@ -6,6 +6,7 @@ Properties/
 *.csproj
 *.sln
 
+*.pptx
 *.pdf
 *.jpg
 *.png

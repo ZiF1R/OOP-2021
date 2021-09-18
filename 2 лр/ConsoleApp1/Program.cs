@@ -210,6 +210,19 @@ namespace ConsoleApp1
             var strVal = "hello world!";
             var arrVal = steppedArr[2];
 
+
+
+            //* 4. Кортежи
+
+            // a) Задайте кортеж из 5 элементов с типами int, string, char, ulong.
+            // b) Сделайте именование его элементов
+            // c) Выведите кортеж на консоль целиком и выборочно (1, 3, 4 элементы)
+
+            (int intVal, string strVal, char charVal, ulong ulongVal) tuple = (213, "string", 'a', 1234567);
+
+            Console.Write("\n- Tuple: " + tuple);
+            Console.WriteLine($" ({tuple.Item1}, {tuple.Item3}, {tuple.Item4})");
+
             Console.ReadLine();
         }
     }

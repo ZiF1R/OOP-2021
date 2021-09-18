@@ -204,6 +204,12 @@ namespace ConsoleApp1
                 Console.WriteLine();
             }
 
+
+            // d) Создайте неявно типизированные переменные для хранения
+            //    массива и строки.
+            var strVal = "hello world!";
+            var arrVal = steppedArr[2];
+
             Console.ReadLine();
         }
     }

@@ -152,6 +152,33 @@ namespace ConsoleApp1
                 Console.WriteLine();
             }
 
+
+            // b) Создайте одномерный массив строк. Выведите на консоль его
+            //    содержимое, длину массива. Поменяйте произвольный элемент
+            //    (пользователь определяет позицию и значение)
+            string[] strs = {
+                "<first str>",
+                "<second str>",
+                "<third str>"
+            };
+
+            Console.Write("\n- Array of strings: ");
+            foreach (string st in strs)
+                Console.Write(st + " ");
+
+            Console.WriteLine(" Length: " + strs.Length);
+
+            Console.Write("\n Please, enter position of element for change: ");
+            int pos = Int32.Parse(Console.ReadLine()) - 1;
+            Console.Write(" Please, enter new value: ");
+            string newVal = Console.ReadLine();
+
+            if (pos < strs.Length && pos > -1) strs[pos] = newVal;
+
+            Console.Write("\n- Changed array: ");
+            foreach (string st in strs)
+                Console.Write(st + " ");
+
             Console.ReadLine();
         }
     }

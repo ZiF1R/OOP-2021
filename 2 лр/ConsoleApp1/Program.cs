@@ -241,9 +241,9 @@ namespace ConsoleApp1
             //     кортеж, содержащий: максимальный и минимальный элементы массива,
             //     сумму элементов массива и первую букву строки
 
-            (int, int, char) func(int[] arr, string st)
+            (int, int, int, char) func(int[] arr, string st)
             {
-                return (arr.Max(), arr.Min(), st.First());
+                return (arr.Max(), arr.Min(), arr.Sum(), st.First());
             }
 
             int[] array = { 1, 2, 3, 4, 5 };

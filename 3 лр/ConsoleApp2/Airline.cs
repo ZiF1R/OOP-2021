@@ -93,6 +93,15 @@ namespace ConsoleApp2
             Console.WriteLine("Start working with Airline!\n");
         }
 
+        private Airline(string planeType)
+        {
+            destination = "";
+            flightNumber = 0;
+            PlaneType = planeType;
+            day = "";
+            departureTime = (0, 0);
+        }
+
         public Airline()
         {
             destination = "";

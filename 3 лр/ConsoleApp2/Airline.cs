@@ -52,7 +52,7 @@ namespace ConsoleApp2
             set
             {
                 string[] planeTypes = { "Passenger", "Battle", "Cargo" };
-                if (planeType.Contains(value))
+                if (planeTypes.Contains(value))
                     planeType = value;
                 else
                     throw new Exception("Тип самолета может быть Пассажирский, Боевой или Грузовой!");

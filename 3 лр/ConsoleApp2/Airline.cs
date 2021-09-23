@@ -88,6 +88,10 @@ namespace ConsoleApp2
             }
         }
 
+        static Airline()
+        {
+            Console.WriteLine("Start working with Airline!\n");
+        }
 
         public Airline()
         {

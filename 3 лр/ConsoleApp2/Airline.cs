@@ -98,13 +98,16 @@ namespace ConsoleApp2
             departureTime = (0, 0);
         }
 
-        public Airline(string destination = "", int flightNumber = 0, string planeType = "", string dayOfWeek = "")
+        public Airline(
+            string destination = "", int flightNumber = 0, string planeType = "",
+            string dayOfWeek = "", int hours = 0, int minutes = 0
+            )
         {
             Destination = destination;
             FlightNumber = flightNumber;
             PlaneType = planeType;
             Day = dayOfWeek;
-            DepartureTime = (0, 0);
+            DepartureTime = (hours, minutes);
         }
     }
 }

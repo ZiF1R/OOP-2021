@@ -19,6 +19,8 @@ namespace ConsoleApp2
 
     class Airline
     {
+        public readonly int id = objCount - 1;
+        private static int objCount;
         private string destination;
         private int flightNumber;
         private string planeType;
@@ -91,6 +93,7 @@ namespace ConsoleApp2
         static Airline()
         {
             Console.WriteLine("Start working with Airline!\n");
+            objCount++;
         }
 
         private Airline(string planeType)
@@ -100,6 +103,8 @@ namespace ConsoleApp2
             PlaneType = planeType;
             day = "";
             departureTime = (0, 0);
+
+            objCount++;
         }
 
         public Airline()
@@ -109,6 +114,8 @@ namespace ConsoleApp2
             planeType = "";
             day = "";
             departureTime = (0, 0);
+
+            objCount++;
         }
 
         public Airline(
@@ -121,6 +128,8 @@ namespace ConsoleApp2
             PlaneType = planeType;
             Day = dayOfWeek;
             DepartureTime = (hours, minutes);
+
+            objCount++;
         }
     }
 }

@@ -92,6 +92,10 @@ namespace ConsoleApp2
             }
         }
 
+
+
+        // *CONSTRUCTORS*
+
         static Airline()
         {
             Console.WriteLine("Start working with Airline!\n");
@@ -152,6 +156,11 @@ namespace ConsoleApp2
         public static Airline[] FindByDestination(ref Airline[] arr, string destination)
         {
             return arr.Where(el => el.destination == destination).ToArray();
+        }
+
+        public static Airline[] FindByDayOfWeek(ref Airline[] arr, string dayOfWeek)
+        {
+            return arr.Where(el => el.day == dayOfWeek).ToArray();
         }
 
         public override bool Equals(object obj)

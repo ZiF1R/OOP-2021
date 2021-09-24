@@ -17,7 +17,7 @@ namespace ConsoleApp2
     //  a) список рейсов для заданного пункта назначения;
     //  b) список рейсов для заданного дня недели;
 
-    class Airline
+    partial class Airline
     {
         public readonly int id = objCount - 1;
         private static int objCount;
@@ -26,6 +26,8 @@ namespace ConsoleApp2
         private string planeType;
         private string day;
         private (int hours, int minutes) departureTime;
+
+        public const string departureLocation = "Minsk";
 
         public string Destination
         {
@@ -130,6 +132,56 @@ namespace ConsoleApp2
             DepartureTime = (hours, minutes);
 
             objCount++;
+        }
+
+
+
+        // *METHODS*
+
+        public void getAirlineInfo()
+        {
+            Console.WriteLine(
+                "Airline: {0} - {1}\n" +
+                "Plane: {2}, flight number: {3}\n" +
+                "Time: 2021-09-27 {4} ({5})\n" +
+                "".PadLeft(30, '-'),
+                departureLocation, Destination
+                );
+        }
+
+        public static Airline[] FindByDestination(ref Airline[] arr, string destination)
+        {
+            return arr.Where(el => el.destination == destination).ToArray();
+        }
+
+        public override bool Equals(object obj)
+        {
+            Airline temp = obj as Airline;
+
+            if (temp != null)
+            {
+                if (
+                    temp.destination == this.destination && temp.flightNumber == this.flightNumber &&
+                    temp.day == this.day && temp.planeType == this.planeType && temp.departureTime == this.departureTime
+                )
+                    return true;
+                else return false;
+            }
+            else return false;
+        }
+
+        public override string ToString()
+        {
+            return $"{Airline.departureLocation}-{this.Destination}\n{this.planeType} №{this.flightNumber}\n" +
+                $"{this.day} {this.departureTime.hours}:{this.departureTime.minutes}";
+        }
+    }
+
+    partial class Airline
+    {
+        public override int GetHashCode()
+        {
+            return this.id;
         }
     }
 }

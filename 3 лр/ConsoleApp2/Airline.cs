@@ -181,8 +181,11 @@ namespace ConsoleApp2
 
         public override string ToString()
         {
-            return $"{Airline.departureLocation}-{this.Destination}\n{this.planeType} №{this.flightNumber}\n" +
-                $"{this.day} {this.departureTime.hours}:{this.departureTime.minutes}";
+            return $"{"".PadLeft(20, '-')}\n" +
+                $"{Airline.departureLocation}-{this.Destination}\n" +
+                $"{this.planeType} №{this.flightNumber}\n" +
+                $"{this.day} {this.departureTime.hours}:{this.departureTime.minutes}\n" +
+                $"{"".PadLeft(20, '-')}\n";
         }
     }
 

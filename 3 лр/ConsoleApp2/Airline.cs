@@ -161,7 +161,10 @@ namespace ConsoleApp2
         {
             return arr.Where(el => el.day == dayOfWeek).ToArray();
         }
+    }
 
+    partial class Airline
+    {
         public override bool Equals(object obj)
         {
             Airline temp = obj as Airline;
@@ -186,10 +189,7 @@ namespace ConsoleApp2
                 $"{this.day} {this.departureTime.hours}:{this.departureTime.minutes}\n" +
                 $"{"".PadLeft(20, '-')}\n";
         }
-    }
 
-    partial class Airline
-    {
         public override int GetHashCode()
         {
             return this.id;

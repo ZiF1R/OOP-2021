@@ -20,14 +20,19 @@ namespace ConsoleApp2
     partial class Airline
     {
         public readonly int id = objCount - 1;
-        private static int objCount;
+        private static int objCount = 0;
         private string destination;
-        private int flightNumber;
+        private int? flightNumber;
         private string planeType;
         private string day;
-        private (int hours, int minutes) departureTime;
+        private (int? hours, int? minutes) departureTime;
 
         public const string departureLocation = "Minsk";
+
+        public int ObjCount
+        {
+            get => objCount;
+        }
 
         public string Destination
         {
@@ -38,7 +43,7 @@ namespace ConsoleApp2
             }
         }
 
-        public int FlightNumber
+        public int? FlightNumber
         {
             get => flightNumber;
             set
@@ -77,7 +82,7 @@ namespace ConsoleApp2
             }
         }
 
-        public (int hours, int minutes) DepartureTime
+        public (int? hours, int? minutes) DepartureTime
         {
             get => departureTime;
             set
@@ -99,27 +104,26 @@ namespace ConsoleApp2
         static Airline()
         {
             Console.WriteLine("Start working with Airline!\n");
-            objCount++;
         }
 
         private Airline(string planeType)
         {
-            destination = "";
-            flightNumber = 0;
+            destination = null;
+            flightNumber = null;
             PlaneType = planeType;
-            day = "";
-            departureTime = (0, 0);
+            day = null;
+            departureTime = (null, null);
 
             objCount++;
         }
 
         public Airline()
         {
-            destination = "";
-            flightNumber = 0;
-            planeType = "";
-            day = "";
-            departureTime = (0, 0);
+            destination = null;
+            flightNumber = null;
+            planeType = null;
+            day = null;
+            departureTime = (null, null);
 
             objCount++;
         }

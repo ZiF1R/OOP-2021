@@ -10,6 +10,7 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
+            Airline wqq = new Airline();
             Airline t = new Airline("Moscow", 654321, "Passenger", "Monday", 12, 12);
             Airline t1 = new Airline("Tokyo", 123456, "Passenger", "Friday", 3, 00);
             Airline t2 = new Airline("Berlin", 321642, "Cargo", "Wednesday", 21, 45);
@@ -18,6 +19,7 @@ namespace ConsoleApp2
 
             foreach (Airline plane in Airline.FindByDayOfWeek(ref arr, "Monday"))
                 Console.WriteLine(plane);
+            Console.WriteLine(t.ObjCount);
 
             Console.ReadLine();
         }

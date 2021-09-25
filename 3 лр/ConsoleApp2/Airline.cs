@@ -146,15 +146,9 @@ namespace ConsoleApp2
 
         // *METHODS*
 
-        public void getAirlineInfo()
+        public static void getInfo()
         {
-            Console.WriteLine(
-                "Airline: {0} - {1}\n" +
-                "Plane: {2}, flight number: {3}\n" +
-                "Time: 2021-09-27 {4} ({5})\n" +
-                "".PadLeft(30, '-'),
-                departureLocation, Destination
-                );
+            Console.WriteLine("Created {0} object(s) of class Airline.\n", objCount);
         }
 
         public static Airline[] FindByDestination(ref Airline[] arr, string destination)

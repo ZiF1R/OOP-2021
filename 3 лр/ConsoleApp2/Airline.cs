@@ -107,13 +107,14 @@ namespace ConsoleApp2
             Console.WriteLine("Start working with Airline!\n");
         }
 
-        private Airline(string planeType)
+        private Airline(int hours, int minutes)
         {
+            Console.WriteLine("Private constructor was called!\n");
             destination = null;
             flightNumber = null;
-            PlaneType = planeType;
+            planeType = null;
             day = null;
-            departureTime = (null, null);
+            departureTime = (hours, minutes);
 
             objCount++;
         }
@@ -149,6 +150,7 @@ namespace ConsoleApp2
 
         public static void getInfo()
         {
+            Airline createWithPrivateConstructor = new Airline(12, 32);
             Console.WriteLine("Created {0} object(s) of class Airline.\n", objCount);
         }
 

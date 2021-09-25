@@ -19,7 +19,7 @@ namespace ConsoleApp2
 
     partial class Airline
     {
-        public readonly int id = objCount - 1;
+        public readonly int id = objCount + 1;
         private static int objCount = 0;
         private string destination;
         private int? flightNumber;

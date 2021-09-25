@@ -48,7 +48,7 @@ namespace ConsoleApp2
             get => flightNumber;
             set
             {
-                if (value.ToString().Length == 6)
+                if (value.ToString().Length == 6 || value == null)
                     flightNumber = value;
                 else
                     throw new Exception("Номер должен содержать 6 цифр!");
@@ -61,7 +61,7 @@ namespace ConsoleApp2
             set
             {
                 string[] planeTypes = { "Passenger", "Battle", "Cargo" };
-                if (planeTypes.Contains(value))
+                if (planeTypes.Contains(value) || value  == null)
                     planeType = value;
                 else
                     throw new Exception("Тип самолета может быть Пассажирский, Боевой или Грузовой!");
@@ -75,7 +75,7 @@ namespace ConsoleApp2
             {
                 string[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sanday" };
 
-                if (daysOfWeek.Contains(value))
+                if (daysOfWeek.Contains(value) || value == null)
                     day = value;
                 else
                     throw new Exception("Введите корректный день недели!");
@@ -89,7 +89,8 @@ namespace ConsoleApp2
             {
                 if (
                     (value.hours >= 0 && value.hours < 24) &&
-                    (value.minutes >= 0 && value.minutes < 60)
+                    (value.minutes >= 0 && value.minutes < 60) ||
+                    (value.minutes == null && value.minutes == null)
                 )
                     departureTime = value;
                 else
@@ -129,8 +130,8 @@ namespace ConsoleApp2
         }
 
         public Airline(
-            string destination = "", int flightNumber = 0, string planeType = "",
-            string dayOfWeek = "", int hours = 0, int minutes = 0
+            string destination = null, int? flightNumber = null, string planeType = null,
+            string dayOfWeek = null, int? hours = null, int? minutes = null
             )
         {
             Destination = destination;

@@ -19,7 +19,7 @@ namespace ConsoleApp3
 
     class myArray
     {
-        Array array;
+        public Array array;
 
         public myArray()
         {
@@ -34,6 +34,34 @@ namespace ConsoleApp3
         public static myArray operator +(myArray arr1, myArray arr2)
         {
             return new myArray(new[] { arr1, arr2 });
+        }
+
+        public static bool operator ==(myArray arr1, myArray arr2)
+        {
+            if (arr1.array.Length != arr2.array.Length) return false;
+            else
+                for (int i = 0; i < arr1.array.Length; i++)
+                    if (
+                        arr1.array.GetValue(i).ToString() != arr2.array.GetValue(i).ToString() ||
+                        arr1.array.GetValue(i).GetType() != arr2.array.GetValue(i).GetType()
+                    )
+                        return false;
+
+            return true;
+        }
+
+        public static bool operator !=(myArray arr1, myArray arr2)
+        {
+            if (arr1.array.Length != arr2.array.Length) return true;
+            else
+                for (int i = 0; i < arr1.array.Length; i++)
+                    if (
+                        arr1.array.GetValue(i).ToString() != arr2.array.GetValue(i).ToString() ||
+                        arr1.array.GetValue(i).GetType() != arr2.array.GetValue(i).GetType()
+                    )
+                        return true;
+
+            return false;
         }
     }
 }

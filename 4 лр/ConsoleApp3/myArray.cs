@@ -30,5 +30,10 @@ namespace ConsoleApp3
         {
             array = arr;
         }
+
+        public static myArray operator +(myArray arr1, myArray arr2)
+        {
+            return new myArray(new[] { arr1, arr2 });
+        }
     }
 }

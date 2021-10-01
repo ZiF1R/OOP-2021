@@ -73,6 +73,27 @@ namespace ConsoleApp3
             return new myArray(arr1.array.Concat(arr2.array).ToArray());
         }
 
+        public static myArray operator -(myArray arr1, myArray arr2)
+        {
+            int[] result = new int[Math.Max(arr1.array.Length, arr2.array.Length)];
+
+            if(arr1.array.Length < arr2.array.Length)
+            {
+                for (int i = 0; i < arr1.array.Length; i++)
+                    result[i] = Math.Abs(arr1.array[i] - arr2.array[i]);
+                for (int i = arr1.array.Length; i < arr2.array.Length; i++)
+                    result[i] = Math.Abs(arr2.array[i]);
+            } else
+            {
+                for (int i = 0; i < arr2.array.Length; i++)
+                    result[i] = Math.Abs(arr1.array[i] - arr2.array[i]);
+                for (int i = arr2.array.Length; i < arr1.array.Length; i++)
+                    result[i] = Math.Abs(arr1.array[i]);
+            }
+
+            return new myArray(result);
+        }
+
         public static bool operator ==(myArray arr1, myArray arr2)
         {
             if (arr1.array.Length != arr2.array.Length) return false;
@@ -108,8 +129,11 @@ namespace ConsoleApp3
         public override string ToString()
         {
             string result = "{ ";
-            foreach (int num in array)
-                result += $"{num}, ";
+            for (int i = 0; i < this.array.Length; i++)
+            {
+                if (i + 1 != this.array.Length) result += $"{this.array[i]}, ";
+                else result += $"{this.array[i]} ";
+            }
             result += "}";
 
             return result;

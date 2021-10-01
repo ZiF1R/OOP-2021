@@ -17,26 +17,34 @@ namespace ConsoleApp3
     //  1) Удаление гласных из строки
     //  2) Удаление первых пяти элементов
 
-    class myArray
+    class myArray<T>
     {
-        public Array array;
+        public T[] array;
 
         public myArray()
         {
             array = null;
         }
 
-        public myArray(Array arr)
+        public myArray(T[] arr)
         {
             array = arr;
         }
 
-        public static myArray operator +(myArray arr1, myArray arr2)
+
+        // operators overload
+
+        public static myArray<T> operator +(myArray<T> arr1, myArray<T> arr2)
         {
-            return new myArray(new[] { arr1, arr2 });
+            return new myArray<T>(arr1.array.Concat(arr2.array).ToArray());
         }
 
-        public static bool operator ==(myArray arr1, myArray arr2)
+        public static myArray<T> operator -(myArray<T> arr1, myArray<T> arr2)
+        {
+            return new myArray<T>(arr1.array.Concat(arr2.array).ToArray());
+        }
+
+        public static bool operator ==(myArray<T> arr1, myArray<T> arr2)
         {
             if (arr1.array.Length != arr2.array.Length) return false;
             else
@@ -50,7 +58,7 @@ namespace ConsoleApp3
             return true;
         }
 
-        public static bool operator !=(myArray arr1, myArray arr2)
+        public static bool operator !=(myArray<T> arr1, myArray<T> arr2)
         {
             if (arr1.array.Length != arr2.array.Length) return true;
             else
@@ -60,6 +68,30 @@ namespace ConsoleApp3
                         arr1.array.GetValue(i).GetType() != arr2.array.GetValue(i).GetType()
                     )
                         return true;
+
+            return false;
+        }
+
+        public static bool operator >(myArray<T> arr, T element)
+        {
+            for (int i = 0; i < arr.array.Length; i++)
+                if (
+                    arr.array.GetValue(i).ToString() == element.ToString() &&
+                    arr.array.GetValue(i).GetType() == element.GetType()
+                )
+                    return true;
+
+            return false;
+        }
+
+        public static bool operator <(myArray<T> arr, T element)
+        {
+            for (int i = 0; i < arr.array.Length; i++)
+                if (
+                    arr.array.GetValue(i).ToString() == element.ToString() &&
+                    arr.array.GetValue(i).GetType() == element.GetType()
+                )
+                    return true;
 
             return false;
         }

@@ -17,9 +17,9 @@ namespace ConsoleApp3
     //  1) Удаление гласных из строки
     //  2) Удаление первых пяти элементов
 
-    public class myArray<T>
+    public class myArray
     {
-        public T[] array;
+        public int[] array;
         public readonly Date date;
         public readonly Owner owner;
 
@@ -58,7 +58,7 @@ namespace ConsoleApp3
             this.owner = new Owner(0, "", "");
         }
 
-        public myArray(T[] arr, int id = 0, string author = "", string organisation = "")
+        public myArray(int[] arr, int id = 0, string author = "", string organisation = "")
         {
             array = arr;
             this.date = new Date();
@@ -68,66 +68,41 @@ namespace ConsoleApp3
 
         // operators overload
 
-        public static myArray<T> operator +(myArray<T> arr1, myArray<T> arr2)
+        public static myArray operator +(myArray arr1, myArray arr2)
         {
-            return new myArray<T>(arr1.array.Concat(arr2.array).ToArray());
+            return new myArray(arr1.array.Concat(arr2.array).ToArray());
         }
 
-        public static myArray<T> operator -(myArray<T> arr1, myArray<T> arr2)
-        {
-            return new myArray<T>(arr1.array.Concat(arr2.array).ToArray());
-        }
-
-        public static bool operator ==(myArray<T> arr1, myArray<T> arr2)
+        public static bool operator ==(myArray arr1, myArray arr2)
         {
             if (arr1.array.Length != arr2.array.Length) return false;
             else
                 for (int i = 0; i < arr1.array.Length; i++)
-                    if (
-                        arr1.array.GetValue(i).ToString() != arr2.array.GetValue(i).ToString() ||
-                        arr1.array.GetValue(i).GetType() != arr2.array.GetValue(i).GetType()
-                    )
+                    if (arr1.array[i] != arr2.array[i])
                         return false;
 
             return true;
         }
 
-        public static bool operator !=(myArray<T> arr1, myArray<T> arr2)
+        public static bool operator !=(myArray arr1, myArray arr2)
         {
             if (arr1.array.Length != arr2.array.Length) return true;
             else
                 for (int i = 0; i < arr1.array.Length; i++)
-                    if (
-                        arr1.array.GetValue(i).ToString() != arr2.array.GetValue(i).ToString() ||
-                        arr1.array.GetValue(i).GetType() != arr2.array.GetValue(i).GetType()
-                    )
+                    if (arr1.array[i] != arr2.array[i])
                         return true;
 
             return false;
         }
 
-        public static bool operator >(myArray<T> arr, T element)
+        public static bool operator >(myArray arr, int element)
         {
-            for (int i = 0; i < arr.array.Length; i++)
-                if (
-                    arr.array.GetValue(i).ToString() == element.ToString() &&
-                    arr.array.GetValue(i).GetType() == element.GetType()
-                )
-                    return true;
-
-            return false;
+            return arr.array.Contains(element);
         }
 
-        public static bool operator <(myArray<T> arr, T element)
+        public static bool operator <(myArray arr, int element)
         {
-            for (int i = 0; i < arr.array.Length; i++)
-                if (
-                    arr.array.GetValue(i).ToString() == element.ToString() &&
-                    arr.array.GetValue(i).GetType() == element.GetType()
-                )
-                    return true;
-
-            return false;
+            return arr.array.Contains(element);
         }
     }
 }

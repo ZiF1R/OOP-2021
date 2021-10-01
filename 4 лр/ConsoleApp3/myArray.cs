@@ -17,18 +17,52 @@ namespace ConsoleApp3
     //  1) Удаление гласных из строки
     //  2) Удаление первых пяти элементов
 
-    class myArray<T>
+    public class myArray<T>
     {
         public T[] array;
+        public readonly Date date;
+        public readonly Owner owner;
+
+        // subclasses
+
+        public class Owner
+        {
+            public readonly int id;
+            public readonly string author;
+            public readonly string organization;
+
+            public Owner(int id, string author, string organization)
+            {
+                this.id = id;
+                this.author = author;
+                this.organization = organization;
+            }
+        }
+        public class Date
+        {
+            public readonly DateTime time;
+
+            public Date()
+            {
+                time = DateTime.Now;
+            }
+        }
+
+
+        // constructors
 
         public myArray()
         {
-            array = null;
+            this.array = null;
+            this.date = new Date();
+            this.owner = new Owner(0, "", "");
         }
 
-        public myArray(T[] arr)
+        public myArray(T[] arr, int id = 0, string author = "", string organisation = "")
         {
             array = arr;
+            this.date = new Date();
+            this.owner = new Owner(id, author, organisation);
         }
 
 

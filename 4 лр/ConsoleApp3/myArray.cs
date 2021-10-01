@@ -104,5 +104,15 @@ namespace ConsoleApp3
         {
             return arr.array.Contains(element);
         }
+
+        public override string ToString()
+        {
+            string result = "{ ";
+            foreach (int num in array)
+                result += $"{num}, ";
+            result += "}";
+
+            return result;
+        }
     }
 }

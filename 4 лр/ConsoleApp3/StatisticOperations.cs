@@ -26,7 +26,7 @@ namespace ConsoleApp3
 
         public static string RemoveVowels(this string str)
         {
-            char[] vowels = { 'a', 'e', 'y', 'u', 'i', 'o' };
+            char[] vowels = { 'a', 'e', 'y', 'u', 'i', 'o', 'A', 'E', 'Y', 'U', 'I', 'O' };
             string result = "";
             for (int i = 0; i < str.Length; i++)
                 if (!vowels.Contains(str[i])) result += str[i];

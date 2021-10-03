@@ -40,14 +40,13 @@ namespace ConsoleApp3
         }
         public class Date
         {
-            public readonly DateTime time;
+            public DateTime Time { get; }
 
             public Date()
             {
-                time = DateTime.Now;
+                Time = DateTime.Now;
             }
         }
-
 
         // constructors
 

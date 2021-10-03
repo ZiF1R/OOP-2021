@@ -27,15 +27,15 @@ namespace ConsoleApp3
 
         public class Owner
         {
-            public readonly int id;
-            public readonly string author;
-            public readonly string organization;
+            public int ID { get; }
+            public string Author { get; }
+            public string Organization { get; }
 
             public Owner(int id, string author, string organization)
             {
-                this.id = id;
-                this.author = author;
-                this.organization = organization;
+                this.ID = id;
+                this.Author = author;
+                this.Organization = organization;
             }
         }
         public class Date

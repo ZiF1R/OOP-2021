@@ -70,9 +70,12 @@ namespace ConsoleApp4
             }
         }
 
-        public void resize()
+        public void resize(double height = 0, double width = 0)
         {
-
+            this.Height = height;
+            this.radius = height / 2.0;
+            this.square = Math.PI * Math.Pow(radius, 2);
+            this.circumference = 2 * Math.PI * radius;
         }
 
         public void input()

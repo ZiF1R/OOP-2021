@@ -60,12 +60,12 @@ namespace ConsoleApp4
         {
             for (int i = 1; i < (int)radius*2 + 1; i += 2)
             {
-                int strWidth = ((int)radius*2 - i) / 2;
+                int strWidth = (int)Math.Ceiling((double)((int)radius * 2 - i) / 2.0);
                 Console.WriteLine("".PadLeft(strWidth, ' ').PadRight(strWidth + i, '0'));
             }
             for (int i = (int)radius*2 + 1; i > 0; i -= 2)
             {
-                int strWidth = ((int)radius*2 - i) / 2;
+                int strWidth = (int)Math.Ceiling((double)((int)radius * 2 - i) / 2.0);
                 Console.WriteLine("".PadLeft(strWidth, ' ').PadRight(strWidth + i, '0'));
             }
         }

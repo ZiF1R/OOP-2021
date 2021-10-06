@@ -9,7 +9,7 @@ namespace ConsoleApp4
     interface IManagement
     {
         void show();
-        void resize();
+        void resize(double height = 0, double width = 0);
         void input();
     }
 }

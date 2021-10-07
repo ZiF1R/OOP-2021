@@ -8,9 +8,15 @@ namespace ConsoleApp4.Figures
 {
     public class Circle : GeometricFigure, IManagement
     {
-        public double square;
-        public double circumference;
-        public double radius;
+        public double square = 0;
+        public double circumference = 0;
+        public double radius = 0;
+
+        public Circle()
+        {
+            this.width = 0;
+            this.height = 0;
+        }
 
         public Circle(double height) : base(height)
         {

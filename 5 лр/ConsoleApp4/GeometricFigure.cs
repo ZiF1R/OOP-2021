@@ -49,6 +49,14 @@ namespace ConsoleApp4
             this.Height = height;
             this.Width = width;
         }
+        
+
+        // methods
+
+        public virtual string getClassName()
+        {
+            return "GeometricFigure";
+        }
 
 
         // override methods

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4.Figures
 {
-    public class Circle : GeometricFigure, IManagement
+    public sealed class Circle : GeometricFigure, IManagement
     {
         public double square = 0;
         public double circumference = 0;

@@ -51,5 +51,23 @@ namespace ConsoleApp4.Figures
         {
 
         }
+
+
+        // override methods
+
+        public override string getClassName()
+        {
+            return "Circle";
+        }
+
+        public override string ToString()
+        {
+            return $"{"".PadLeft(12, '-')} INFO {"".PadLeft(12, '-')}\n" +
+                $"Class: {this.getClassName()}\n" +
+                $"Radius: {this.radius}\n" +
+                $"Circumference: {this.circumference}\n" +
+                $"Square: {this.square}\n" +
+                $"{"".PadLeft(30, '-')}";
+        }
     }
 }

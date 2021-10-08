@@ -16,6 +16,14 @@ namespace ConsoleApp4
         public double width;
         public Controls controls;
 
+        public int ID = objCount - 1;
+        public static int objCount = 0;
+
+        public int ObjCount
+        {
+            get => objCount;
+        }
+
         public double Height
         {
             get => height;
@@ -40,6 +48,27 @@ namespace ConsoleApp4
         {
             this.Height = height;
             this.Width = width;
+        }
+
+
+        // override methods
+
+        public override string ToString()
+        {
+            return $"Height: {this.Height}\nWidth: {this.Width}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            GeometricFigure tmp = obj as GeometricFigure;
+            if (this.Width == tmp.Width && this.Height == tmp.Height)
+                return true;
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.ID;
         }
     }
 }

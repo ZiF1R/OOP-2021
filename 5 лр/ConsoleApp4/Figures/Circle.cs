@@ -21,8 +21,8 @@ namespace ConsoleApp4.Figures
         public Circle(double height) : base(height)
         {
             this.radius = height / 2.0;
-            this.square = Math.PI * Math.Pow(radius, 2);
-            this.circumference = 2 * Math.PI * radius;
+            this.square = Math.Round(Math.PI * Math.Pow(radius, 2));
+            this.circumference = Math.Round(2 * Math.PI * radius);
         }
 
         public void show()
@@ -43,8 +43,8 @@ namespace ConsoleApp4.Figures
         {
             this.Height = height;
             this.radius = height / 2.0;
-            this.square = Math.PI * Math.Pow(radius, 2);
-            this.circumference = 2 * Math.PI * radius;
+            this.square = Math.Round(Math.PI * Math.Pow(radius, 2));
+            this.circumference = Math.Round(2 * Math.PI * radius);
         }
 
         public void input()

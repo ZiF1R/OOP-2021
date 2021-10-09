@@ -11,6 +11,7 @@ namespace ConsoleApp4.Figures
         public double square = 0;
         public double circumference = 0;
         public double radius = 0;
+        public readonly int ID = objCount;
 
         public Circle()
         {
@@ -68,6 +69,11 @@ namespace ConsoleApp4.Figures
                 $"Circumference: {this.circumference}\n" +
                 $"Square: {this.square}\n" +
                 $"{"".PadLeft(30, '-')}";
+        }
+
+        public override int GetHashCode()
+        {
+            return this.ID;
         }
     }
 }

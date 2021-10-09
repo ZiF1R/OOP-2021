@@ -16,8 +16,7 @@ namespace ConsoleApp4
         private double width;
         public Controls controls;
 
-        public int ID = objCount - 1;
-        private static int objCount = 0;
+        protected static int objCount = 0;
 
         public int ObjCount
         {
@@ -73,11 +72,6 @@ namespace ConsoleApp4
             if (this.Width == tmp.Width && this.Height == tmp.Height)
                 return true;
             return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return this.ID;
         }
     }
 }

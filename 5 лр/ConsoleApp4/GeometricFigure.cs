@@ -12,12 +12,12 @@ namespace ConsoleApp4
 
     public class GeometricFigure
     {
-        public double height;
-        public double width;
+        private double height;
+        private double width;
         public Controls controls;
 
         public int ID = objCount - 1;
-        public static int objCount = 0;
+        private static int objCount = 0;
 
         public int ObjCount
         {
@@ -48,6 +48,7 @@ namespace ConsoleApp4
         {
             this.Height = height;
             this.Width = width;
+            objCount++;
         }
         
 

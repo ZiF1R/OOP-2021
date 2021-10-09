@@ -14,8 +14,8 @@ namespace ConsoleApp4.Figures
 
         public Circle()
         {
-            this.width = 0;
-            this.height = 0;
+            this.Width = 0;
+            this.Height = 0;
         }
 
         public Circle(double height) : base(height)

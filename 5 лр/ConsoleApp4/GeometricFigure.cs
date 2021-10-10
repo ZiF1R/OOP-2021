@@ -10,7 +10,7 @@ namespace ConsoleApp4
     //  > Управление (интерфейс с методами show, input, resize и т.д.)
     //  > Элемент управления, Checkbox, Radiobutton, Button
 
-    public class GeometricFigure
+    public abstract class GeometricFigure
     {
         private double height;
         private double width;
@@ -57,6 +57,8 @@ namespace ConsoleApp4
         {
             return "GeometricFigure";
         }
+
+        public abstract void rotateBy90Degree();
 
 
         // override methods

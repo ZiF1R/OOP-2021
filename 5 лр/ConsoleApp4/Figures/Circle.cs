@@ -48,13 +48,13 @@ namespace ConsoleApp4.Figures
             this.circumference = Math.Round(2 * Math.PI * radius);
         }
 
-        public void input()
+
+        // override methods
+
+        public override void rotateBy90Degree()
         {
 
         }
-
-
-        // override methods
 
         public override string getClassName()
         {

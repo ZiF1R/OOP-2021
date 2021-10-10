@@ -10,6 +10,6 @@ namespace ConsoleApp4
     {
         void show();
         void resize(double height = 0, double width = 0);
-        void input();
+        void rotateBy90Degree();
     }
 }

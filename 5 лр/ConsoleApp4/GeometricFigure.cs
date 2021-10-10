@@ -14,7 +14,6 @@ namespace ConsoleApp4
     {
         private double height;
         private double width;
-        public Controls controls;
 
         protected static int objCount = 0;
 

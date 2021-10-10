@@ -8,11 +8,7 @@ namespace ConsoleApp4.Controls
 {
     class Checkbox: Controller
     {
-        public Checkbox(bool isActive = false, string description = "")
-        {
-            this.isActive = isActive;
-            this.description = description;
-        }
+        public Checkbox(bool isActive = false, string description = "") : base(isActive, description) { }
 
         protected override void Handler()
         {

@@ -8,11 +8,7 @@ namespace ConsoleApp4.Controls
 {
     class RadioButton: Controller
     {
-        public RadioButton(bool isActive = false, string description = "")
-        {
-            this.isActive = isActive;
-            this.description = description;
-        }
+        public RadioButton(bool isActive = false, string description = "") : base(isActive, description) { }
 
         protected override void Handler()
         {

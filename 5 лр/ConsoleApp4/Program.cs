@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp4.Figures;
+using ConsoleApp4.Controls;
 
 namespace ConsoleApp4
 {
@@ -35,6 +36,19 @@ namespace ConsoleApp4
             circle2.resize(5);
             Console.WriteLine("\n> After resize:\n\n{0}", circle2.ToString());
             circle2.show();
+
+            Console.WriteLine();
+            Checkbox checkbox = new Checkbox(description: "new checkbox");
+            Console.WriteLine(checkbox.IsActive);
+            checkbox.Activate();
+            Console.WriteLine(checkbox.IsActive);
+            checkbox.Deactivate();
+            Console.WriteLine(checkbox);
+
+            Console.WriteLine("\n\n> Printer:\n");
+            GeometricFigure[] arr = { circle1, circle2, rect };
+            for (int i = 0; i < arr.Length; i++)
+                Printer.IAmPrinting(arr[i]);
 
             Console.ReadKey();
         }

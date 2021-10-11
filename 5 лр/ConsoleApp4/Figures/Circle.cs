@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4.Figures
 {
-    public sealed class Circle : GeometricFigure, IManagement
+    public sealed partial class Circle : GeometricFigure, IManagement
     {
         public double square = 0;
         public double circumference = 0;
@@ -78,34 +78,6 @@ namespace ConsoleApp4.Figures
             this.square = Math.Round(Math.PI * Math.Pow(radius, 2));
             this.circumference = Math.Round(2 * Math.PI * radius);
             this.center = new CenterCoordinates(height / 2, height / 2);
-        }
-
-
-        // override methods
-
-        public override void rotateBy90Degree()
-        {
-
-        }
-
-        public override string getClassName()
-        {
-            return "Circle";
-        }
-
-        public override string ToString()
-        {
-            return $"{"".PadLeft(12, '-')} INFO {"".PadLeft(12, '-')}\n" +
-                $"Class: {this.getClassName()}\n" +
-                $"Radius: {this.radius}\n" +
-                $"Circumference: {this.circumference}\n" +
-                $"Square: {this.square}\n" +
-                $"{"".PadLeft(30, '-')}";
-        }
-
-        public override int GetHashCode()
-        {
-            return this.ID;
         }
     }
 }

@@ -12,16 +12,19 @@ namespace ConsoleApp4
     {
         static void Main(string[] args)
         {
-            Circle circle1 = new Circle(13);
-            Circle circle2 = new Circle(13);
-            Rectangle rect = new Rectangle(5, 2);
+            Circle circle1 = new Circle(13, ConsoleColor.Green);
+            Circle circle2 = new Circle(13, ConsoleColor.DarkMagenta);
+            Rectangle rect = new Rectangle(5, 2, ConsoleColor.Cyan);
             GeometricFigure figure = circle2 as GeometricFigure;
+
 
             Console.WriteLine("> Rectangle:\n");
             rect.show();
 
             rect.rotateBy90Degree();
+            ((IManagement)rect).rotateBy90Degree();
             Console.WriteLine("\n\n> Rectangle after rotating:\n");
+
             rect.show();
 
             Console.WriteLine("\n> Circle1:\n");

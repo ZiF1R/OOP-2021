@@ -10,6 +10,13 @@ namespace ConsoleApp4
     //  > Управление (интерфейс с методами show, input, resize и т.д.)
     //  > Элемент управления, Checkbox, Radiobutton, Button
 
+
+    //             # Лабораторная работа 6 #
+    //  Создать UI из имеющихся фигур и элементов управления.
+
+    //  Вывести список всех кнопок, подсчитать общее количество
+    //  элементов на UI, найти площадь занимаемую всеми элментами
+
     public abstract class GeometricFigure
     {
         private double height;

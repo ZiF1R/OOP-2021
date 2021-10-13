@@ -24,9 +24,8 @@ namespace ConsoleApp4
             rect.rotateBy90Degree();
             ((IManagement)rect).rotateBy90Degree();
             Console.WriteLine("\n\n> Rectangle after rotating:\n");
-
             rect.show();
-
+            
             Console.WriteLine("\n> Circle1:\n");
             circle1.show();
 

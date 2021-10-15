@@ -46,6 +46,11 @@ namespace ConsoleApp4
             this.array = array.Append(elem).ToArray();
         }
 
+        public void Remove(int index)
+        {
+            this.array = this.array.Where((el, i) => i != index).ToArray();
+        }
+
         public void ShowAllButtons()
         {
             for (int i = 0; i < this.array.Length; i++)

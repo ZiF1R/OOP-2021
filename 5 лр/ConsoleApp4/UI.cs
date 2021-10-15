@@ -41,6 +41,11 @@ namespace ConsoleApp4
 
         // methods 
 
+        public void Add(object elem)
+        {
+            this.array = array.Append(elem).ToArray();
+        }
+
         public void ShowAllButtons()
         {
             for (int i = 0; i < this.array.Length; i++)
@@ -50,6 +55,12 @@ namespace ConsoleApp4
         public int GetLength()
         {
             return array.Length;
+        }
+
+        public void Show()
+        {
+            for (int i = 0; i < this.array.Length; i++)
+                Console.WriteLine(this.array[i]);
         }
     }
 }

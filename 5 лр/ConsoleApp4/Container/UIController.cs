@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ConsoleApp4.Controls;
 using ConsoleApp4.Figures;
 
-namespace ConsoleApp4.Controller
+namespace ConsoleApp4.Container
 {
     public static class UIController
     {

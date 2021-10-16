@@ -21,6 +21,7 @@ namespace ConsoleApp4
     {
         private double height;
         private double width;
+        public double square;
 
         protected static int objCount = 0;
 

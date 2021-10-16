@@ -8,7 +8,7 @@ namespace ConsoleApp4.Figures
 {
     public partial class Rectangle : GeometricFigure, IManagement
     {
-        public double square = 0;
+        //public new double square = 0;
         public double diagonal = 0;
         public readonly int ID = objCount;
         public CenterCoordinates center;
@@ -35,6 +35,7 @@ namespace ConsoleApp4.Figures
         {
             this.Width = 0;
             this.Height = 0;
+            this.square = 0;
             this.center = new CenterCoordinates();
             this.color = ConsoleColor.White;
         }
@@ -54,9 +55,7 @@ namespace ConsoleApp4.Figures
         {
             Console.ForegroundColor = this.color;
             for (int i = 0; i < (int)Height; i++)
-            {
                 Console.WriteLine("".PadLeft((int)Math.Round(Width), '0'));
-            }
             Console.ResetColor();
         }
 

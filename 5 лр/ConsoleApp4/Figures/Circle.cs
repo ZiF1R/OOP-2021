@@ -8,7 +8,6 @@ namespace ConsoleApp4.Figures
 {
     public sealed partial class Circle : GeometricFigure, IManagement
     {
-        public double square = 0;
         public double circumference = 0;
         public double radius = 0;
         public readonly int ID = objCount;
@@ -39,6 +38,7 @@ namespace ConsoleApp4.Figures
         {
             this.Width = 0;
             this.Height = 0;
+            this.square = 0;
             this.center = new CenterCoordinates();
             this.color = ConsoleColor.White;
         }

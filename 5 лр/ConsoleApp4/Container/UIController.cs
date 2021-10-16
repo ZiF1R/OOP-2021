@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp4.Controls;
-using ConsoleApp4.Figures;
 
 namespace ConsoleApp4.Container
 {
@@ -14,6 +13,19 @@ namespace ConsoleApp4.Container
         {
             for (int i = 0; i < ui.array.Length; i++)
                 if (ui.array[i] is Button) Console.WriteLine(ui.array[i]);
+        }
+
+        public static double GetTotalFiguresSquare(UI ui)
+        {
+            double result = 0;
+            for (int i = 0; i < ui.array.Length; i++)
+                if (ui.array[i] is GeometricFigure)
+                {
+                    GeometricFigure tmp = ui.array[i] as GeometricFigure;
+                    result += tmp.square;
+                }
+
+            return result;
         }
 
         public static int GetLength(UI ui)

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleApp4.Controls;
-using ConsoleApp4.Figures;
 
 namespace ConsoleApp4
 {
@@ -42,17 +40,6 @@ namespace ConsoleApp4
         public void Remove(int index)
         {
             this.array = this.array.Where((el, i) => i != index).ToArray();
-        }
-
-        public void ShowAllButtons()
-        {
-            for (int i = 0; i < this.array.Length; i++)
-                if (this.array[i] is Button) Console.WriteLine(this.array[i]);
-        }
-
-        public int GetLength()
-        {
-            return array.Length;
         }
 
         public void Show()

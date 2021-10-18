@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp4.Exceptions;
 
 namespace ConsoleApp4
 {
@@ -21,11 +22,17 @@ namespace ConsoleApp4
 
         public object this[int i]
         {
-            get => array[i];
+            get
+            {
+                if (i >= array.Length || i < 0)
+                    throw new UIOutOfRangeException($"The index must be more then 0 and must be less then {array.Length}!", i);
+                return array[i];
+            }
             set
             {
                 if (value is GeometricFigure || value is Controller)
                     array.Append(value);
+                else throw new UIException("The type of elements must be GeometricFigure or Controller!");
             }
         }
 

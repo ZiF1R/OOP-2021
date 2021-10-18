@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp4.Exceptions;
 
 namespace ConsoleApp4
 {
@@ -36,7 +37,7 @@ namespace ConsoleApp4
             set
             {
                 if (value >= 0) height = value;
-                else throw new Exception("Height can't be less than 0!");
+                else throw new FigureException("Height can't be less than 0!", value);
             }
         }
 
@@ -46,7 +47,7 @@ namespace ConsoleApp4
             set
             {
                 if (value >= 0) width = value;
-                else throw new Exception("Width can't be less than 0!");
+                else throw new FigureException("Width can't be less than 0!", value);
             }
         }
 

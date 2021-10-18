@@ -8,7 +8,6 @@ namespace ConsoleApp4.Figures
 {
     public partial class Rectangle : GeometricFigure, IManagement
     {
-        //public new double square = 0;
         public double diagonal = 0;
         public readonly int ID = objCount;
         public CenterCoordinates center;

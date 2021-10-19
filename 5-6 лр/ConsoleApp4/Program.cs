@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using ConsoleApp4.Figures;
-using ConsoleApp4.Controls;
-using ConsoleApp4.Container;
 using ConsoleApp4.Exceptions;
 
 namespace ConsoleApp4
@@ -26,6 +21,9 @@ namespace ConsoleApp4
 
                 int a = 123;
                 ui[1] = a; // UIException
+
+                int[] b = null;
+                Debug.Assert(b != null, "Array values cannot be null!");
             }
             catch(FigureException e)
             {

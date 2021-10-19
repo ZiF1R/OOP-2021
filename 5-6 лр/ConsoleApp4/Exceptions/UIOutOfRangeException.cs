@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4.Exceptions
 {
-    class UIOutOfRangeException : MyException
+    class UIOutOfRangeException : UIException
     {
         public int ErrorIndex { get; set; }
 
-        public UIOutOfRangeException(string message, int errorIndex) : base(message, "UIOutOfRange")
+        public UIOutOfRangeException(string message, int errorIndex) : base(message)
         {
             this.ErrorIndex = errorIndex;
         }

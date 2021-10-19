@@ -21,7 +21,7 @@ namespace ConsoleApp4
                 Rectangle r1 = new Rectangle(12, 5);
                 Rectangle r2 = new Rectangle(15, 9);
 
-                UI ui = new UI(c2, r1, r2);
+                UI ui = new UI(c2, r1, r2); 
                 Console.WriteLine(ui[4]); // UIOutOfRangeException
 
                 int a = 123;

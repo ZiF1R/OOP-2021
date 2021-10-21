@@ -53,5 +53,27 @@ namespace ConsoleApp5
             this.date = new Date();
             this.owner = new Owner(id, author, organisation);
         }
+
+
+        // IArray<T> methods
+
+        public void Show()
+        {
+            string result = "{ ";
+            foreach (T item in this.array)
+                result += $"{item}, ";
+            result += "}";
+            Console.WriteLine(result);
+        }
+
+        public void Add(T elem)
+        {
+            this.array = this.array.Append(elem).ToArray();
+        }
+
+        public void Remove(int index)
+        {
+            this.array = this.array.Where((el, i) => i != index).ToArray();
+        }
     }
 }

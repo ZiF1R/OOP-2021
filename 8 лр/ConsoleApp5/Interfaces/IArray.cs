@@ -8,8 +8,8 @@ namespace ConsoleApp5.Interfaces
 {
     interface IArray<T>
     {
-        T Add(T elem);
-        T Remove(T elem);
+        void Add(T elem);
+        void Remove(int index);
         void Show();
     }
 }

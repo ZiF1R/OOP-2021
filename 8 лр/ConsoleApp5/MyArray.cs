@@ -42,7 +42,7 @@ namespace ConsoleApp5
 
         public MyArray()
         {
-            this.array = null;
+            this.array = new T[] { };
             this.date = new Date();
             this.owner = new Owner(0, "", "");
         }
@@ -73,7 +73,16 @@ namespace ConsoleApp5
 
         public void Remove(int index)
         {
-            this.array = this.array.Where((el, i) => i != index).ToArray();
+            try
+            {
+                if (index >= this.array.Length || index < 0)
+                    throw new Exception($"Index out of range (0, {this.array.Length - 1})");
+                this.array = this.array.Where((el, i) => i != index).ToArray();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"RangeOutException: {e.Message}!");
+            }
         }
     }
 }

@@ -17,25 +17,13 @@ namespace ConsoleApp6
         public string Name { get; }
         public string LastName { get; }
         public double CurrentCompression { get; }
-        public Position position;
-
-        public struct Position
-        {
-            public int X { get; }
-            public int Y { get; }
-
-            public Position(int x = 0, int y = 0)
-            {
-                this.X = x;
-                this.Y = y;
-            }
-        }
+        public (int x, int y) position;
 
         public User(string name = "", string lastName = "", int posX = 0, int posY = 0, double compression = 1)
         {
             this.Name = name;
             this.LastName = lastName;
-            this.position = new Position(posX, posY);
+            this.position = (posX, posY);
             this.CurrentCompression = compression;
         }
     }

@@ -32,8 +32,8 @@ namespace ConsoleApp6
 
         public delegate void MoveHandler(int posX = 0, int posY = 0);
         public delegate void CompressHandler(int coefficient = 1);
-        public event MoveHandler Move;
-        public event CompressHandler Compress;
+        public event MoveHandler MoveEvent;
+        public event CompressHandler CompressEvent;
 
         // methods
 

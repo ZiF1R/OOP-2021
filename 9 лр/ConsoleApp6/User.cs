@@ -16,7 +16,7 @@ namespace ConsoleApp6
     {
         public string Name { get; }
         public string LastName { get; }
-        public double CurrentCompression { get; }
+        public double CurrentCompression { get; set; }
         public (int x, int y) position;
 
         public User(string name = "", string lastName = "", int posX = 0, int posY = 0, double compression = 1)
@@ -26,5 +26,13 @@ namespace ConsoleApp6
             this.position = (posX, posY);
             this.CurrentCompression = compression;
         }
+
+
+        // events
+
+        public delegate void MoveHandler(int posX = 0, int posY = 0);
+        public delegate void CompressHandler(int coefficient = 1);
+        public event MoveHandler Move;
+        public event CompressHandler Compress;
     }
 }

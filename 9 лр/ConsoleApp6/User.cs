@@ -34,5 +34,17 @@ namespace ConsoleApp6
         public delegate void CompressHandler(int coefficient = 1);
         public event MoveHandler Move;
         public event CompressHandler Compress;
+
+        // methods
+
+        public void GetCurrentCompression()
+        {
+            Console.WriteLine($"Current compression: {this.CurrentCompression}");
+        }
+
+        public void GetCurrentPosition()
+        {
+            Console.WriteLine($"Current position: {this.position}");
+        }
     }
 }

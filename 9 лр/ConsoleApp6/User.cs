@@ -31,7 +31,7 @@ namespace ConsoleApp6
         // events
 
         public delegate void MoveHandler(int posX, int posY);
-        public delegate void CompressHandler(int coefficient);
+        public delegate void CompressHandler(double coefficient);
         public event MoveHandler MoveEvent;
         public event CompressHandler CompressEvent;
 
@@ -39,12 +39,17 @@ namespace ConsoleApp6
 
         public void Move(int posX = 0, int posY = 0)
         {
-            this.MoveEvent(posX, posY);
+            this.position = (this.position.x + posX, this.position.y + posY);
+            this.MoveEvent?.Invoke(posX, posY);
         }
 
-        public void Compress(int coefficient = 1)
+        public void Compress(double coefficient = 1)
         {
-            this.CompressEvent(coefficient);
+            if (coefficient != 0)
+            {
+                this.CurrentCompression *= Math.Abs(coefficient);
+                this.CompressEvent?.Invoke(Math.Abs(coefficient));
+            }
         }
 
         public void GetCurrentCompression() => Console.WriteLine($"Current compression: {this.CurrentCompression}");

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ConsoleApp6
 {
@@ -55,5 +56,14 @@ namespace ConsoleApp6
         public void GetCurrentCompression() => Console.WriteLine($"Current compression: {this.CurrentCompression}");
 
         public void GetCurrentPosition() => Console.WriteLine($"Current position: {this.position}");
+
+
+        // string methods
+
+        public static string RemoveExtraSpaces(string str) => Regex.Replace(str.Trim(), @"(\s+)", " ");
+        public static string ToDefaultCase(string str) => $"{str.ToUpper().First()}{str.ToLower().Substring(1)}";
+        public static string RemovePunctuationMarks(string str) => Regex.Replace(str, @"[,|.|!|?|:|;]", "");
+        public static string RemoveVovels(string str) => Regex.Replace(str, "(?i)[aeyuio]", "");
+        public static string GetFirstWord(string str) => Regex.Matches(str, @"^(\w+\s){1}")?[0].Value.Trim();
     }
 }

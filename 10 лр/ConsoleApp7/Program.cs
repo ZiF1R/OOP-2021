@@ -36,6 +36,42 @@ namespace ConsoleApp7
 
             //f. Выполните поиск в коллекции значения
             Console.WriteLine("> Find element in collection: {0}", array[array.IndexOf(student1)]);
+            Console.WriteLine();
+
+
+            // 2. Создать обобщенную коллекцию в соответствии с вариантом задания и
+            // заполнить ее данными, тип которых определяется вариантом задания(колонка – первый тип).
+
+            Queue<int> q = new Queue<int>();
+            q.Enqueue(1);
+            q.Enqueue(2);
+            q.Enqueue(3);
+            q.Enqueue(4);
+            q.Enqueue(5);
+
+            //a. Вывести коллекцию на консоль
+            foreach (int number in q)
+                Console.WriteLine(number);
+
+            //b. Удалите из коллекции n последовательных элементов
+            Console.Write("\nEnter number of removed elements: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            int length = q.Count;
+            for (int i = 0; i < n && i < length; i++)
+                q.Dequeue();
+
+            Console.WriteLine();
+            foreach (int number in q)
+                Console.WriteLine(number);
+
+            // c.Добавьте другие элементы(используйте все возможные методы
+            // добавления для вашего типа коллекции).
+            q.Append(1);
+            q.Enqueue(2);
+
+            //d. Создайте вторую коллекцию (см. таблицу) и заполните ее данными из первой коллекции.
+            Dictionary<int, int> d = new Dictionary<int, int>();
 
             Console.ReadKey();
         }

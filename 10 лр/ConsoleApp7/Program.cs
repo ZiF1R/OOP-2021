@@ -39,6 +39,9 @@ namespace ConsoleApp7
             Console.WriteLine();
 
 
+
+
+
             // 2. Создать обобщенную коллекцию в соответствии с вариантом задания и
             // заполнить ее данными, тип которых определяется вариантом задания(колонка – первый тип).
 
@@ -94,6 +97,46 @@ namespace ConsoleApp7
                     Console.WriteLine("> The guessed item: {0}", item, isFind = true);
 
             if(!isFind) Console.WriteLine("> Cannot find the element.");
+
+
+
+
+            //3.Повторите задание п.2 для пользовательского типа данных(в качестве типа
+            //T возьмите любой свой класс из лабораторной №5(Наследование…. ).Не
+            //забывайте о необходимости реализации интерфейсов(IComparable,
+            //ICompare,….).При выводе коллекции используйте цикл foreach.
+            Queue<GeometricFigure> q1 = new Queue<GeometricFigure>();
+            q1.Enqueue(new GeometricFigure());
+            q1.Enqueue(new GeometricFigure(1, 2));
+            q1.Enqueue(new GeometricFigure(3, 4));
+            q1.Enqueue(new GeometricFigure(5, 6));
+            q1.Enqueue(new GeometricFigure(7, 8));
+
+            Console.WriteLine();
+            foreach (GeometricFigure figure in q1)
+                Console.WriteLine(figure);
+
+
+            Dictionary<int, GeometricFigure> d1 = new Dictionary<int, GeometricFigure>();
+
+            int key1 = 0;
+            foreach (GeometricFigure figure in q1)
+                d1.Add(key1++, figure);
+
+            Console.WriteLine("\n> Dictionary:\n");
+            foreach (var item in d1)
+                Console.WriteLine(item);
+
+
+            Console.Write("\n> Enter height to find element by them: ");
+
+            bool isFind1 = false;
+            int heightToFind = Convert.ToInt32(Console.ReadLine());
+            foreach (var item in d1)
+                if (item.Value.Height == heightToFind)
+                    Console.WriteLine("> The guessed item: {0}", item, isFind1 = true);
+
+            if (!isFind1) Console.WriteLine("> Cannot find the element.");
 
             Console.ReadKey();
         }

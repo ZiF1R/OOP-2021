@@ -68,10 +68,32 @@ namespace ConsoleApp7
             // c.Добавьте другие элементы(используйте все возможные методы
             // добавления для вашего типа коллекции).
             q.Append(1);
-            q.Enqueue(2);
+            q.Enqueue(6);
 
             //d. Создайте вторую коллекцию (см. таблицу) и заполните ее данными из первой коллекции.
             Dictionary<int, int> d = new Dictionary<int, int>();
+
+            int key = 0;
+            foreach (int number in q)
+                d.Add(key++, number);
+
+            //e. Выведите вторую коллекцию на консоль. В случае не совпадения
+            //  количества параметров(например, LinkedList<T> и Dictionary<Tkey,
+            //  TValue>), при нехватке -генерируйте ключи, в случае избыточности – оставляйте TValue.
+            Console.WriteLine("\n> Dictionary:\n");
+            foreach (var item in d)
+                Console.WriteLine(item);
+
+            //f.Найдите во второй коллекции заданное значение.
+            Console.Write("\n> Enter number to find element by them: ");
+
+            bool isFind = false;
+            int numberToFind = Convert.ToInt32(Console.ReadLine());
+            foreach (var item in d)
+                if (item.Value == numberToFind)
+                    Console.WriteLine("> The guessed item: {0}", item, isFind = true);
+
+            if(!isFind) Console.WriteLine("> Cannot find the element.");
 
             Console.ReadKey();
         }

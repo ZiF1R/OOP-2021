@@ -4,6 +4,7 @@ obj/
 Properties/
 *.config
 *.csproj
+*.csproj*
 *.sln
 
 *.pptx

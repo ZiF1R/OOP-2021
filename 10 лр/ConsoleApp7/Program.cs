@@ -138,7 +138,44 @@ namespace ConsoleApp7
 
             if (!isFind1) Console.WriteLine("> Cannot find the element.");
 
+
+
+            //4.Создайте объект наблюдаемой коллекции ObservableCollection<T>. Создайте
+            //произвольный метод и зарегистрируйте его на событие CollectionChange.
+            //Напишите демонстрацию с добавлением и удалением элементов.В качестве
+            //типа T используйте свой класс из лабораторной №5 Наследование….
+            ObservableCollection<GeometricFigure> observer = new ObservableCollection<GeometricFigure>()
+            {
+                new GeometricFigure(1, 1),
+                new GeometricFigure(2, 2),
+                new GeometricFigure(3, 3)
+            };
+            observer.CollectionChanged += Observer_CollectionChanged;
+
+            observer.Add(new GeometricFigure(4, 4));
+            observer.RemoveAt(1);
+
             Console.ReadKey();
+        }
+
+        private static void Observer_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                {
+                    GeometricFigure newFigure = e.NewItems[0] as GeometricFigure;
+                    Console.WriteLine("> New figure: {0}", newFigure);
+                    break;
+                }
+                case NotifyCollectionChangedAction.Remove:
+                {
+                    GeometricFigure removedFigure = e.OldItems[0] as GeometricFigure;
+                    Console.WriteLine("> Removed figure: {0}", removedFigure);
+                    break;
+                }
+            }
+            //throw new NotImplementedException();
         }
     }
 }

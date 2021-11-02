@@ -36,6 +36,36 @@ namespace ConsoleApp8
             this.array = this.array.Append(number).ToArray();
         }
 
+        public int Max()
+        {
+            return this.array.Max();
+        }
+
+        public int Min()
+        {
+            return this.array.Min();
+        }
+
+        public int Sum()
+        {
+            return this.array.Sum();
+        }
+
+        public int Length()
+        {
+            return this.array.Length;
+        }
+
+        public bool Contains(int number)
+        {
+            return this.array.Contains(number);
+        }
+
+        public int[] Where(Func<int, bool> predicate)
+        {
+            return this.array.Where(predicate).ToArray();
+        }
+
         // operators overload
 
         public static myArray operator +(myArray arr1, myArray arr2)

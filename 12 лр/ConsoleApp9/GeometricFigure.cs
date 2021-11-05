@@ -61,7 +61,7 @@ namespace ConsoleApp9
 
         public override string ToString()
         {
-            return $"Height: {this.Height}\nWidth: {this.Width}";
+            return $"[Height: {this.Height} Width: {this.Width}]\n";
         }
 
         public override bool Equals(object obj)

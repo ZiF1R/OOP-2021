@@ -67,7 +67,7 @@ namespace ConsoleApp9
                 }
             }
 
-            //d.XML формат.5
+            //d.XML формат
             GeometricFigure figure2 = new GeometricFigure(3, 7);
 
             XmlSerializer xmlFormatter = new XmlSerializer(typeof(GeometricFigure));
@@ -80,6 +80,33 @@ namespace ConsoleApp9
                 GeometricFigure figureDes = (GeometricFigure)xmlFormatter.Deserialize(file);
                 Console.WriteLine("> Deserialized[XML] figure height: {0}", figureDes.Height);
             }
+
+            //2. Создайте коллекцию (массив) объектов и выполните сериализацию / десериализацию.
+            GeometricFigure[] figures = new GeometricFigure[]
+            {
+                new GeometricFigure(3, 7),
+                new GeometricFigure(8, 4),
+                new GeometricFigure(12, 5),
+                new GeometricFigure(9, 1),
+                new GeometricFigure(8, 16)
+            };
+
+            foreach (GeometricFigure figure in figures)
+                File.AppendAllText("binFigures.txt", figure.ToString());
+
+            Console.WriteLine("> Deserialized figures:\n");
+            foreach (string str in File.ReadAllLines("binFigures.txt"))
+                Console.WriteLine(str);
+            //BinaryFormatter binaryFormatter1 = new BinaryFormatter();
+            //using (FileStream file = new FileStream("binFigures.dat", FileMode.OpenOrCreate))
+            //{
+
+            //}
+            //using (FileStream file = new FileStream("binFigures.dat", FileMode.Open))
+            //{
+            //    GeometricFigure figuresDes = (GeometricFigure)binaryFormatter1.Deserialize(file);
+            //    Console.WriteLine("> Deserialized[XML] figures:\n{0}", figuresDes);
+            //}
 
             Console.ReadKey();
         }

@@ -40,6 +40,8 @@ namespace ConsoleApp9
             }
         }
 
+        public GeometricFigure() { }
+
         public GeometricFigure(double height = 0, double width = 0)
         {
             this.Height = height;

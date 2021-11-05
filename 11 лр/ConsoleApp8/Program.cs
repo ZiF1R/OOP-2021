@@ -162,6 +162,28 @@ namespace ConsoleApp8
                 Console.WriteLine(array);
 
 
+            var query8 =
+                from array in arrays
+                orderby array[0]
+                select array;
+
+            Console.WriteLine("\n> Order by array first element:\n");
+            foreach (var array in query8.Distinct())
+                Console.WriteLine(array);
+
+
+            //5. Придумайте запрос с оператором Join
+            int[] numbers = new[] { -1, -2, 1, 2, 3, 4, -4, -7, 6, 9 };
+            var query7 =
+                from array in arrays
+                join number in numbers on array[0] equals number
+                orderby number
+                select number;
+
+            Console.WriteLine("\n> Numbers of array that equals first element of myList:\n");
+            foreach (var num in query7.Distinct())
+                Console.WriteLine(num);
+
             Console.ReadKey();
         }
     }

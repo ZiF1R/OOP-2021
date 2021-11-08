@@ -91,22 +91,19 @@ namespace ConsoleApp9
                 new GeometricFigure(8, 16)
             };
 
-            foreach (GeometricFigure figure in figures)
-                File.AppendAllText("binFigures.txt", figure.ToString());
+            XmlSerializer xmlFormatter1 = new XmlSerializer(typeof(GeometricFigure[]));
+            using (FileStream file = new FileStream("xmlFigures.xml", FileMode.OpenOrCreate))
+            {
+                xmlFormatter1.Serialize(file, figures);
+            }
+            using (FileStream file = new FileStream("xmlFigures.xml", FileMode.Open))
+            {
+                GeometricFigure[] figuresDes = (GeometricFigure[])xmlFormatter1.Deserialize(file);
 
-            Console.WriteLine("> Deserialized figures:\n");
-            foreach (string str in File.ReadAllLines("binFigures.txt"))
-                Console.WriteLine(str);
-            //BinaryFormatter binaryFormatter1 = new BinaryFormatter();
-            //using (FileStream file = new FileStream("binFigures.dat", FileMode.OpenOrCreate))
-            //{
-
-            //}
-            //using (FileStream file = new FileStream("binFigures.dat", FileMode.Open))
-            //{
-            //    GeometricFigure figuresDes = (GeometricFigure)binaryFormatter1.Deserialize(file);
-            //    Console.WriteLine("> Deserialized[XML] figures:\n{0}", figuresDes);
-            //}
+                Console.WriteLine("> Deserialized[XML] figures:\n");
+                foreach (GeometricFigure figure in figuresDes)
+                    Console.Write(figure);
+            }
 
             Console.ReadKey();
         }

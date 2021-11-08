@@ -2,6 +2,8 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
+using System.Xml.XPath;
+using System.Xml;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -100,10 +102,34 @@ namespace ConsoleApp9
             {
                 GeometricFigure[] figuresDes = (GeometricFigure[])xmlFormatter1.Deserialize(file);
 
-                Console.WriteLine("> Deserialized[XML] figures:\n");
+                Console.WriteLine("\n> Deserialized[XML] figures:");
                 foreach (GeometricFigure figure in figuresDes)
                     Console.Write(figure);
             }
+
+            //3.Используя XPath напишите два селектора для вашего XML документа.
+            XPathDocument docNav = new XPathDocument("./xmlFigures.xml");
+            XPathNavigator nav = docNav.CreateNavigator();
+            string expr1 = "/ArrayOfGeometricFigure/GeometricFigure/Width[../Height>5]";
+            string expr2 = "/ArrayOfGeometricFigure/GeometricFigure[./Height>5]/Height";
+            string expr3 = "/ArrayOfGeometricFigure/GeometricFigure[(./Height + ./Width)>10]/Height";
+            string expr4 = "/ArrayOfGeometricFigure/GeometricFigure[(./Height + ./Width)>10]/Width";
+            XPathNodeIterator iterator1 = nav.Select(expr2);
+            XPathNodeIterator iterator2 = nav.Select(expr1);
+            XPathNodeIterator iterator3 = nav.Select(expr3);
+            XPathNodeIterator iterator4 = nav.Select(expr4);
+
+            Console.WriteLine("\n> Figures in which height > 5:");
+            while (iterator1.MoveNext() && iterator2.MoveNext())
+            {
+                Console.WriteLine("({0}:{1})", iterator1.Current, iterator2.Current);
+            };
+
+            Console.WriteLine("\n> Figures in which sum of height and width > 10:");
+            while (iterator3.MoveNext() && iterator4.MoveNext())
+            {
+                Console.WriteLine("({0}:{1})", iterator3.Current, iterator4.Current);
+            };
 
             Console.ReadKey();
         }

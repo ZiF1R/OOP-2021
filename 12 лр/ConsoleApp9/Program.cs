@@ -3,7 +3,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using System.Xml.XPath;
-using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -130,6 +131,60 @@ namespace ConsoleApp9
             {
                 Console.WriteLine("({0}:{1})", iterator3.Current, iterator4.Current);
             };
+
+            //4. Используя Linq to XML (или Linq to JSON) создайте новый xml (json) -
+            //документ и напишите несколько запросов.
+            XDocument students = new XDocument(
+                new XElement("Students",
+                    new XElement("Student",
+                        new XElement("Name", "Dobriyan Alex"),
+                        new XElement("Course", "2",
+                            new XAttribute("group", "10"),
+                            new XAttribute("subgroup", "1")),
+                        new XElement("AverageMark", "8,9")),
+                    new XElement("Student",
+                        new XElement("Name", "Linevich Cheslav"),
+                        new XElement("Course", "2",
+                            new XAttribute("group", "10"),
+                            new XAttribute("subgroup", "1")),
+                        new XElement("AverageMark", "7,6")),
+                    new XElement("Student",
+                        new XElement("Name", "Michael Voznenko"),
+                        new XElement("Course", "2",
+                            new XAttribute("group", "10"),
+                            new XAttribute("subgroup", "2")),
+                        new XElement("AverageMark", "7"))
+                    )
+                );
+
+            students.Save("Students.xml");
+            var st =
+                from student in students.Elements().Elements("Student").ToArray()
+                where Convert.ToDouble(student.Element("AverageMark").Value) > 8
+                select student;
+
+            Console.WriteLine("\n> Students with average mark > 8:");
+            foreach (XElement student in st)
+                Console.WriteLine($"\nStudent: {student.Element("Name").Value}\n" +
+                    $"Course: {student.Element("Course").Value}\n" +
+                    $"Group: {student.Element("Course").Attribute("group").Value}-" +
+                    $"{student.Element("Course").Attribute("subgroup").Value}\n" +
+                    $"Average mark: {student.Element("AverageMark").Value}");
+
+
+            var st1 =
+                from student in students.Elements().Elements("Student").ToArray()
+                where Convert.ToInt32(student.Element("Course").Attribute("subgroup").Value) == 2
+                select student;
+
+            Console.WriteLine("\n> Students from second subgroup:");
+            foreach (XElement student in st1)
+                Console.WriteLine($"\nStudent: {student.Element("Name").Value}\n" +
+                    $"Course: {student.Element("Course").Value}\n" +
+                    $"Group: {student.Element("Course").Attribute("group").Value}-" +
+                    $"{student.Element("Course").Attribute("subgroup").Value}\n" +
+                    $"Average mark: {student.Element("AverageMark").Value}");
+
 
             Console.ReadKey();
         }

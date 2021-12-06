@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization.Formatters.Soap;
+using System.Text.Json;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    [Serializable]
+    [Serializable] [DataContract]
     public class GeometricFigure
     {
+        [DataMember]
         private double height;
+        [DataMember]
         private double width;
+        [DataMember]
         public double square;
 
         protected static int objCount = 0;
@@ -29,7 +36,7 @@ namespace ConsoleApp9
                 else throw new Exception("Height can't be less than 0!");
             }
         }
-
+        
         public double Width
         {
             get => width;
@@ -46,6 +53,7 @@ namespace ConsoleApp9
         {
             this.Height = height;
             this.Width = width;
+            this.square = this.Height * this.Width;
             objCount++;
         }
 

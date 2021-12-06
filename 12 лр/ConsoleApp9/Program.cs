@@ -6,6 +6,8 @@ using System.Xml.XPath;
 using System.Xml.Linq;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Soap;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -48,26 +50,16 @@ namespace ConsoleApp9
 
 
             //b.JSON
-            //GeometricFigure figure4 = new GeometricFigure() { Height = 12, Width = 4 };
-
-            //string jsonSer = JsonSerializer.Serialize(figure4);
-            //Console.WriteLine("> Serialized[JSON] figure:\n{0}", jsonSer);
-            //GeometricFigure jsonDes = JsonSerializer.Deserialize<GeometricFigure>(jsonSer);
-            //Console.WriteLine("> Deserialized[JSON] figure:\n{0}", jsonDes);
-
-            async void func()
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(GeometricFigure));
+            using (FileStream fs = new FileStream("jsonFigure.json", FileMode.OpenOrCreate))
             {
-                using (FileStream fs = new FileStream("jsonFigure.json", FileMode.OpenOrCreate))
-                {
-                    GeometricFigure figure = new GeometricFigure() { Height = 12, Width = 4 };
-                    await JsonSerializer.SerializeAsync(fs, figure);
-                }
-                using (FileStream fs = new FileStream("jsonFigure.json", FileMode.Open))
-                {
-                    GeometricFigure restoredFigure = await JsonSerializer.DeserializeAsync<GeometricFigure>(fs);
-                    Console.WriteLine($"> Deserialized[JSON] figure:\n" +
-                        $"\tWidth: {restoredFigure.Width}  Height: {restoredFigure.Height}");
-                }
+                GeometricFigure figure = new GeometricFigure() { Height = 12, Width = 4 };
+                serializer.WriteObject(fs, figure);
+            }
+            using (FileStream fs = new FileStream("jsonFigure.json", FileMode.Open))
+            {
+                GeometricFigure restoredFigure = (GeometricFigure)serializer.ReadObject(fs);
+                Console.WriteLine("> Deserialized[JSON] figure height: {0}", restoredFigure.Height);
             }
 
             //d.XML формат

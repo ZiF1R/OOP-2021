@@ -12,6 +12,10 @@ namespace _1_lw
 {
     public partial class Form1 : Form
     {
+        private double prevNumber = 0;
+        private double nextNumber = 0;
+        private string selectedOperation = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +37,9 @@ namespace _1_lw
                 OutputField.Text = OutputField.Text.Substring(0, OutputField.Text.Length - 1);
         }
 
+        ///
+        /// Buttons for numbers
+        ///
         private void ZeroNumberButton_Click(object sender, EventArgs e)
         {
             OutputField.Text += "0";
@@ -83,9 +90,86 @@ namespace _1_lw
             OutputField.Text += "9";
         }
 
+        private void DotButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text.Length > 0 && !OutputField.Text.Contains("."))
+                OutputField.Text += ".";
+        }
+
+        ///
+        /// Buttons for operations
+        ///
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            this.savePrevNumber();
+            this.selectedOperation = "+";
+        }
+
+        private void SubtractButton_Click(object sender, EventArgs e)
+        {
+            this.savePrevNumber();
+            this.selectedOperation = "-";
+        }
+
+        private void MultiplyButton_Click(object sender, EventArgs e)
+        {
+            this.savePrevNumber();
+            this.selectedOperation = "*";
+        }
+
+        private void DivideButton_Click(object sender, EventArgs e)
+        {
+            this.savePrevNumber();
+            this.selectedOperation = "/";
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            this.saveNextNumber();
+            double result = 0;
+            
+            // apply selected operation to numbers
+            switch (this.selectedOperation)
+            {
+                case "+":
+                    result = this.prevNumber + this.nextNumber;
+                    break;
+                case "-":
+                    result = this.prevNumber - this.nextNumber;
+                    break;
+                case "*":
+                    result = this.prevNumber * this.nextNumber;
+                    break;
+                case "/":
+                    result = this.prevNumber / this.nextNumber;
+                    break;
+                default: break;
+            }
+
+            OutputField.Text = Convert.ToString(result);
+        }
+
         private void OutputField_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void savePrevNumber()
+        {
+            if (OutputField.Text.EndsWith("."))
+                OutputField.Text = OutputField.Text.Substring(0, OutputField.Text.Length - 1);
+            if (OutputField.Text.Length == 0) OutputField.Text = "0";
+            this.prevNumber = Convert.ToDouble(OutputField.Text);
+            OutputField.Text = "";
+        }
+
+        private void saveNextNumber()
+        {
+            if (OutputField.Text.EndsWith("."))
+                OutputField.Text = OutputField.Text.Substring(0, OutputField.Text.Length - 1);
+            if (OutputField.Text.Length == 0) OutputField.Text = "0";
+            this.nextNumber = Convert.ToDouble(OutputField.Text);
+            OutputField.Text = "";
         }
     }
 }

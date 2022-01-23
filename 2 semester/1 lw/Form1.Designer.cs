@@ -131,6 +131,7 @@
             this.DivideButton.TabIndex = 4;
             this.DivideButton.Text = "÷";
             this.DivideButton.UseVisualStyleBackColor = false;
+            this.DivideButton.Click += new System.EventHandler(this.DivideButton_Click);
             // 
             // MultiplyButton
             // 
@@ -145,6 +146,7 @@
             this.MultiplyButton.TabIndex = 5;
             this.MultiplyButton.Text = "×";
             this.MultiplyButton.UseVisualStyleBackColor = false;
+            this.MultiplyButton.Click += new System.EventHandler(this.MultiplyButton_Click);
             // 
             // SquareButton
             // 
@@ -187,6 +189,7 @@
             this.SubtractButton.TabIndex = 8;
             this.SubtractButton.Text = "–";
             this.SubtractButton.UseVisualStyleBackColor = false;
+            this.SubtractButton.Click += new System.EventHandler(this.SubtractButton_Click);
             // 
             // AddButton
             // 
@@ -201,6 +204,7 @@
             this.AddButton.TabIndex = 9;
             this.AddButton.Text = "+";
             this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // CalculateButton
             // 
@@ -215,6 +219,7 @@
             this.CalculateButton.TabIndex = 10;
             this.CalculateButton.Text = "=";
             this.CalculateButton.UseVisualStyleBackColor = false;
+            this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
             // 
             // DotButton
             // 
@@ -229,6 +234,7 @@
             this.DotButton.TabIndex = 11;
             this.DotButton.Text = ".";
             this.DotButton.UseVisualStyleBackColor = false;
+            this.DotButton.Click += new System.EventHandler(this.DotButton_Click);
             // 
             // ThreeNumberButton
             // 

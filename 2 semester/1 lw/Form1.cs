@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace _1_lw
@@ -96,6 +97,16 @@ namespace _1_lw
                 OutputField.Text += ".";
         }
 
+        private void ChangeSignButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = -number;
+                OutputField.Text = Convert.ToString(number);
+            }
+        }
+
         ///
         /// Buttons for operations
         ///
@@ -149,11 +160,92 @@ namespace _1_lw
             OutputField.Text = Convert.ToString(result);
         }
 
-        private void OutputField_TextChanged(object sender, EventArgs e)
+        ///
+        /// Buttons for functions
+        ///
+        private void SquareButton_Click(object sender, EventArgs e)
         {
-
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = Math.Pow(number, 2);
+                OutputField.Text = Convert.ToString(number);
+            }
         }
 
+        private void CubeButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = Math.Pow(number, 3);
+                OutputField.Text = Convert.ToString(number);
+            }
+        }
+
+        private void SinButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = Math.Sin(number);
+                OutputField.Text = Convert.ToString(number);
+            }
+        }
+
+        private void CosButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = Math.Cos(number);
+                OutputField.Text = Convert.ToString(number);
+            }
+        }
+
+        private void TanButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = Math.Tan(number);
+                OutputField.Text = Convert.ToString(number);
+            }
+        }
+
+        private void CotButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = 1 / Math.Tan(number);
+                OutputField.Text = Convert.ToString(number);
+            }
+        }
+
+        private void CubeRootButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = Math.Pow(number, 1 / 3.0);
+                OutputField.Text = Convert.ToString(number);
+            }
+        }
+
+        private void SquareRootButton_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text != "")
+            {
+                double number = Convert.ToDouble(OutputField.Text);
+                number = Math.Sqrt(number);
+                OutputField.Text = Convert.ToString(number);
+            }
+        }
+
+        ///
+        /// function-helpers
+        ///
         private void savePrevNumber()
         {
             if (OutputField.Text.EndsWith("."))

@@ -53,7 +53,7 @@
             this.SinButton = new System.Windows.Forms.Button();
             this.CosButton = new System.Windows.Forms.Button();
             this.TanButton = new System.Windows.Forms.Button();
-            this.CtanButton = new System.Windows.Forms.Button();
+            this.CotButton = new System.Windows.Forms.Button();
             this.CubeRootButton = new System.Windows.Forms.Button();
             this.SquareRootButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -102,6 +102,7 @@
             this.ChangeSignButton.TabIndex = 3;
             this.ChangeSignButton.Text = "±";
             this.ChangeSignButton.UseVisualStyleBackColor = false;
+            this.ChangeSignButton.Click += new System.EventHandler(this.ChangeSignButton_Click);
             // 
             // OutputField
             // 
@@ -115,7 +116,6 @@
             this.OutputField.ReadOnly = global::_1_lw.Properties.Settings.Default.Edit;
             this.OutputField.Size = new System.Drawing.Size(399, 41);
             this.OutputField.TabIndex = 0;
-            this.OutputField.Text = "";
             this.OutputField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // DivideButton
@@ -161,6 +161,7 @@
             this.SquareButton.TabIndex = 6;
             this.SquareButton.Text = "x²";
             this.SquareButton.UseVisualStyleBackColor = false;
+            this.SquareButton.Click += new System.EventHandler(this.SquareButton_Click);
             // 
             // CubeButton
             // 
@@ -175,6 +176,7 @@
             this.CubeButton.TabIndex = 7;
             this.CubeButton.Text = "x³";
             this.CubeButton.UseVisualStyleBackColor = false;
+            this.CubeButton.Click += new System.EventHandler(this.CubeButton_Click);
             // 
             // SubtractButton
             // 
@@ -399,6 +401,7 @@
             this.SinButton.TabIndex = 22;
             this.SinButton.Text = "sin";
             this.SinButton.UseVisualStyleBackColor = false;
+            this.SinButton.Click += new System.EventHandler(this.SinButton_Click);
             // 
             // CosButton
             // 
@@ -413,6 +416,7 @@
             this.CosButton.TabIndex = 23;
             this.CosButton.Text = "cos";
             this.CosButton.UseVisualStyleBackColor = false;
+            this.CosButton.Click += new System.EventHandler(this.CosButton_Click);
             // 
             // TanButton
             // 
@@ -427,20 +431,22 @@
             this.TanButton.TabIndex = 24;
             this.TanButton.Text = "tan";
             this.TanButton.UseVisualStyleBackColor = false;
+            this.TanButton.Click += new System.EventHandler(this.TanButton_Click);
             // 
-            // CtanButton
+            // CotButton
             // 
-            this.CtanButton.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.CtanButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CtanButton.FlatAppearance.BorderSize = 0;
-            this.CtanButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CtanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CtanButton.Location = new System.Drawing.Point(29, 319);
-            this.CtanButton.Name = "CtanButton";
-            this.CtanButton.Size = new System.Drawing.Size(75, 59);
-            this.CtanButton.TabIndex = 25;
-            this.CtanButton.Text = "cot";
-            this.CtanButton.UseVisualStyleBackColor = false;
+            this.CotButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.CotButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CotButton.FlatAppearance.BorderSize = 0;
+            this.CotButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CotButton.Location = new System.Drawing.Point(29, 319);
+            this.CotButton.Name = "CotButton";
+            this.CotButton.Size = new System.Drawing.Size(75, 59);
+            this.CotButton.TabIndex = 25;
+            this.CotButton.Text = "cot";
+            this.CotButton.UseVisualStyleBackColor = false;
+            this.CotButton.Click += new System.EventHandler(this.CotButton_Click);
             // 
             // CubeRootButton
             // 
@@ -455,6 +461,7 @@
             this.CubeRootButton.TabIndex = 26;
             this.CubeRootButton.Text = "∛";
             this.CubeRootButton.UseVisualStyleBackColor = false;
+            this.CubeRootButton.Click += new System.EventHandler(this.CubeRootButton_Click);
             // 
             // SquareRootButton
             // 
@@ -469,6 +476,7 @@
             this.SquareRootButton.TabIndex = 27;
             this.SquareRootButton.Text = "√";
             this.SquareRootButton.UseVisualStyleBackColor = false;
+            this.SquareRootButton.Click += new System.EventHandler(this.SquareRootButton_Click);
             // 
             // Form1
             // 
@@ -478,7 +486,7 @@
             this.ClientSize = new System.Drawing.Size(454, 534);
             this.Controls.Add(this.SquareRootButton);
             this.Controls.Add(this.CubeRootButton);
-            this.Controls.Add(this.CtanButton);
+            this.Controls.Add(this.CotButton);
             this.Controls.Add(this.TanButton);
             this.Controls.Add(this.CosButton);
             this.Controls.Add(this.SinButton);
@@ -540,7 +548,7 @@
         private System.Windows.Forms.Button SinButton;
         private System.Windows.Forms.Button CosButton;
         private System.Windows.Forms.Button TanButton;
-        private System.Windows.Forms.Button CtanButton;
+        private System.Windows.Forms.Button CotButton;
         private System.Windows.Forms.Button CubeRootButton;
         private System.Windows.Forms.Button SquareRootButton;
     }

@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace _1_lw
 {
-    public partial class Form1 : Form
+    public partial class Calculator : Form
     {
         private double prevNumber = 0;
         private double nextNumber = 0;
         private string selectedOperation = "";
 
-        public Form1()
+        public Calculator()
         {
             InitializeComponent();
         }

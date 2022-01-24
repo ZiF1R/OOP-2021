@@ -1,6 +1,6 @@
 ﻿namespace _1_lw
 {
-    partial class Form1
+    partial class Calculator
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculator));
             this.ClearButton = new System.Windows.Forms.Button();
             this.BackspaceButton = new System.Windows.Forms.Button();
             this.ChangeSignButton = new System.Windows.Forms.Button();
@@ -478,11 +479,12 @@
             this.SquareRootButton.UseVisualStyleBackColor = false;
             this.SquareRootButton.Click += new System.EventHandler(this.SquareRootButton_Click);
             // 
-            // Form1
+            // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(454, 534);
             this.Controls.Add(this.SquareRootButton);
             this.Controls.Add(this.CubeRootButton);
@@ -513,7 +515,8 @@
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.OutputField);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Calculator";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1_lw
 {
-    public class Square
+    public class Square : IComparable
     {
         public int EdgeSize { get; set; }
 
@@ -18,6 +18,16 @@ namespace _1_lw
         public override string ToString()
         {
             return $"Size of square: {this.EdgeSize}×{this.EdgeSize}";
+        }
+
+        public int CompareTo(object obj)
+        {
+            Square other = obj as Square;
+            if (other == null) return -1;
+
+            if (this.EdgeSize == other.EdgeSize) return 0;
+            else if (this.EdgeSize > other.EdgeSize) return 1;
+            else return -1;
         }
     }
 }

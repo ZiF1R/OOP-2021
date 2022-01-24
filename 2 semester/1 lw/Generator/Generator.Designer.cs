@@ -126,6 +126,7 @@
             this.FirstQuery.TabIndex = 6;
             this.FirstQuery.Text = "Query 1";
             this.FirstQuery.UseVisualStyleBackColor = false;
+            this.FirstQuery.Click += new System.EventHandler(this.FirstQuery_Click);
             // 
             // SecondQuery
             // 
@@ -140,6 +141,7 @@
             this.SecondQuery.TabIndex = 7;
             this.SecondQuery.Text = "Query 2";
             this.SecondQuery.UseVisualStyleBackColor = false;
+            this.SecondQuery.Click += new System.EventHandler(this.SecondQuery_Click);
             // 
             // ThirdQuery
             // 
@@ -154,6 +156,7 @@
             this.ThirdQuery.TabIndex = 8;
             this.ThirdQuery.Text = "Query 3";
             this.ThirdQuery.UseVisualStyleBackColor = false;
+            this.ThirdQuery.Click += new System.EventHandler(this.ThirdQuery_Click);
             // 
             // FirstQueryLabel
             // 

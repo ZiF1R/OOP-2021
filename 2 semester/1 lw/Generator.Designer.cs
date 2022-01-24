@@ -40,8 +40,8 @@
             this.FirstQueryLabel = new System.Windows.Forms.Label();
             this.SecondQueryLabel = new System.Windows.Forms.Label();
             this.ThirdQueryLabel = new System.Windows.Forms.Label();
-            this.Output = new System.Windows.Forms.TextBox();
             this.OutputLabel = new System.Windows.Forms.Label();
+            this.Output = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.SizeInput)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +53,6 @@
             this.SizeInputLabel.Size = new System.Drawing.Size(268, 16);
             this.SizeInputLabel.TabIndex = 1;
             this.SizeInputLabel.Text = "Please, enter size of collection (from 0 to 50):";
-            this.SizeInputLabel.Click += new System.EventHandler(this.SizeInputLabel_Click);
             // 
             // SizeInput
             // 
@@ -82,6 +81,7 @@
             this.GenerateButton.TabIndex = 3;
             this.GenerateButton.Text = "Generate";
             this.GenerateButton.UseVisualStyleBackColor = false;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
             // AscendingSortButton
             // 
@@ -96,6 +96,7 @@
             this.AscendingSortButton.TabIndex = 4;
             this.AscendingSortButton.Text = "Ascending sort";
             this.AscendingSortButton.UseVisualStyleBackColor = false;
+            this.AscendingSortButton.Click += new System.EventHandler(this.AscendingSortButton_Click);
             // 
             // DescendingSortButton
             // 
@@ -110,6 +111,7 @@
             this.DescendingSortButton.TabIndex = 5;
             this.DescendingSortButton.Text = "Descending sort";
             this.DescendingSortButton.UseVisualStyleBackColor = false;
+            this.DescendingSortButton.Click += new System.EventHandler(this.DescendingSortButton_Click);
             // 
             // FirstQuery
             // 
@@ -180,15 +182,6 @@
             this.ThirdQueryLabel.TabIndex = 11;
             this.ThirdQueryLabel.Text = "Get elements from range:\r\n";
             // 
-            // Output
-            // 
-            this.Output.Location = new System.Drawing.Point(53, 263);
-            this.Output.Multiline = true;
-            this.Output.Name = "Output";
-            this.Output.ReadOnly = true;
-            this.Output.Size = new System.Drawing.Size(539, 288);
-            this.Output.TabIndex = 12;
-            // 
             // OutputLabel
             // 
             this.OutputLabel.AutoSize = true;
@@ -197,15 +190,24 @@
             this.OutputLabel.Size = new System.Drawing.Size(48, 16);
             this.OutputLabel.TabIndex = 13;
             this.OutputLabel.Text = "Output:";
-            this.OutputLabel.Click += new System.EventHandler(this.OutputLabel_Click);
+            // 
+            // Output
+            // 
+            this.Output.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Output.FormattingEnabled = true;
+            this.Output.ItemHeight = 16;
+            this.Output.Location = new System.Drawing.Point(53, 263);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(539, 292);
+            this.Output.TabIndex = 14;
             // 
             // Generator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 590);
-            this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.Output);
+            this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.ThirdQueryLabel);
             this.Controls.Add(this.SecondQueryLabel);
             this.Controls.Add(this.FirstQueryLabel);
@@ -239,7 +241,7 @@
         private System.Windows.Forms.Label FirstQueryLabel;
         private System.Windows.Forms.Label SecondQueryLabel;
         private System.Windows.Forms.Label ThirdQueryLabel;
-        private System.Windows.Forms.TextBox Output;
         private System.Windows.Forms.Label OutputLabel;
+        private System.Windows.Forms.ListBox Output;
     }
 }

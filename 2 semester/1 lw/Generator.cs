@@ -16,5 +16,15 @@ namespace _1_lw
         {
             InitializeComponent();
         }
+
+        private void SizeInputLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OutputLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

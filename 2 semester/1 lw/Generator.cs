@@ -13,7 +13,7 @@ namespace _1_lw
     public partial class Generator : Form
     {
         private List<Square> list = new List<Square>();
-        private delegate List<Square> Comparator(Comparison<Square> predicate);
+        private delegate List<Square> Comparator(Comparison<Square> condition);
 
         public Generator()
         {

@@ -38,24 +38,24 @@
             this.AccountOpeningDate = new System.Windows.Forms.DateTimePicker();
             this.AccountOpeningDateLabel = new System.Windows.Forms.Label();
             this.OwnerInfoGroup = new System.Windows.Forms.GroupBox();
+            this.PassportDataGroup = new System.Windows.Forms.GroupBox();
+            this.ExpiresDateLabel = new System.Windows.Forms.Label();
+            this.ExpiresDate = new System.Windows.Forms.DateTimePicker();
+            this.PassportInputLabel = new System.Windows.Forms.Label();
+            this.PassportInput = new System.Windows.Forms.TextBox();
+            this.BirthDateLabel = new System.Windows.Forms.Label();
+            this.BirthDate = new System.Windows.Forms.DateTimePicker();
             this.PatronimicInputLabel = new System.Windows.Forms.Label();
             this.PatronimicInput = new System.Windows.Forms.TextBox();
             this.SurnameInputLabel = new System.Windows.Forms.Label();
             this.SurnameInput = new System.Windows.Forms.TextBox();
             this.NameInputLabel = new System.Windows.Forms.Label();
             this.NameInput = new System.Windows.Forms.TextBox();
-            this.BirthDateLabel = new System.Windows.Forms.Label();
-            this.BirthDate = new System.Windows.Forms.DateTimePicker();
-            this.SMSNotioficationsCheckbox = new System.Windows.Forms.CheckBox();
+            this.SMSNotificationsCheckbox = new System.Windows.Forms.CheckBox();
             this.InternetBanking = new System.Windows.Forms.CheckBox();
-            this.PassportDataGroup = new System.Windows.Forms.GroupBox();
-            this.ExpiresDateLabel = new System.Windows.Forms.Label();
-            this.ExpiresDate = new System.Windows.Forms.DateTimePicker();
-            this.PassportInputLabel = new System.Windows.Forms.Label();
-            this.PassportInput = new System.Windows.Forms.TextBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.SerializeButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.DeserializeButton = new System.Windows.Forms.Button();
             this.Output = new System.Windows.Forms.TextBox();
             this.OutputLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AccountBalance)).BeginInit();
@@ -181,6 +181,73 @@
             this.OwnerInfoGroup.TabStop = false;
             this.OwnerInfoGroup.Text = "Owner info";
             // 
+            // PassportDataGroup
+            // 
+            this.PassportDataGroup.Controls.Add(this.ExpiresDateLabel);
+            this.PassportDataGroup.Controls.Add(this.ExpiresDate);
+            this.PassportDataGroup.Controls.Add(this.PassportInputLabel);
+            this.PassportDataGroup.Controls.Add(this.PassportInput);
+            this.PassportDataGroup.Location = new System.Drawing.Point(288, 25);
+            this.PassportDataGroup.Name = "PassportDataGroup";
+            this.PassportDataGroup.Padding = new System.Windows.Forms.Padding(10);
+            this.PassportDataGroup.Size = new System.Drawing.Size(288, 166);
+            this.PassportDataGroup.TabIndex = 8;
+            this.PassportDataGroup.TabStop = false;
+            this.PassportDataGroup.Text = "Passport data";
+            // 
+            // ExpiresDateLabel
+            // 
+            this.ExpiresDateLabel.AutoSize = true;
+            this.ExpiresDateLabel.Location = new System.Drawing.Point(13, 89);
+            this.ExpiresDateLabel.Name = "ExpiresDateLabel";
+            this.ExpiresDateLabel.Size = new System.Drawing.Size(55, 16);
+            this.ExpiresDateLabel.TabIndex = 10;
+            this.ExpiresDateLabel.Text = "Expires:";
+            // 
+            // ExpiresDate
+            // 
+            this.ExpiresDate.CustomFormat = "YYYY-MM";
+            this.ExpiresDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExpiresDate.Location = new System.Drawing.Point(16, 108);
+            this.ExpiresDate.Name = "ExpiresDate";
+            this.ExpiresDate.Size = new System.Drawing.Size(250, 30);
+            this.ExpiresDate.TabIndex = 9;
+            // 
+            // PassportInputLabel
+            // 
+            this.PassportInputLabel.AutoSize = true;
+            this.PassportInputLabel.Location = new System.Drawing.Point(13, 25);
+            this.PassportInputLabel.Name = "PassportInputLabel";
+            this.PassportInputLabel.Size = new System.Drawing.Size(112, 16);
+            this.PassportInputLabel.TabIndex = 10;
+            this.PassportInputLabel.Text = "Passport number:";
+            // 
+            // PassportInput
+            // 
+            this.PassportInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PassportInput.Location = new System.Drawing.Point(16, 44);
+            this.PassportInput.MaxLength = 15;
+            this.PassportInput.Name = "PassportInput";
+            this.PassportInput.Size = new System.Drawing.Size(253, 28);
+            this.PassportInput.TabIndex = 8;
+            // 
+            // BirthDateLabel
+            // 
+            this.BirthDateLabel.AutoSize = true;
+            this.BirthDateLabel.Location = new System.Drawing.Point(16, 204);
+            this.BirthDateLabel.Name = "BirthDateLabel";
+            this.BirthDateLabel.Size = new System.Drawing.Size(66, 16);
+            this.BirthDateLabel.TabIndex = 10;
+            this.BirthDateLabel.Text = "Birth date:";
+            // 
+            // BirthDate
+            // 
+            this.BirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BirthDate.Location = new System.Drawing.Point(19, 223);
+            this.BirthDate.Name = "BirthDate";
+            this.BirthDate.Size = new System.Drawing.Size(250, 30);
+            this.BirthDate.TabIndex = 7;
+            // 
             // PatronimicInputLabel
             // 
             this.PatronimicInputLabel.AutoSize = true;
@@ -232,33 +299,16 @@
             this.NameInput.Size = new System.Drawing.Size(253, 28);
             this.NameInput.TabIndex = 5;
             // 
-            // BirthDateLabel
+            // SMSNotificationsCheckbox
             // 
-            this.BirthDateLabel.AutoSize = true;
-            this.BirthDateLabel.Location = new System.Drawing.Point(16, 204);
-            this.BirthDateLabel.Name = "BirthDateLabel";
-            this.BirthDateLabel.Size = new System.Drawing.Size(66, 16);
-            this.BirthDateLabel.TabIndex = 10;
-            this.BirthDateLabel.Text = "Birth date:";
-            // 
-            // BirthDate
-            // 
-            this.BirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BirthDate.Location = new System.Drawing.Point(19, 223);
-            this.BirthDate.Name = "BirthDate";
-            this.BirthDate.Size = new System.Drawing.Size(250, 30);
-            this.BirthDate.TabIndex = 7;
-            // 
-            // SMSNotioficationsCheckbox
-            // 
-            this.SMSNotioficationsCheckbox.AutoSize = true;
-            this.SMSNotioficationsCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SMSNotioficationsCheckbox.Location = new System.Drawing.Point(37, 280);
-            this.SMSNotioficationsCheckbox.Name = "SMSNotioficationsCheckbox";
-            this.SMSNotioficationsCheckbox.Size = new System.Drawing.Size(146, 22);
-            this.SMSNotioficationsCheckbox.TabIndex = 10;
-            this.SMSNotioficationsCheckbox.Text = "SMS notifications";
-            this.SMSNotioficationsCheckbox.UseVisualStyleBackColor = true;
+            this.SMSNotificationsCheckbox.AutoSize = true;
+            this.SMSNotificationsCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SMSNotificationsCheckbox.Location = new System.Drawing.Point(37, 280);
+            this.SMSNotificationsCheckbox.Name = "SMSNotificationsCheckbox";
+            this.SMSNotificationsCheckbox.Size = new System.Drawing.Size(146, 22);
+            this.SMSNotificationsCheckbox.TabIndex = 10;
+            this.SMSNotificationsCheckbox.Text = "SMS notifications";
+            this.SMSNotificationsCheckbox.UseVisualStyleBackColor = true;
             // 
             // InternetBanking
             // 
@@ -270,56 +320,6 @@
             this.InternetBanking.TabIndex = 11;
             this.InternetBanking.Text = "Internet banking";
             this.InternetBanking.UseVisualStyleBackColor = true;
-            // 
-            // PassportDataGroup
-            // 
-            this.PassportDataGroup.Controls.Add(this.ExpiresDateLabel);
-            this.PassportDataGroup.Controls.Add(this.ExpiresDate);
-            this.PassportDataGroup.Controls.Add(this.PassportInputLabel);
-            this.PassportDataGroup.Controls.Add(this.PassportInput);
-            this.PassportDataGroup.Location = new System.Drawing.Point(288, 25);
-            this.PassportDataGroup.Name = "PassportDataGroup";
-            this.PassportDataGroup.Padding = new System.Windows.Forms.Padding(10);
-            this.PassportDataGroup.Size = new System.Drawing.Size(288, 166);
-            this.PassportDataGroup.TabIndex = 8;
-            this.PassportDataGroup.TabStop = false;
-            this.PassportDataGroup.Text = "Passport data";
-            // 
-            // ExpiresDateLabel
-            // 
-            this.ExpiresDateLabel.AutoSize = true;
-            this.ExpiresDateLabel.Location = new System.Drawing.Point(13, 89);
-            this.ExpiresDateLabel.Name = "ExpiresDateLabel";
-            this.ExpiresDateLabel.Size = new System.Drawing.Size(55, 16);
-            this.ExpiresDateLabel.TabIndex = 10;
-            this.ExpiresDateLabel.Text = "Expires:";
-            // 
-            // ExpiresDate
-            // 
-            this.ExpiresDate.CustomFormat = "YYYY-MM";
-            this.ExpiresDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ExpiresDate.Location = new System.Drawing.Point(16, 108);
-            this.ExpiresDate.Name = "ExpiresDate";
-            this.ExpiresDate.Size = new System.Drawing.Size(250, 30);
-            this.ExpiresDate.TabIndex = 9;
-            // 
-            // PassportInputLabel
-            // 
-            this.PassportInputLabel.AutoSize = true;
-            this.PassportInputLabel.Location = new System.Drawing.Point(13, 25);
-            this.PassportInputLabel.Name = "PassportInputLabel";
-            this.PassportInputLabel.Size = new System.Drawing.Size(112, 16);
-            this.PassportInputLabel.TabIndex = 10;
-            this.PassportInputLabel.Text = "Passport number:";
-            // 
-            // PassportInput
-            // 
-            this.PassportInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PassportInput.Location = new System.Drawing.Point(16, 44);
-            this.PassportInput.MaxLength = 15;
-            this.PassportInput.Name = "PassportInput";
-            this.PassportInput.Size = new System.Drawing.Size(253, 28);
-            this.PassportInput.TabIndex = 8;
             // 
             // AddButton
             // 
@@ -348,18 +348,18 @@
             this.SerializeButton.Text = "Save to JSON-file";
             this.SerializeButton.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // DeserializeButton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(37, 497);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(271, 37);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Read from JSON-file";
-            this.button1.UseVisualStyleBackColor = false;
+            this.DeserializeButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.DeserializeButton.FlatAppearance.BorderSize = 0;
+            this.DeserializeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeserializeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeserializeButton.Location = new System.Drawing.Point(37, 497);
+            this.DeserializeButton.Name = "DeserializeButton";
+            this.DeserializeButton.Size = new System.Drawing.Size(271, 37);
+            this.DeserializeButton.TabIndex = 14;
+            this.DeserializeButton.Text = "Read from JSON-file";
+            this.DeserializeButton.UseVisualStyleBackColor = false;
             // 
             // Output
             // 
@@ -386,11 +386,11 @@
             this.ClientSize = new System.Drawing.Size(965, 573);
             this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.Output);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.DeserializeButton);
             this.Controls.Add(this.SerializeButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.InternetBanking);
-            this.Controls.Add(this.SMSNotioficationsCheckbox);
+            this.Controls.Add(this.SMSNotificationsCheckbox);
             this.Controls.Add(this.OwnerInfoGroup);
             this.Controls.Add(this.AccountOpeningDateLabel);
             this.Controls.Add(this.AccountOpeningDate);
@@ -433,7 +433,7 @@
         private System.Windows.Forms.TextBox PatronimicInput;
         private System.Windows.Forms.Label BirthDateLabel;
         private System.Windows.Forms.DateTimePicker BirthDate;
-        private System.Windows.Forms.CheckBox SMSNotioficationsCheckbox;
+        private System.Windows.Forms.CheckBox SMSNotificationsCheckbox;
         private System.Windows.Forms.CheckBox InternetBanking;
         private System.Windows.Forms.GroupBox PassportDataGroup;
         private System.Windows.Forms.Label ExpiresDateLabel;
@@ -442,7 +442,7 @@
         private System.Windows.Forms.TextBox PassportInput;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button SerializeButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button DeserializeButton;
         private System.Windows.Forms.TextBox Output;
         private System.Windows.Forms.Label OutputLabel;
     }

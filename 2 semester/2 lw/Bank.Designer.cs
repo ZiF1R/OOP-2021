@@ -218,15 +218,15 @@
             this.PassportInputLabel.AutoSize = true;
             this.PassportInputLabel.Location = new System.Drawing.Point(13, 25);
             this.PassportInputLabel.Name = "PassportInputLabel";
-            this.PassportInputLabel.Size = new System.Drawing.Size(112, 16);
+            this.PassportInputLabel.Size = new System.Drawing.Size(203, 16);
             this.PassportInputLabel.TabIndex = 10;
-            this.PassportInputLabel.Text = "Passport number:";
+            this.PassportInputLabel.Text = "Passport number (14 characters):";
             // 
             // PassportInput
             // 
             this.PassportInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PassportInput.Location = new System.Drawing.Point(16, 44);
-            this.PassportInput.MaxLength = 15;
+            this.PassportInput.MaxLength = 14;
             this.PassportInput.Name = "PassportInput";
             this.PassportInput.Size = new System.Drawing.Size(253, 28);
             this.PassportInput.TabIndex = 8;
@@ -334,6 +334,7 @@
             this.AddButton.TabIndex = 12;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // SerializeButton
             // 

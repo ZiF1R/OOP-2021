@@ -130,6 +130,7 @@
             this.AccountBalance.Name = "AccountBalance";
             this.AccountBalance.Size = new System.Drawing.Size(271, 30);
             this.AccountBalance.TabIndex = 3;
+            this.AccountBalance.ThousandsSeparator = true;
             this.AccountBalance.Value = new decimal(new int[] {
             1000,
             0,
@@ -348,6 +349,7 @@
             this.SerializeButton.TabIndex = 13;
             this.SerializeButton.Text = "Save to JSON-file";
             this.SerializeButton.UseVisualStyleBackColor = false;
+            this.SerializeButton.Click += new System.EventHandler(this.SerializeButton_Click);
             // 
             // DeserializeButton
             // 
@@ -361,6 +363,7 @@
             this.DeserializeButton.TabIndex = 14;
             this.DeserializeButton.Text = "Read from JSON-file";
             this.DeserializeButton.UseVisualStyleBackColor = false;
+            this.DeserializeButton.Click += new System.EventHandler(this.DeserializeButton_Click);
             // 
             // Output
             // 
@@ -368,6 +371,7 @@
             this.Output.Multiline = true;
             this.Output.Name = "Output";
             this.Output.ReadOnly = true;
+            this.Output.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.Output.Size = new System.Drawing.Size(600, 176);
             this.Output.TabIndex = 15;
             // 

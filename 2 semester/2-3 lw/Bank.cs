@@ -88,9 +88,12 @@ namespace _2_lw
 
             if (BankAccountNumber.Text.Length != 11) return false;
             if (!depositTypes.Contains(DepositTypeList.SelectedItem.ToString())) return false;
+
+            // Full name fields should be filled and contain only alphabetic symbols
             if (SurnameInput.Text == "" || Regex.IsMatch(SurnameInput.Text, @"[\W|\d]")) return false;
             if (NameInput.Text == "" || Regex.IsMatch(NameInput.Text, @"[\W|\d]")) return false;
             if (PatronimicInput.Text == "" || Regex.IsMatch(PatronimicInput.Text, @"[\W|\d]")) return false;
+
             if (PassportInput.Text.Length != 14) return false;
 
             return true;
@@ -112,5 +115,14 @@ namespace _2_lw
             InternetBanking.Checked = false;
         }
 
+        private void AboutProgram_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Сreator: Добриян Александр\n" +
+                "Version: v1.0.3",
+                "About program",
+                MessageBoxButtons.OK
+            );
+        }
     }
 }

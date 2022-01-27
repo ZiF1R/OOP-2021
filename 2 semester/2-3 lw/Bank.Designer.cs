@@ -61,15 +61,15 @@
             this.MenuToolbar = new System.Windows.Forms.MenuStrip();
             this.MenuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.balanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depositTypeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.depositTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openingDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveMenuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutProgram = new System.Windows.Forms.ToolStripMenuItem();
-            this.accountNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fullNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.balanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.depositTypeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.AccountBalance)).BeginInit();
             this.OwnerInfoGroup.SuspendLayout();
             this.PassportDataGroup.SuspendLayout();
@@ -434,6 +434,30 @@
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.searchToolStripMenuItem.Text = "Search by";
             // 
+            // accountNumberToolStripMenuItem
+            // 
+            this.accountNumberToolStripMenuItem.Name = "accountNumberToolStripMenuItem";
+            this.accountNumberToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.accountNumberToolStripMenuItem.Text = "Account number";
+            // 
+            // fullNameToolStripMenuItem
+            // 
+            this.fullNameToolStripMenuItem.Name = "fullNameToolStripMenuItem";
+            this.fullNameToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.fullNameToolStripMenuItem.Text = "Full name";
+            // 
+            // balanceToolStripMenuItem
+            // 
+            this.balanceToolStripMenuItem.Name = "balanceToolStripMenuItem";
+            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.balanceToolStripMenuItem.Text = "Balance";
+            // 
+            // depositTypeToolStripMenuItem1
+            // 
+            this.depositTypeToolStripMenuItem1.Name = "depositTypeToolStripMenuItem1";
+            this.depositTypeToolStripMenuItem1.Size = new System.Drawing.Size(201, 26);
+            this.depositTypeToolStripMenuItem1.Text = "Deposit type";
+            // 
             // sortByToolStripMenuItem
             // 
             this.sortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -468,30 +492,7 @@
             this.AboutProgram.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
             this.AboutProgram.Size = new System.Drawing.Size(252, 26);
             this.AboutProgram.Text = "About program";
-            // 
-            // accountNumberToolStripMenuItem
-            // 
-            this.accountNumberToolStripMenuItem.Name = "accountNumberToolStripMenuItem";
-            this.accountNumberToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.accountNumberToolStripMenuItem.Text = "Account number";
-            // 
-            // fullNameToolStripMenuItem
-            // 
-            this.fullNameToolStripMenuItem.Name = "fullNameToolStripMenuItem";
-            this.fullNameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.fullNameToolStripMenuItem.Text = "Full name";
-            // 
-            // balanceToolStripMenuItem
-            // 
-            this.balanceToolStripMenuItem.Name = "balanceToolStripMenuItem";
-            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.balanceToolStripMenuItem.Text = "Balance";
-            // 
-            // depositTypeToolStripMenuItem1
-            // 
-            this.depositTypeToolStripMenuItem1.Name = "depositTypeToolStripMenuItem1";
-            this.depositTypeToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.depositTypeToolStripMenuItem1.Text = "Deposit type";
+            this.AboutProgram.Click += new System.EventHandler(this.AboutProgram_Click);
             // 
             // Bank
             // 

@@ -15,10 +15,8 @@ namespace _2_lw.SortForm
         public SortBy Sort { get; set; }
         public enum SortBy
         {
-            AccountNumber,
-            FullName,
-            Balance,
-            DepositType
+            DepositType,
+            OpeningDate
         }
 
         public SortForm()

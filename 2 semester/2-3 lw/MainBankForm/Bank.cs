@@ -10,6 +10,8 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using _2_lw.SearchForm;
+using _2_lw.SortForm;
 
 namespace _2_lw
 {
@@ -123,6 +125,56 @@ namespace _2_lw
                 "About program",
                 MessageBoxButtons.OK
             );
+        }
+
+        ///
+        /// Search menu buttons
+        ///
+        private void SearchAccountNumber_Click(object sender, EventArgs e)
+        {
+            this.OpenSearchForm(SearchForm.SearchForm.SearchBy.AccountNumber);
+        }
+
+        private void SearchFullName_Click(object sender, EventArgs e)
+        {
+            this.OpenSearchForm(SearchForm.SearchForm.SearchBy.FullName);
+        }
+
+        private void SearchBalance_Click(object sender, EventArgs e)
+        {
+            this.OpenSearchForm(SearchForm.SearchForm.SearchBy.Balance);
+        }
+
+        private void SearchDepositType_Click(object sender, EventArgs e)
+        {
+            this.OpenSearchForm(SearchForm.SearchForm.SearchBy.DepositType);
+        }
+
+        private void OpenSearchForm(SearchForm.SearchForm.SearchBy option)
+        {
+            SearchForm.SearchForm sort = new SearchForm.SearchForm(option);
+            sort.Activate();
+            sort.Show();
+        }
+
+        ///
+        /// Sort menu buttons
+        ///
+        private void SortDepositType_Click(object sender, EventArgs e)
+        {
+            this.OpenSortForm(SortForm.SortForm.SortBy.DepositType);
+        }
+
+        private void SortOpeningDate_Click(object sender, EventArgs e)
+        {
+            this.OpenSortForm(SortForm.SortForm.SortBy.OpeningDate);
+        }
+
+        private void OpenSortForm(SortForm.SortForm.SortBy option)
+        {
+            SortForm.SortForm sort = new SortForm.SortForm(option);
+            sort.Activate();
+            sort.Show();
         }
     }
 }

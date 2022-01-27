@@ -58,9 +58,22 @@
             this.DeserializeButton = new System.Windows.Forms.Button();
             this.Output = new System.Windows.Forms.TextBox();
             this.OutputLabel = new System.Windows.Forms.Label();
+            this.MenuToolbar = new System.Windows.Forms.MenuStrip();
+            this.MenuButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depositTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openingDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveMenuButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutProgram = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.balanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depositTypeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.AccountBalance)).BeginInit();
             this.OwnerInfoGroup.SuspendLayout();
             this.PassportDataGroup.SuspendLayout();
+            this.MenuToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // BankAccountNumber
@@ -384,6 +397,102 @@
             this.OutputLabel.TabIndex = 16;
             this.OutputLabel.Text = "Output:";
             // 
+            // MenuToolbar
+            // 
+            this.MenuToolbar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.MenuToolbar.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.MenuToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuButton});
+            this.MenuToolbar.Location = new System.Drawing.Point(0, 0);
+            this.MenuToolbar.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.MenuToolbar.Name = "MenuToolbar";
+            this.MenuToolbar.Size = new System.Drawing.Size(965, 28);
+            this.MenuToolbar.TabIndex = 17;
+            this.MenuToolbar.Text = "MenuToolbar";
+            // 
+            // MenuButton
+            // 
+            this.MenuButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.MenuButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchToolStripMenuItem,
+            this.sortByToolStripMenuItem,
+            this.SaveMenuButton,
+            this.AboutProgram});
+            this.MenuButton.Name = "MenuButton";
+            this.MenuButton.ShortcutKeyDisplayString = "";
+            this.MenuButton.Size = new System.Drawing.Size(60, 24);
+            this.MenuButton.Text = "Menu";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.accountNumberToolStripMenuItem,
+            this.fullNameToolStripMenuItem,
+            this.balanceToolStripMenuItem,
+            this.depositTypeToolStripMenuItem1});
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.searchToolStripMenuItem.Text = "Search by";
+            // 
+            // sortByToolStripMenuItem
+            // 
+            this.sortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.depositTypeToolStripMenuItem,
+            this.openingDateToolStripMenuItem});
+            this.sortByToolStripMenuItem.Name = "sortByToolStripMenuItem";
+            this.sortByToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.sortByToolStripMenuItem.Text = "Sort by";
+            // 
+            // depositTypeToolStripMenuItem
+            // 
+            this.depositTypeToolStripMenuItem.Name = "depositTypeToolStripMenuItem";
+            this.depositTypeToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.depositTypeToolStripMenuItem.Text = "Deposit type";
+            // 
+            // openingDateToolStripMenuItem
+            // 
+            this.openingDateToolStripMenuItem.Name = "openingDateToolStripMenuItem";
+            this.openingDateToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.openingDateToolStripMenuItem.Text = "Opening date";
+            // 
+            // SaveMenuButton
+            // 
+            this.SaveMenuButton.Name = "SaveMenuButton";
+            this.SaveMenuButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.SaveMenuButton.Size = new System.Drawing.Size(252, 26);
+            this.SaveMenuButton.Text = "Save";
+            // 
+            // AboutProgram
+            // 
+            this.AboutProgram.Name = "AboutProgram";
+            this.AboutProgram.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
+            this.AboutProgram.Size = new System.Drawing.Size(252, 26);
+            this.AboutProgram.Text = "About program";
+            // 
+            // accountNumberToolStripMenuItem
+            // 
+            this.accountNumberToolStripMenuItem.Name = "accountNumberToolStripMenuItem";
+            this.accountNumberToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.accountNumberToolStripMenuItem.Text = "Account number";
+            // 
+            // fullNameToolStripMenuItem
+            // 
+            this.fullNameToolStripMenuItem.Name = "fullNameToolStripMenuItem";
+            this.fullNameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.fullNameToolStripMenuItem.Text = "Full name";
+            // 
+            // balanceToolStripMenuItem
+            // 
+            this.balanceToolStripMenuItem.Name = "balanceToolStripMenuItem";
+            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.balanceToolStripMenuItem.Text = "Balance";
+            // 
+            // depositTypeToolStripMenuItem1
+            // 
+            this.depositTypeToolStripMenuItem1.Name = "depositTypeToolStripMenuItem1";
+            this.depositTypeToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.depositTypeToolStripMenuItem1.Text = "Deposit type";
+            // 
             // Bank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -405,8 +514,10 @@
             this.Controls.Add(this.DepositTypeList);
             this.Controls.Add(this.BankAccountNumberLabel);
             this.Controls.Add(this.BankAccountNumber);
+            this.Controls.Add(this.MenuToolbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.MenuToolbar;
             this.Name = "Bank";
             this.Text = "Bank";
             ((System.ComponentModel.ISupportInitialize)(this.AccountBalance)).EndInit();
@@ -414,6 +525,8 @@
             this.OwnerInfoGroup.PerformLayout();
             this.PassportDataGroup.ResumeLayout(false);
             this.PassportDataGroup.PerformLayout();
+            this.MenuToolbar.ResumeLayout(false);
+            this.MenuToolbar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,6 +563,18 @@
         private System.Windows.Forms.Button DeserializeButton;
         private System.Windows.Forms.TextBox Output;
         private System.Windows.Forms.Label OutputLabel;
+        private System.Windows.Forms.MenuStrip MenuToolbar;
+        private System.Windows.Forms.ToolStripMenuItem MenuButton;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sortByToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem depositTypeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openingDateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveMenuButton;
+        private System.Windows.Forms.ToolStripMenuItem AboutProgram;
+        private System.Windows.Forms.ToolStripMenuItem accountNumberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fullNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem balanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem depositTypeToolStripMenuItem1;
     }
 }
 

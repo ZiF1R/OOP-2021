@@ -24,7 +24,7 @@ namespace _2_lw.SortForm
             InitializeComponent();
         }
 
-        public SortForm(SortBy sort)
+        public SortForm(SortBy sort, BankAccount[] bankAccounts)
         {
             this.Sort = sort;
             InitializeComponent();

@@ -26,7 +26,7 @@ namespace _2_lw.SearchForm
             InitializeComponent();
         }
 
-        public SearchForm(SearchBy search)
+        public SearchForm(SearchBy search, BankAccount[] bankAccounts)
         {
             this.Search = search;
             InitializeComponent();

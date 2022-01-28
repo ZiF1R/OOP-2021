@@ -152,7 +152,7 @@ namespace _2_lw
 
         private void OpenSearchForm(SearchForm.SearchForm.SearchBy option)
         {
-            SearchForm.SearchForm sort = new SearchForm.SearchForm(option);
+            SearchForm.SearchForm sort = new SearchForm.SearchForm(option, this.bankAccounts);
             sort.Activate();
             sort.Show();
         }
@@ -172,7 +172,7 @@ namespace _2_lw
 
         private void OpenSortForm(SortForm.SortForm.SortBy option)
         {
-            SortForm.SortForm sort = new SortForm.SortForm(option);
+            SortForm.SortForm sort = new SortForm.SortForm(option, this.bankAccounts);
             sort.Activate();
             sort.Show();
         }

@@ -437,28 +437,28 @@
             // SearchAccountNumber
             // 
             this.SearchAccountNumber.Name = "SearchAccountNumber";
-            this.SearchAccountNumber.Size = new System.Drawing.Size(224, 26);
+            this.SearchAccountNumber.Size = new System.Drawing.Size(201, 26);
             this.SearchAccountNumber.Text = "Account number";
             this.SearchAccountNumber.Click += new System.EventHandler(this.SearchAccountNumber_Click);
             // 
             // SearchFullName
             // 
             this.SearchFullName.Name = "SearchFullName";
-            this.SearchFullName.Size = new System.Drawing.Size(224, 26);
+            this.SearchFullName.Size = new System.Drawing.Size(201, 26);
             this.SearchFullName.Text = "Full name";
             this.SearchFullName.Click += new System.EventHandler(this.SearchFullName_Click);
             // 
             // SearchBalance
             // 
             this.SearchBalance.Name = "SearchBalance";
-            this.SearchBalance.Size = new System.Drawing.Size(224, 26);
+            this.SearchBalance.Size = new System.Drawing.Size(201, 26);
             this.SearchBalance.Text = "Balance";
             this.SearchBalance.Click += new System.EventHandler(this.SearchBalance_Click);
             // 
             // SearchDepositType
             // 
             this.SearchDepositType.Name = "SearchDepositType";
-            this.SearchDepositType.Size = new System.Drawing.Size(224, 26);
+            this.SearchDepositType.Size = new System.Drawing.Size(201, 26);
             this.SearchDepositType.Text = "Deposit type";
             this.SearchDepositType.Click += new System.EventHandler(this.SearchDepositType_Click);
             // 
@@ -491,6 +491,7 @@
             this.SaveMenuButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.SaveMenuButton.Size = new System.Drawing.Size(252, 26);
             this.SaveMenuButton.Text = "Save";
+            this.SaveMenuButton.Click += new System.EventHandler(this.SaveMenuButton_Click);
             // 
             // AboutProgram
             // 

@@ -18,6 +18,7 @@ namespace _2_lw
     public partial class Bank : Form
     {
         private BankAccount[] bankAccounts = new BankAccount[] { };
+        public BankAccount[][] SortHistory = new BankAccount[][] { };
 
         public Bank()
         {
@@ -175,6 +176,21 @@ namespace _2_lw
             SortForm.SortForm sort = new SortForm.SortForm(option, this.bankAccounts);
             sort.Activate();
             sort.Show();
+            sort.Disposed += (object sender, EventArgs e) =>
+            {
+                if (sort.SortHistory.Length > 0)
+                {
+                    this.SortHistory = sort.SortHistory;
+                    foreach (BankAccount[] sortQuery in sort.SortHistory)
+                        foreach (BankAccount account in sortQuery)
+                            MessageBox.Show(account.ToString());
+                }
+            };
+        }
+
+        private void SaveMenuButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

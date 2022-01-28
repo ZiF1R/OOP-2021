@@ -19,6 +19,8 @@ namespace _2_lw.SortForm
             OpeningDate
         }
 
+        public BankAccount[][] SortHistory { get; set; }
+
         public SortForm()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace _2_lw.SortForm
         {
             this.Sort = sort;
             InitializeComponent();
+            this.SortHistory = new BankAccount[][] {};
             this.GetSortedAccounts(bankAccounts);
         }
 
@@ -67,6 +70,7 @@ namespace _2_lw.SortForm
             }
             foreach (BankAccount bankAccount in bankAccounts)
                 Output.Text += bankAccount.ToString() + Environment.NewLine;
+            this.SortHistory = this.SortHistory.Append(bankAccounts).ToArray();
         }
     }
 }

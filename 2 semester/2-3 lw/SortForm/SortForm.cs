@@ -28,7 +28,6 @@ namespace _2_lw.SortForm
         {
             this.Sort = sort;
             InitializeComponent();
-            SortInputLabel.Text = $"Enter {this.Sort}:";
         }
     }
 }

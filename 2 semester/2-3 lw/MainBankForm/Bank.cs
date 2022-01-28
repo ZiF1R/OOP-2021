@@ -19,6 +19,7 @@ namespace _2_lw
     {
         private BankAccount[] bankAccounts = new BankAccount[] { };
         public BankAccount[][] SortHistory = new BankAccount[][] { };
+        public BankAccount[][] SearchHistory = new BankAccount[][] { };
 
         public Bank()
         {
@@ -44,7 +45,7 @@ namespace _2_lw
                 NameInput.Text,
                 PatronimicInput.Text,
                 BirthDate.Value,
-                new Passport(PassportInput.Text, ExpiresDate.Value)
+                new Passport(PassportInput.Text.ToUpper(), ExpiresDate.Value)
             );
 
             BankAccount newAccount = new BankAccount(
@@ -153,9 +154,16 @@ namespace _2_lw
 
         private void OpenSearchForm(SearchForm.SearchForm.SearchBy option)
         {
-            SearchForm.SearchForm sort = new SearchForm.SearchForm(option, this.bankAccounts);
-            sort.Activate();
-            sort.Show();
+            SearchForm.SearchForm search = new SearchForm.SearchForm(option, this.bankAccounts);
+            search.Activate();
+            search.Show();
+            search.Disposed += (object sender, EventArgs e) =>
+            {
+                if (search.SearchHistory.Length > 0)
+                {
+                    this.SearchHistory = search.SearchHistory;
+                }
+            };
         }
 
         ///
@@ -181,9 +189,6 @@ namespace _2_lw
                 if (sort.SortHistory.Length > 0)
                 {
                     this.SortHistory = sort.SortHistory;
-                    foreach (BankAccount[] sortQuery in sort.SortHistory)
-                        foreach (BankAccount account in sortQuery)
-                            MessageBox.Show(account.ToString());
                 }
             };
         }

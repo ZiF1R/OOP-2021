@@ -33,6 +33,7 @@
             this.SearchInput = new System.Windows.Forms.TextBox();
             this.Output = new System.Windows.Forms.TextBox();
             this.OutputLabel = new System.Windows.Forms.Label();
+            this.SearchButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SearchInputLabel
@@ -48,6 +49,7 @@
             // 
             this.SearchInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SearchInput.Location = new System.Drawing.Point(58, 66);
+            this.SearchInput.MaxLength = 100;
             this.SearchInput.Name = "SearchInput";
             this.SearchInput.Size = new System.Drawing.Size(288, 30);
             this.SearchInput.TabIndex = 1;
@@ -57,7 +59,9 @@
             this.Output.Location = new System.Drawing.Point(58, 123);
             this.Output.Multiline = true;
             this.Output.Name = "Output";
-            this.Output.Size = new System.Drawing.Size(288, 280);
+            this.Output.ReadOnly = true;
+            this.Output.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.Output.Size = new System.Drawing.Size(449, 280);
             this.Output.TabIndex = 2;
             // 
             // OutputLabel
@@ -69,11 +73,25 @@
             this.OutputLabel.TabIndex = 3;
             this.OutputLabel.Text = "Output:";
             // 
+            // SearchButton
+            // 
+            this.SearchButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.SearchButton.FlatAppearance.BorderSize = 0;
+            this.SearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchButton.Location = new System.Drawing.Point(352, 66);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(155, 30);
+            this.SearchButton.TabIndex = 4;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = false;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 450);
+            this.ClientSize = new System.Drawing.Size(549, 450);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.Output);
             this.Controls.Add(this.SearchInput);
@@ -94,5 +112,6 @@
         private System.Windows.Forms.TextBox SearchInput;
         private System.Windows.Forms.TextBox Output;
         private System.Windows.Forms.Label OutputLabel;
+        private System.Windows.Forms.Button SearchButton;
     }
 }

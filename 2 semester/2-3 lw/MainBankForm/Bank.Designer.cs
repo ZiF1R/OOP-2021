@@ -135,20 +135,10 @@
             232,
             0,
             0});
-            this.AccountBalance.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
             this.AccountBalance.Name = "AccountBalance";
             this.AccountBalance.Size = new System.Drawing.Size(271, 30);
             this.AccountBalance.TabIndex = 3;
             this.AccountBalance.ThousandsSeparator = true;
-            this.AccountBalance.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
             // 
             // AccountBalanceLabel
             // 
@@ -406,7 +396,7 @@
             this.MenuToolbar.Location = new System.Drawing.Point(0, 0);
             this.MenuToolbar.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.MenuToolbar.Name = "MenuToolbar";
-            this.MenuToolbar.Size = new System.Drawing.Size(965, 28);
+            this.MenuToolbar.Size = new System.Drawing.Size(965, 30);
             this.MenuToolbar.TabIndex = 17;
             this.MenuToolbar.Text = "MenuToolbar";
             // 
@@ -420,7 +410,7 @@
             this.AboutProgram});
             this.MenuButton.Name = "MenuButton";
             this.MenuButton.ShortcutKeyDisplayString = "";
-            this.MenuButton.Size = new System.Drawing.Size(60, 24);
+            this.MenuButton.Size = new System.Drawing.Size(60, 26);
             this.MenuButton.Text = "Menu";
             // 
             // SearchByButton

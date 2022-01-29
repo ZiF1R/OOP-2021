@@ -161,7 +161,7 @@ namespace _2_lw
             {
                 if (search.SearchHistory.Length > 0)
                 {
-                    this.SearchHistory = search.SearchHistory;
+                    this.SearchHistory = this.SearchHistory.Concat(search.SearchHistory).ToArray();
                 }
             };
         }
@@ -188,7 +188,7 @@ namespace _2_lw
             {
                 if (sort.SortHistory.Length > 0)
                 {
-                    this.SortHistory = sort.SortHistory;
+                    this.SortHistory = this.SortHistory.Concat(sort.SortHistory).ToArray();
                 }
             };
         }

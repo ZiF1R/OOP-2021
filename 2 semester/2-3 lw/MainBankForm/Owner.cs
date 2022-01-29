@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 using System.Text.Json;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace _2_lw
@@ -13,14 +14,28 @@ namespace _2_lw
     public class Owner
     {
         [DataMember]
+        [Required]
+        [RegularExpression(@"[\W|\d]+$",
+         ErrorMessage = "Surname should be filled and contain only alphabetic symbols!")]
         private string surname;
+
         [DataMember]
+        [Required]
+        [RegularExpression(@"[\W|\d]+$",
+         ErrorMessage = "Name should be filled and contain only alphabetic symbols!")]
         private string name;
+
         [DataMember]
+        [Required]
+        [RegularExpression(@"[\W|\d]+$",
+         ErrorMessage = "Patronimic should be filled and contain only alphabetic symbols!")]
         private string patronimic;
+
         [DataMember]
         private DateTimeOffset birthDate;
+
         [DataMember]
+        [Required]
         private Passport ownerPassport;
 
         public string Surname

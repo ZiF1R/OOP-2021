@@ -18,7 +18,7 @@ namespace _2_lw
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Bank());
-            File.Delete("bankAccounts.json");
+            //File.Delete("bankAccounts.json");
         }
     }
 }

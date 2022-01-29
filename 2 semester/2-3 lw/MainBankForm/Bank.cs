@@ -64,10 +64,14 @@ namespace _2_lw
 
         private void SerializeButton_Click(object sender, EventArgs e)
         {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BankAccount[]));
-            using (FileStream fs = new FileStream("bankAccounts.json", FileMode.OpenOrCreate))
+            if (this.bankAccounts.Length > 0)
             {
-                serializer.WriteObject(fs, this.bankAccounts);
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BankAccount[]));
+                using (FileStream fs = new FileStream("bankAccounts.json", FileMode.Create))
+                {
+                    serializer.WriteObject(fs, this.bankAccounts);
+                    MessageBox.Show("Serialization success!", "Serialization", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -79,8 +83,9 @@ namespace _2_lw
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BankAccount[]));
                 using (FileStream fs = new FileStream("bankAccounts.json", FileMode.Open))
                 {
-                    BankAccount[] restoredFigure = (BankAccount[])serializer.ReadObject(fs);
-                    foreach (BankAccount bankAccount in restoredFigure)
+                    BankAccount[] restoredFigures = (BankAccount[])serializer.ReadObject(fs);
+                    this.bankAccounts = restoredFigures;
+                    foreach (BankAccount bankAccount in restoredFigures)
                         Output.Text += bankAccount.ToString() + Environment.NewLine;
                 }
             }
@@ -195,7 +200,12 @@ namespace _2_lw
 
         private void SaveMenuButton_Click(object sender, EventArgs e)
         {
-
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BankAccount[][]));
+            using (FileStream fs = new FileStream("queriesHistory.json", FileMode.OpenOrCreate))
+            {
+                serializer.WriteObject(fs, this.SearchHistory.Concat(this.SortHistory).ToArray());
+                MessageBox.Show("Serialization success!", "Serialization", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

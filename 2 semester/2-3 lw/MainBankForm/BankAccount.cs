@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Runtime.Serialization.Formatters.Soap;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace _2_lw
@@ -15,17 +16,28 @@ namespace _2_lw
     public class BankAccount
     {
         [DataMember]
+        [Required]
+        [RegularExpression(@"^\d{9}$", ErrorMessage = "Account number must be 9-digit number!")]
         private int number;
+
         [DataMember]
+        [Required]
         private string depositType;
+
         [DataMember]
+        [Required]
         private DateTimeOffset openingDate;
+
         [DataMember]
+        [Required]
         private Owner accountOwner;
+
         [DataMember]
         public int Balance { get; set; }
+
         [DataMember]
         public bool Notifications { get; set; }
+
         [DataMember]
         public bool InternetBanking { get; set; }
 

@@ -12,6 +12,7 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 using _2_lw.SearchForm;
 using _2_lw.SortForm;
+using System.ComponentModel.DataAnnotations;
 
 namespace _2_lw
 {
@@ -104,6 +105,22 @@ namespace _2_lw
             if (PatronimicInput.Text == "" || Regex.IsMatch(PatronimicInput.Text, @"[\W|\d]")) return false;
 
             if (PassportInput.Text.Length != 14) return false;
+
+            return true;
+        }
+
+        private bool validationAttributes()
+        {
+            var context = new ValidationContext(BirthDate.Value.ToString(), null, null);
+            var results = new List<ValidationResult>();
+            var attributes = typeof(Owner).GetProperty("BirthDate").GetCustomAttributes(true).OfType<ValidationAttribute>().ToArray();
+
+            if (!Validator.TryValidateValue("BirthDate", context, results, attributes))
+            {
+                foreach (var result in results)
+                    MessageBox.Show(result.ErrorMessage);
+                return false;
+            }
 
             return true;
         }

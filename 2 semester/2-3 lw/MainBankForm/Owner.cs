@@ -32,6 +32,8 @@ namespace _2_lw
         private string patronimic;
 
         [DataMember]
+        [BirthDateValidation("2003-1-1",
+            ErrorMessage = "The age of bank clients must be at least 18 years old")]
         private DateTimeOffset birthDate;
 
         [DataMember]

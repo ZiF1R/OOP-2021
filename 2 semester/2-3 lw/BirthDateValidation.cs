@@ -26,7 +26,8 @@ namespace _2_lw
 
         public override bool IsValid(object value)
         {
-            DateTimeOffset enteredDate = (DateTimeOffset)value;
+            DateTimeOffset enteredDate;
+            DateTimeOffset.TryParse(value.ToString(), out enteredDate);
             return enteredDate <= this.MinBirthDate;
         }
 

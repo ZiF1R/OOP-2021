@@ -16,18 +16,18 @@ namespace _2_lw
         [DataMember]
         [Required]
         [StringLength(14, ErrorMessage = "Passport number must be 14-symbol string!")]
-        private string number;
+        private string passportNumber;
 
         [DataMember]
         public DateTimeOffset ExpiresDate { get; set; }
 
-        public string Number
+        public string PassportNumber
         {
-            get => this.number;
+            get => this.passportNumber;
             set
             {
                 if (value.Length == 14)
-                    this.number = value;
+                    this.passportNumber = value;
             }
         }
 
@@ -36,12 +36,12 @@ namespace _2_lw
         public Passport(string number, DateTimeOffset expiresDate)
         {
             this.ExpiresDate = expiresDate;
-            this.Number = number;
+            this.PassportNumber = number;
         }
 
         public override string ToString()
         {
-            return $"{this.Number}:{this.ExpiresDate}";
+            return $"{this.PassportNumber}:{this.ExpiresDate}";
         }
     }
 }

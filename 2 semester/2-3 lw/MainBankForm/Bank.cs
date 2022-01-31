@@ -26,6 +26,24 @@ namespace _2_lw
         {
             InitializeComponent();
             DepositTypeList.SelectedIndex = 0;
+            CurrentAccountsCount.Text = $"Accounts: {this.bankAccounts.Length}";
+            LastAction.Text = "Last action: Start";
+            CurrentTime.Text = $"Current time: {DateTime.Now}";
+
+            this.StartTimer();
+        }
+
+        private void StartTimer()
+        {
+            Timer tmr = new Timer();
+            tmr.Interval = 1000;
+            tmr.Tick += new EventHandler(tmr_Tick);
+            tmr.Enabled = true;
+
+            void tmr_Tick(object sender, EventArgs e)
+            {
+                CurrentTime.Text = $"Current time: {DateTime.Now}";
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -60,6 +78,8 @@ namespace _2_lw
             );
 
             this.bankAccounts = this.bankAccounts.Append(newAccount).ToArray();
+            CurrentAccountsCount.Text = $"Accounts: {this.bankAccounts.Length}";
+            LastAction.Text = "Last action: Create account";
             this.ClearFormFields();
         }
 
@@ -71,6 +91,7 @@ namespace _2_lw
                 using (FileStream fs = new FileStream("bankAccounts.json", FileMode.Create))
                 {
                     serializer.WriteObject(fs, this.bankAccounts);
+                    LastAction.Text = "Last action: Serialization";
                     MessageBox.Show("Serialization success!", "Serialization", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -86,6 +107,8 @@ namespace _2_lw
                 {
                     BankAccount[] restoredFigures = (BankAccount[])serializer.ReadObject(fs);
                     this.bankAccounts = restoredFigures;
+                    CurrentAccountsCount.Text = $"Accounts: {this.bankAccounts.Length}";
+                    LastAction.Text = "Last action: Deserialization";
                     foreach (BankAccount bankAccount in restoredFigures)
                         Output.Text += bankAccount.ToString() + Environment.NewLine;
                 }
@@ -149,6 +172,7 @@ namespace _2_lw
                 "About program",
                 MessageBoxButtons.OK
             );
+            LastAction.Text = "Last action: Menu -> About program";
         }
 
         ///
@@ -185,6 +209,7 @@ namespace _2_lw
                 {
                     this.SearchHistory = this.SearchHistory.Concat(search.SearchHistory).ToArray();
                 }
+                LastAction.Text = "Last action: Menu -> Search";
             };
         }
 
@@ -212,6 +237,7 @@ namespace _2_lw
                 {
                     this.SortHistory = this.SortHistory.Concat(sort.SortHistory).ToArray();
                 }
+                LastAction.Text = "Last action: Menu -> Sort";
             };
         }
 
@@ -223,6 +249,7 @@ namespace _2_lw
                 serializer.WriteObject(fs, this.SearchHistory.Concat(this.SortHistory).ToArray());
                 MessageBox.Show("Serialization success!", "Serialization", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            LastAction.Text = "Last action: Save";
         }
     }
 }

@@ -26,6 +26,9 @@ namespace _4_5_lw
             InitializeComponent();
         }
 
+        /// 
+        /// Handlers for manipulations with font
+        /// 
         private void FontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (WorkField == null) return;
@@ -52,6 +55,9 @@ namespace _4_5_lw
             this.ChangeSelectedTextProperty(TextElement.ForegroundProperty, Regex.Replace(color.Trim(), @".*:\s+", ""));
         }
 
+        /// 
+        /// RichBox's changes history manipulation
+        /// 
         private void UndoButton_Click(object sender, RoutedEventArgs e)
         {
             WorkField.Undo();
@@ -60,6 +66,39 @@ namespace _4_5_lw
         private void RedoButton_Click(object sender, RoutedEventArgs e)
         {
             WorkField.Redo();
+        }
+
+        /// 
+        /// Handlers for changing font style/decorations
+        /// 
+        private void BoldToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            this.ChangeSelectedTextProperty(TextElement.FontWeightProperty, "Bold");
+        }
+
+        private void BoldToggle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.ChangeSelectedTextProperty(TextElement.FontWeightProperty, "Regular");
+        }
+
+        private void ItalicToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            this.ChangeSelectedTextProperty(TextElement.FontStyleProperty, "Italic");
+        }
+
+        private void ItalicToggle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.ChangeSelectedTextProperty(TextElement.FontStyleProperty, "Normal");
+        }
+
+        private void UnderlineToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            this.ChangeSelectedTextProperty(TextBox.TextDecorationsProperty, "Underline");
+        }
+
+        private void UnderlineToggle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.ChangeSelectedTextProperty(TextBox.TextDecorationsProperty, "None");
         }
 
         private void ChangeSelectedTextProperty(DependencyProperty property, object value)

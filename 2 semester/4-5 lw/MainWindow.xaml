@@ -50,9 +50,9 @@
 
                 <Separator Margin="5" />
 
-                <ToggleButton Padding="5 0 5 0">B</ToggleButton>
-                <ToggleButton Padding="5 0 5 0" FontStyle="Italic">I</ToggleButton>
-                <ToggleButton Padding="5 0 5 0">
+                <ToggleButton x:Name="BoldToggle" Padding="5 0 5 0" Checked="BoldToggle_Checked" Unchecked="BoldToggle_Unchecked">B</ToggleButton>
+                <ToggleButton x:Name="ItalicToggle" Padding="5 0 5 0" FontStyle="Italic" Checked="ItalicToggle_Checked" Unchecked="ItalicToggle_Unchecked">I</ToggleButton>
+                <ToggleButton x:Name="UnderlineToggle" Padding="5 0 5 0" Checked="UnderlineToggle_Checked" Unchecked="UnderlineToggle_Unchecked">
                     <TextBlock TextDecorations="Underline">U</TextBlock>
                 </ToggleButton>
 

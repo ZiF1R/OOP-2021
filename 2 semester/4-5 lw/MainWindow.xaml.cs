@@ -30,8 +30,8 @@ namespace _4_5_lw
         private void SetDefaultEditorStyles()
         {
             WorkField.FontFamily = new FontFamily(
-                Regex.Replace(FontFamily.SelectedItem.ToString().Trim(), @".*:\s+", ""
-            ));
+                Regex.Replace(FontFamily.SelectedItem.ToString().Trim(), @".*:\s+", "")
+            );
             WorkField.FontSize = Convert.ToDouble(
                 Regex.Replace(FontSize.SelectedItem.ToString().Trim(), @".*:\s+", "")
             );

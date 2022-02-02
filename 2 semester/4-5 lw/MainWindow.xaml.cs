@@ -150,8 +150,9 @@ namespace _4_5_lw
         private void WorkField_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextRange text = new TextRange(WorkField.Document.ContentStart, WorkField.Document.ContentEnd);
+            int charactersNumber = Regex.Replace(text.Text, @"[\s\n\v\f\r]", "").Length;
             if (CharactersStatus != null)
-                CharactersStatus.Content = $"Characters: {text.Text.Length - 3}";
+                CharactersStatus.Content = $"Characters: {charactersNumber}";
         }
     }
 }

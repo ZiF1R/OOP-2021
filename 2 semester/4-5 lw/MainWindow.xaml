@@ -55,6 +55,9 @@
                 <ToggleButton x:Name="UnderlineToggle" Padding="5 0 5 0" Checked="UnderlineToggle_Checked" Unchecked="UnderlineToggle_Unchecked">
                     <TextBlock TextDecorations="Underline">U</TextBlock>
                 </ToggleButton>
+                <ToggleButton x:Name="StrikeToggle" Padding="5 0 5 0" Checked="StrikeToggle_Checked" Unchecked="StrikeToggle_Unchecked">
+                    <TextBlock TextDecorations="Strikethrough">S</TextBlock>
+                </ToggleButton>
 
                 <Separator Margin="5" />
 

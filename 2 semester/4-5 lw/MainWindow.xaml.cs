@@ -101,6 +101,16 @@ namespace _4_5_lw
             this.ChangeSelectedTextProperty(TextBox.TextDecorationsProperty, "None");
         }
 
+        private void StrikeToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            this.ChangeSelectedTextProperty(TextBox.TextDecorationsProperty, "Strikethrough");
+        }
+
+        private void StrikeToggle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.ChangeSelectedTextProperty(TextBox.TextDecorationsProperty, "None");
+        }
+
         private void ChangeSelectedTextProperty(DependencyProperty property, object value)
         {
             var selection = WorkField.Selection;

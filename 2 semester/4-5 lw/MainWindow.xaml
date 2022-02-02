@@ -14,8 +14,9 @@
                 <MenuItem Header="Open" />
             </MenuItem>
             <MenuItem Header="Edit" >
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
+                <MenuItem Click="Copy_Click" Header="Copy" />
+                <MenuItem Click="Paste_Click" Header="Paste" />
+                <MenuItem Click="Cut_Click" Header="Cut" />
             </MenuItem>
         </Menu>
         <ToolBarTray Height="25" VerticalAlignment="Top" Margin="0,23,0,0">
@@ -29,18 +30,21 @@
                 <Button x:Name="_Save" ToolTip="Save">
                     <Image Source="/save.png" Height="17" Width="16" />
                 </Button>
-                
+
                 <Separator Margin="5" />
-                
-                <Button x:Name="_Copy" ToolTip="Copy">
+
+                <Button x:Name="Copy" ToolTip="Copy" Click="Copy_Click">
                     <Image Source="/copy.png" Height="13" Width="14" />
                 </Button>
-                <Button x:Name="_Paste" ToolTip="Paste">
+                <Button x:Name="Paste" ToolTip="Paste" Click="Paste_Click">
                     <Image Source="/paste.png" Height="15" Width="16" />
                 </Button>
-                
+                <Button x:Name="Cut" ToolTip="Cut" Click="Cut_Click">
+                    <Image Source="/cut.png" Height="13" Width="14" />
+                </Button>
+
                 <Separator Margin="5" />
-                
+
                 <Button x:Name="UndoButton" ToolTip="Undo" Click="UndoButton_Click">
                     <Image Source="/undo.png" Height="13" Width="14" />
                 </Button>
@@ -138,7 +142,7 @@
                 </ComboBox>
             </ToolBar>
         </ToolBarTray>
-        <RichTextBox SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,0,0">
+        <RichTextBox Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,0,0">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"/>

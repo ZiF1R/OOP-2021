@@ -24,6 +24,17 @@ namespace _4_5_lw
         public MainWindow()
         {
             InitializeComponent();
+            this.SetDefaultEditorStyles();
+        }
+
+        private void SetDefaultEditorStyles()
+        {
+            WorkField.FontFamily = new FontFamily(
+                Regex.Replace(FontFamily.SelectedItem.ToString().Trim(), @".*:\s+", ""
+            ));
+            WorkField.FontSize = Convert.ToDouble(
+                Regex.Replace(FontSize.SelectedItem.ToString().Trim(), @".*:\s+", "")
+            );
         }
 
         /// 
@@ -116,6 +127,24 @@ namespace _4_5_lw
             var selection = WorkField.Selection;
             if (!selection.IsEmpty)
                 selection.ApplyPropertyValue(property, value);
+        }
+
+        /// 
+        /// Handlers for working with clipboard
+        /// 
+        private void Copy_Click(object sender, RoutedEventArgs e)
+        {
+            WorkField.Copy();
+        }
+
+        private void Paste_Click(object sender, RoutedEventArgs e)
+        {
+            WorkField.Paste();
+        }
+
+        private void Cut_Click(object sender, RoutedEventArgs e)
+        {
+            WorkField.Cut();
         }
     }
 }

@@ -52,6 +52,16 @@ namespace _4_5_lw
             this.ChangeSelectedTextProperty(TextElement.ForegroundProperty, Regex.Replace(color.Trim(), @".*:\s+", ""));
         }
 
+        private void UndoButton_Click(object sender, RoutedEventArgs e)
+        {
+            WorkField.Undo();
+        }
+
+        private void RedoButton_Click(object sender, RoutedEventArgs e)
+        {
+            WorkField.Redo();
+        }
+
         private void ChangeSelectedTextProperty(DependencyProperty property, object value)
         {
             var selection = WorkField.Selection;

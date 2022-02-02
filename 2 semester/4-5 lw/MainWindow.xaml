@@ -41,10 +41,10 @@
                 
                 <Separator Margin="5" />
                 
-                <Button x:Name="_Undo" ToolTip="Undo">
+                <Button x:Name="UndoButton" ToolTip="Undo" Click="UndoButton_Click">
                     <Image Source="/undo.png" Height="13" Width="14" />
                 </Button>
-                <Button x:Name="_Redo" ToolTip="Redo">
+                <Button x:Name="RedoButton" ToolTip="Redo" Click="RedoButton_Click">
                     <Image Source="/redo.png" Height="13" Width="14" />
                 </Button>
 

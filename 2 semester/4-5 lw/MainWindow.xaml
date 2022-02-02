@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:_4_5_lw"
         mc:Ignorable="d"
         Title="Editor" Height="600" Width="1000" Icon="/text-editor.png">
-    <Grid>
+    <Grid Background="#FFEDEDED">
         <Menu Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="File" Height="23">
                 <MenuItem Header="New" />
@@ -142,13 +142,22 @@
                 </ComboBox>
             </ToolBar>
         </ToolBarTray>
-        <RichTextBox Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,0,0">
+        <RichTextBox Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,0,30" TextChanged="WorkField_TextChanged">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"/>
                 </Style>
             </RichTextBox.Resources>
-            <FlowDocument/>
+            <FlowDocument>
+                <Paragraph>
+                    <InlineUIContainer>
+                        <StatusBar/>
+                    </InlineUIContainer>
+                </Paragraph>
+            </FlowDocument>
         </RichTextBox>
+        <StatusBar Name="StatusBar" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <StatusBarItem x:Name="CharactersStatus" Content="Characters: 0"/>
+        </StatusBar>
     </Grid>
 </Window>

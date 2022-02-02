@@ -146,5 +146,12 @@ namespace _4_5_lw
         {
             WorkField.Cut();
         }
+
+        private void WorkField_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextRange text = new TextRange(WorkField.Document.ContentStart, WorkField.Document.ContentEnd);
+            if (CharactersStatus != null)
+                CharactersStatus.Content = $"Characters: {text.Text.Length - 3}";
+        }
     }
 }

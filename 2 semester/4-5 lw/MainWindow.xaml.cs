@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,39 @@ namespace _4_5_lw
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void FontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (WorkField == null) return;
+            ComboBox comboBox = (ComboBox)sender;
+            string font = FontFamily.SelectedItem.ToString();
+            this.ChangeSelectedTextProperty(
+                TextElement.FontFamilyProperty, new FontFamily(Regex.Replace(font.Trim(), @".*:\s+", ""))
+            );
+        }
+
+        private void FontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (WorkField == null) return;
+            ComboBox comboBox = (ComboBox)sender;
+            string size = FontSize.SelectedItem.ToString();
+            this.ChangeSelectedTextProperty(TextElement.FontSizeProperty, Regex.Replace(size.Trim(), @".*:\s+", ""));
+        }
+
+        private void FontColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (WorkField == null) return;
+            ComboBox comboBox = (ComboBox)sender;
+            string color = FontColor.SelectedItem.ToString();
+            this.ChangeSelectedTextProperty(TextElement.ForegroundProperty, Regex.Replace(color.Trim(), @".*:\s+", ""));
+        }
+
+        private void ChangeSelectedTextProperty(DependencyProperty property, object value)
+        {
+            var selection = WorkField.Selection;
+            if (!selection.IsEmpty)
+                selection.ApplyPropertyValue(property, value);
         }
     }
 }

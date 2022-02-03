@@ -14,10 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _4_5_lw
+namespace test
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -153,6 +153,32 @@ namespace _4_5_lw
             int charactersNumber = Regex.Replace(text.Text, @"[\s\n\v\f\r]", "").Length;
             if (CharactersStatus != null)
                 CharactersStatus.Content = $"Characters: {charactersNumber}";
+        }
+
+        /// 
+        /// working with files
+        /// 
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// 
+        /// support of multilanguage
+        /// 
+        private void RU_Click(object sender, RoutedEventArgs e)
+        {
+            Language.Source = new Uri("pack://application:,,,/lang/ru.xaml");
+        }
+
+        private void EN_Click(object sender, RoutedEventArgs e)
+        {
+            Language.Source = new Uri("pack://application:,,,/lang/en.xaml");
+        }
+
+        private void JP_Click(object sender, RoutedEventArgs e)
+        {
+            Language.Source = new Uri("pack://application:,,,/lang/jp.xaml");
         }
     }
 }

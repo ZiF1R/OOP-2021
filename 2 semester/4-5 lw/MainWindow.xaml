@@ -1,54 +1,62 @@
-﻿<Window x:Name="Editor" x:Class="_4_5_lw.MainWindow"
+﻿<Window x:Name="window" x:Class="test.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:_4_5_lw"
+        xmlns:local="clr-namespace:test"
         mc:Ignorable="d"
-        Title="Editor" Height="600" Width="1000" Icon="/text-editor.png">
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary x:Name="Language" Source="/lang/en.xaml"/>
+    </Window.Resources>
     <Grid Background="#FFEDEDED">
         <Menu Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <MenuItem Header="File" Height="23">
-                <MenuItem Header="New" />
-                <MenuItem Header="Save" />
-                <MenuItem Header="Open" />
+            <MenuItem Header="{DynamicResource File}" Height="23">
+                <MenuItem Click="New_Click" Header="{DynamicResource New}" />
+                <MenuItem Header="{DynamicResource Save}" />
+                <MenuItem Header="{DynamicResource Open}" />
             </MenuItem>
-            <MenuItem Header="Edit" >
-                <MenuItem Click="Copy_Click" Header="Copy" />
-                <MenuItem Click="Paste_Click" Header="Paste" />
-                <MenuItem Click="Cut_Click" Header="Cut" />
+            <MenuItem Header="{DynamicResource Edit}">
+                <MenuItem Click="Copy_Click" Header="{DynamicResource Copy}" />
+                <MenuItem Click="Paste_Click" Header="{DynamicResource Paste}" />
+                <MenuItem Click="Cut_Click" Header="{DynamicResource Cut}" />
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Lang}">
+                <MenuItem Click="RU_Click" Header="{DynamicResource RU}" />
+                <MenuItem Click="EN_Click" Header="{DynamicResource EN}" />
+                <MenuItem Click="JP_Click" Header="{DynamicResource JP}" />
             </MenuItem>
         </Menu>
         <ToolBarTray Height="25" VerticalAlignment="Top" Margin="0,23,0,0">
             <ToolBar Height="26" Width="auto" Margin="0,0,-1000,558" Header="&#xD;&#xA;">
-                <Button x:Name="_New" ToolTip="New">
+                <Button x:Name="_New" ToolTip="{DynamicResource New}">
                     <Image Height="15" Width="16" Source="/new.png" />
                 </Button>
-                <Button x:Name="_Open" ToolTip="Open">
+                <Button x:Name="_Open" ToolTip="{DynamicResource Open}">
                     <Image Source="/open.png" Height="17" Width="16" />
                 </Button>
-                <Button x:Name="_Save" ToolTip="Save">
+                <Button x:Name="_Save" ToolTip="{DynamicResource Save}">
                     <Image Source="/save.png" Height="17" Width="16" />
                 </Button>
 
                 <Separator Margin="5" />
 
-                <Button x:Name="Copy" ToolTip="Copy" Click="Copy_Click">
+                <Button x:Name="Copy" ToolTip="{DynamicResource Copy}" Click="Copy_Click">
                     <Image Source="/copy.png" Height="13" Width="14" />
                 </Button>
-                <Button x:Name="Paste" ToolTip="Paste" Click="Paste_Click">
+                <Button x:Name="Paste" ToolTip="{DynamicResource Paste}" Click="Paste_Click">
                     <Image Source="/paste.png" Height="15" Width="16" />
                 </Button>
-                <Button x:Name="Cut" ToolTip="Cut" Click="Cut_Click">
+                <Button x:Name="Cut" ToolTip="{DynamicResource Cut}" Click="Cut_Click">
                     <Image Source="/cut.png" Height="13" Width="14" />
                 </Button>
 
                 <Separator Margin="5" />
 
-                <Button x:Name="UndoButton" ToolTip="Undo" Click="UndoButton_Click">
+                <Button x:Name="UndoButton" ToolTip="{DynamicResource Undo}" Click="UndoButton_Click">
                     <Image Source="/undo.png" Height="13" Width="14" />
                 </Button>
-                <Button x:Name="RedoButton" ToolTip="Redo" Click="RedoButton_Click">
+                <Button x:Name="RedoButton" ToolTip="{DynamicResource Redo}" Click="RedoButton_Click">
                     <Image Source="/redo.png" Height="13" Width="14" />
                 </Button>
 

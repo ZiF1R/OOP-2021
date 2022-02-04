@@ -17,4 +17,6 @@
     <v:String x:Key="RU">Русский</v:String>
     <v:String x:Key="EN">English</v:String>
     <v:String x:Key="JP">日本語</v:String>
+    <v:String x:Key="Other">他の</v:String>
+    <v:String x:Key="Recent">最近</v:String>
 </ResourceDictionary>

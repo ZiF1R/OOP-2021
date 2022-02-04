@@ -14,7 +14,10 @@
             <MenuItem Header="{DynamicResource File}" Height="23">
                 <MenuItem Click="New_Click" Header="{DynamicResource New}" />
                 <MenuItem Click="Save_Click" Header="{DynamicResource Save}" />
-                <MenuItem Click="Open_Click" Header="{DynamicResource Open}" />
+                <MenuItem Header="{DynamicResource Open}">
+                    <MenuItem Click="Open_Click" Header="{DynamicResource Other}" />
+                    <MenuItem x:Name="OpenedFilesList" Header="{DynamicResource Recent}" />
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Edit}">
                 <MenuItem Click="Copy_Click" Header="{DynamicResource Copy}" />

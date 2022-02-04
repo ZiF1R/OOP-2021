@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -25,6 +27,7 @@ namespace test
         {
             InitializeComponent();
             this.SetDefaultEditorStyles();
+            window.Title += " ・ " + Directory.GetCurrentDirectory();
         }
 
         private void SetDefaultEditorStyles()
@@ -160,7 +163,99 @@ namespace test
         /// 
         private void New_Click(object sender, RoutedEventArgs e)
         {
+            var answer = MessageBox.Show(
+                "Are you sure? After this action all changes will disappear!",
+                "Warning!",
+                MessageBoxButton.OKCancel,
+                MessageBoxImage.Warning
+            );
 
+            if (answer == MessageBoxResult.OK)
+            {
+                WorkField.Document.Blocks.Clear();
+                window.Title = "New file ・ " + Directory.GetCurrentDirectory();
+            }
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            TextRange text = new TextRange(WorkField.Document.ContentStart, WorkField.Document.ContentEnd);
+            SaveFileDialog file = new SaveFileDialog();
+            file.Filter = "Text File (*.txt)|*.txt|Rich Text Format (*.rtf)|*.rtf";
+
+            if (file.ShowDialog() == true)
+            {
+                using (FileStream fs = File.Create(file.FileName))
+                {
+                    string extension = System.IO.Path.GetExtension(file.FileName).ToLower();
+                    if (extension == ".txt") text.Save(fs, DataFormats.Rtf);
+                    else if (extension == ".rtf") text.Save(fs, DataFormats.Text);
+                    else
+                    {
+                        MessageBox.Show(
+                            "Wrong file extension!",
+                            "Error",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error
+                        );
+                        return;
+                    }
+                }
+                window.Title = this.GetFileName(file) + " ・ " + Directory.GetCurrentDirectory();
+            }
+        }
+
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+            var answer = MessageBox.Show(
+                "Are you sure? After this action all changes will disappear!",
+                "Warning!",
+                MessageBoxButton.OKCancel,
+                MessageBoxImage.Warning
+            );
+            if (answer == MessageBoxResult.Cancel) return;
+
+            TextRange text = new TextRange(WorkField.Document.ContentStart, WorkField.Document.ContentEnd);
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "All files (*.*)|*.*|Text File (*.txt)|*.txt|Rich Text Format (*.rtf)|*.rtf";
+
+            if (file.ShowDialog() == true)
+            {
+                FileStream fs = new FileStream(file.FileName, FileMode.Open);
+                TextRange range = new TextRange(WorkField.Document.ContentStart, WorkField.Document.ContentEnd);
+                string extension = System.IO.Path.GetExtension(file.FileName).ToLower();
+
+                if (extension != ".rtf" && extension != ".txt")
+                {
+                    MessageBox.Show(
+                        "Wrong file extension!",
+                        "Error",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error
+                    );
+                    return;
+                }
+                range.Load(fs, DataFormats.Rtf);
+                window.Title = this.GetFileName(file) + " ・ " + Directory.GetCurrentDirectory();
+            }
+        }
+
+        private string GetFileName(SaveFileDialog file)
+        {
+            string fileName = Regex.Match(file.FileName, @"\\[^\\]+\..+$").Value;
+            fileName = Regex.Replace(fileName, @"\\", "");
+            //fileName = Regex.Replace(fileName, @"\..+", "");
+
+            return fileName;
+        }
+
+        private string GetFileName(OpenFileDialog file)
+        {
+            string fileName = Regex.Match(file.FileName, @"\\[^\\]+\..+$").Value;
+            fileName = Regex.Replace(fileName, @"\\", "");
+            //fileName = Regex.Replace(fileName, @"\..+", "");
+
+            return fileName;
         }
 
         /// 
@@ -179,6 +274,23 @@ namespace test
         private void JP_Click(object sender, RoutedEventArgs e)
         {
             Language.Source = new Uri("pack://application:,,,/lang/jp.xaml");
+        }
+
+        /// 
+        /// make sure that all changes was saved
+        /// 
+        private void window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var answer = MessageBox.Show(
+                "Are you sure? After this action all changes will disappear!",
+                "Warning!",
+                MessageBoxButton.OKCancel,
+                MessageBoxImage.Warning
+            );
+
+            if (answer == MessageBoxResult.Cancel)
+                e.Cancel = true;
+            else e.Cancel = false;
         }
     }
 }

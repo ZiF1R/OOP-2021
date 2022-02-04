@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:test"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1000" Icon="/text-editor.png" Closing="window_Closing">
     <Window.Resources>
         <ResourceDictionary x:Name="Language" Source="/lang/en.xaml"/>
     </Window.Resources>
@@ -13,8 +13,8 @@
         <Menu Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="{DynamicResource File}" Height="23">
                 <MenuItem Click="New_Click" Header="{DynamicResource New}" />
-                <MenuItem Header="{DynamicResource Save}" />
-                <MenuItem Header="{DynamicResource Open}" />
+                <MenuItem Click="Save_Click" Header="{DynamicResource Save}" />
+                <MenuItem Click="Open_Click" Header="{DynamicResource Open}" />
             </MenuItem>
             <MenuItem Header="{DynamicResource Edit}">
                 <MenuItem Click="Copy_Click" Header="{DynamicResource Copy}" />
@@ -28,15 +28,15 @@
             </MenuItem>
         </Menu>
         <ToolBarTray Height="25" VerticalAlignment="Top" Margin="0,23,0,0">
-            <ToolBar Height="26" Width="auto" Margin="0,0,-1000,558" Header="&#xD;&#xA;">
-                <Button x:Name="_New" ToolTip="{DynamicResource New}">
+            <ToolBar Height="26" Margin="0,0,-1000,558" Header="&#xD;&#xA;">
+                <Button x:Name="_New" Click="New_Click" ToolTip="{DynamicResource New}">
                     <Image Height="15" Width="16" Source="/new.png" />
                 </Button>
-                <Button x:Name="_Open" ToolTip="{DynamicResource Open}">
-                    <Image Source="/open.png" Height="17" Width="16" />
-                </Button>
-                <Button x:Name="_Save" ToolTip="{DynamicResource Save}">
+                <Button x:Name="_Save" Click="Save_Click" ToolTip="{DynamicResource Save}">
                     <Image Source="/save.png" Height="17" Width="16" />
+                </Button>
+                <Button x:Name="_Open" Click="Open_Click" ToolTip="{DynamicResource Open}">
+                    <Image Source="/open.png" Height="17" Width="16" />
                 </Button>
 
                 <Separator Margin="5" />

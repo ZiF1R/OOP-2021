@@ -56,13 +56,19 @@ namespace test
                     if (restoredFilesHistory != null)
                         this.recentFilesHistory = restoredFilesHistory;
                 }
-                foreach (string path in this.recentFilesHistory)
-                {
-                    MenuItem menuItem = new MenuItem();
-                    menuItem.Header = path;
-                    menuItem.Click += this.OpenRecent_Click;
-                    OpenedFilesList.Items.Add(menuItem);
-                }
+                this.PrintRecentFiles();
+            }
+        }
+
+        private void PrintRecentFiles()
+        {
+            OpenedFilesList.Items.Clear();
+            foreach (string path in this.recentFilesHistory)
+            {
+                MenuItem menuItem = new MenuItem();
+                menuItem.Header = path;
+                menuItem.Click += this.OpenRecent_Click;
+                OpenedFilesList.Items.Add(menuItem);
             }
         }
 
@@ -262,8 +268,9 @@ namespace test
             string filePath = menuItem.Header.ToString();
             if (menuItem != null && filePath != null)
             {
-                this.ReadFromFile(filePath);
-                this.SaveToRecentFilesHistory(filePath);
+                bool isSuccesfully = this.ReadFromFile(filePath);
+                if (isSuccesfully)
+                    this.SaveToRecentFilesHistory(filePath);
             }
         }
 
@@ -306,14 +313,7 @@ namespace test
                 else
                     this.recentFilesHistory = this.recentFilesHistory.Prepend(newPath).ToArray();
             }
-            OpenedFilesList.Items.Clear();
-            foreach (string path in this.recentFilesHistory)
-            {
-                MenuItem menuItem = new MenuItem();
-                menuItem.Header = path;
-                menuItem.Click += this.OpenRecent_Click;
-                OpenedFilesList.Items.Add(menuItem);
-            }
+            this.PrintRecentFiles();
 
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(string[]));
             using (FileStream fs = new FileStream("recentFiles.json", FileMode.Create))
@@ -322,9 +322,25 @@ namespace test
             }
         }
 
-        private void ReadFromFile(string fullPath)
+        private bool ReadFromFile(string fullPath)
         {
-            FileStream fs = new FileStream(fullPath, FileMode.Open);
+            FileStream fs;
+            try
+            {
+                fs = new FileStream(fullPath, FileMode.Open);
+            }
+            catch (FileNotFoundException)
+            {
+                this.RemoveRecentFilePath(fullPath);
+                this.PrintRecentFiles();
+                MessageBox.Show(
+                    "The file doesn't exist! Check the path to file!",
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+                return false;
+            }
             TextRange range = new TextRange(WorkField.Document.ContentStart, WorkField.Document.ContentEnd);
             string extension = System.IO.Path.GetExtension(fullPath).ToLower();
 
@@ -336,11 +352,24 @@ namespace test
                     MessageBoxButton.OK,
                     MessageBoxImage.Error
                 );
-                return;
+                return false;
             }
             range.Load(fs, DataFormats.Rtf);
             window.Title = this.GetFileName(fullPath) + " ・ " + Directory.GetCurrentDirectory();
             this.isChangesSaved = true;
+
+            return true;
+        }
+
+        private void RemoveRecentFilePath(string pathToRemove)
+        {
+            this.recentFilesHistory = this.recentFilesHistory.Where(path => path != pathToRemove).ToArray();
+
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(string[]));
+            using (FileStream fs = new FileStream("recentFiles.json", FileMode.Create))
+            {
+                serializer.WriteObject(fs, this.recentFilesHistory);
+            }
         }
 
         /// 

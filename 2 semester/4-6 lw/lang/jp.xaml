@@ -19,4 +19,7 @@
     <v:String x:Key="JP">日本語</v:String>
     <v:String x:Key="Other">他の</v:String>
     <v:String x:Key="Recent">最近</v:String>
+    <v:String x:Key="Themes">スキン</v:String>
+    <v:String x:Key="Default">デフォルト</v:String>
+    <v:String x:Key="VueTheme">VueTheme</v:String>
 </ResourceDictionary>

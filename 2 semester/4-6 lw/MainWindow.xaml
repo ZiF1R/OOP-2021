@@ -10,11 +10,12 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="Language" Source="/lang/en.xaml"/>
+                <ResourceDictionary Source="/themes/Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Background="#FFEDEDED">
-        <Menu Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2">
+    <Grid Background="{DynamicResource GridBg}">
+        <Menu Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="{DynamicResource MenuBg}">
             <MenuItem Header="{DynamicResource File}" Height="23">
                 <MenuItem Click="New_Click" Header="{DynamicResource New}" />
                 <MenuItem Click="Save_Click" Header="{DynamicResource Save}" />
@@ -33,9 +34,13 @@
                 <MenuItem Click="EN_Click" Header="{DynamicResource EN}" />
                 <MenuItem Click="JP_Click" Header="{DynamicResource JP}" />
             </MenuItem>
+            <MenuItem Header="{DynamicResource Themes}">
+                <MenuItem x:Name="DefaultTheme" Header="{DynamicResource Default}" Click="DefaultTheme_Click" />
+                <MenuItem x:Name="VueTheme" Header="{DynamicResource VueTheme}" Click="VueTheme_Click" />
+            </MenuItem>
         </Menu>
         <ToolBarTray Height="25" VerticalAlignment="Top" Margin="0,23,0,0">
-            <ToolBar Height="26" Margin="0,0,-1000,558" Header="&#xD;&#xA;">
+            <ToolBar Height="26" Margin="0,0,-1000,558" Header="&#xD;&#xA;" Background="{DynamicResource ToolBarBg}">
                 <Button x:Name="_New" Click="New_Click" ToolTip="{DynamicResource New}">
                     <Image Height="15" Width="16" Source="/new.png" />
                 </Button>
@@ -157,7 +162,7 @@
                 </ComboBox>
             </ToolBar>
         </ToolBarTray>
-        <RichTextBox Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,0,30" TextChanged="WorkField_TextChanged">
+        <RichTextBox Background="{DynamicResource RichTextBoxBg}" Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,0,30" TextChanged="WorkField_TextChanged">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"/>
@@ -171,7 +176,7 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <StatusBar Name="StatusBar" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+        <StatusBar Name="StatusBar" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{DynamicResource StatusBarBg}">
             <StatusBarItem x:Name="CharactersStatus" Content="Characters: 0"/>
             <StatusBarItem x:Name="PathStatus" Content="Path:" Opacity="0.5"/>
         </StatusBar>

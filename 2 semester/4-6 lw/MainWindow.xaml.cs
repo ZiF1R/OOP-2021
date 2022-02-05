@@ -27,6 +27,7 @@ namespace test
         string[] recentFilesHistory = { };
         bool isChangesSaved = true;
         private ResourceDictionary currentLang = new ResourceDictionary();
+        private ResourceDictionary currentTheme = new ResourceDictionary();
 
         public MainWindow()
         {
@@ -35,6 +36,7 @@ namespace test
             this.FindRecentOpenedFiles();
             PathStatus.Content = "Path: " + Directory.GetCurrentDirectory();
             this.currentLang.Source = new Uri("pack://application:,,,/lang/en.xaml");
+            this.currentTheme.Source = new Uri("pack://application:,,,/themes/Default.xaml");
             //this.Cursor = new Cursor("\\cursor.cur");
             //var sri = Application.GetResourceStream(new Uri("icons/cursor.cur", UriKind.Relative));
             //var customCursor = new Cursor(sri.Stream);
@@ -384,32 +386,40 @@ namespace test
         /// 
         private void RU_Click(object sender, RoutedEventArgs e)
         {
-            Uri newLang = new Uri("pack://application:,,,/lang/ru.xaml");
-            ResourceDictionary resource = new ResourceDictionary();
-            resource.Source = newLang;
-            this.Resources.MergedDictionaries.Remove(currentLang);
-            this.Resources.MergedDictionaries.Add(resource);
-            currentLang.Source = newLang;
+            this.SetNewResource(this.currentLang, "pack://application:,,,/lang/ru.xaml");
         }
 
         private void EN_Click(object sender, RoutedEventArgs e)
         {
-            Uri newLang = new Uri("pack://application:,,,/lang/en.xaml");
-            ResourceDictionary resource = new ResourceDictionary();
-            resource.Source = newLang;
-            this.Resources.MergedDictionaries.Remove(currentLang);
-            this.Resources.MergedDictionaries.Add(resource);
-            currentLang.Source = newLang;
+            this.SetNewResource(this.currentLang, "pack://application:,,,/lang/en.xaml");
         }
 
         private void JP_Click(object sender, RoutedEventArgs e)
         {
-            Uri newLang = new Uri("pack://application:,,,/lang/jp.xaml");
-            ResourceDictionary resource = new ResourceDictionary();
-            resource.Source = newLang;
-            this.Resources.MergedDictionaries.Remove(currentLang);
-            this.Resources.MergedDictionaries.Add(resource);
-            currentLang.Source = newLang;
+            this.SetNewResource(this.currentLang, "pack://application:,,,/lang/jp.xaml");
+        }
+
+        /// 
+        /// working with themes
+        /// 
+        private void DefaultTheme_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/Default.xaml");
+        }
+
+        private void VueTheme_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/VueTheme.xaml");
+        }
+
+        private void SetNewResource(ResourceDictionary oldResource, string newResourcePath)
+        {
+            Uri newSource = new Uri(newResourcePath);
+            ResourceDictionary newResource = new ResourceDictionary();
+            newResource.Source = newSource;
+            this.Resources.MergedDictionaries.Remove(oldResource);
+            this.Resources.MergedDictionaries.Add(newResource);
+            oldResource.Source = newSource;
         }
 
         /// 

@@ -26,6 +26,7 @@ namespace test
     {
         string[] recentFilesHistory = { };
         bool isChangesSaved = true;
+        private ResourceDictionary currentLang = new ResourceDictionary();
 
         public MainWindow()
         {
@@ -33,6 +34,7 @@ namespace test
             this.SetDefaultEditorStyles();
             this.FindRecentOpenedFiles();
             PathStatus.Content = "Path: " + Directory.GetCurrentDirectory();
+            this.currentLang.Source = new Uri("pack://application:,,,/lang/en.xaml");
             //this.Cursor = new Cursor("\\cursor.cur");
             //var sri = Application.GetResourceStream(new Uri("icons/cursor.cur", UriKind.Relative));
             //var customCursor = new Cursor(sri.Stream);
@@ -382,17 +384,32 @@ namespace test
         /// 
         private void RU_Click(object sender, RoutedEventArgs e)
         {
-            Language.Source = new Uri("pack://application:,,,/lang/ru.xaml");
+            Uri newLang = new Uri("pack://application:,,,/lang/ru.xaml");
+            ResourceDictionary resource = new ResourceDictionary();
+            resource.Source = newLang;
+            this.Resources.MergedDictionaries.Remove(currentLang);
+            this.Resources.MergedDictionaries.Add(resource);
+            currentLang.Source = newLang;
         }
 
         private void EN_Click(object sender, RoutedEventArgs e)
         {
-            Language.Source = new Uri("pack://application:,,,/lang/en.xaml");
+            Uri newLang = new Uri("pack://application:,,,/lang/en.xaml");
+            ResourceDictionary resource = new ResourceDictionary();
+            resource.Source = newLang;
+            this.Resources.MergedDictionaries.Remove(currentLang);
+            this.Resources.MergedDictionaries.Add(resource);
+            currentLang.Source = newLang;
         }
 
         private void JP_Click(object sender, RoutedEventArgs e)
         {
-            Language.Source = new Uri("pack://application:,,,/lang/jp.xaml");
+            Uri newLang = new Uri("pack://application:,,,/lang/jp.xaml");
+            ResourceDictionary resource = new ResourceDictionary();
+            resource.Source = newLang;
+            this.Resources.MergedDictionaries.Remove(currentLang);
+            this.Resources.MergedDictionaries.Add(resource);
+            currentLang.Source = newLang;
         }
 
         /// 

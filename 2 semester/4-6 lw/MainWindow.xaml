@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000" Icon="/text-editor.png" Closing="window_Closing">
     <Window.Resources>
-        <ResourceDictionary x:Name="Language" Source="/lang/en.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Name="Language" Source="/lang/en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Background="#FFEDEDED">
         <Menu Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2">

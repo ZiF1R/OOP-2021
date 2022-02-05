@@ -32,7 +32,11 @@ namespace test
             InitializeComponent();
             this.SetDefaultEditorStyles();
             this.FindRecentOpenedFiles();
-            window.Title += " ・ " + Directory.GetCurrentDirectory();
+            PathStatus.Content = "Path: " + Directory.GetCurrentDirectory();
+            //this.Cursor = new Cursor("\\cursor.cur");
+            //var sri = Application.GetResourceStream(new Uri("icons/cursor.cur", UriKind.Relative));
+            //var customCursor = new Cursor(sri.Stream);
+            //this.Cursor = customCursor;
         }
 
         private void SetDefaultEditorStyles()
@@ -207,7 +211,7 @@ namespace test
                 if (answer == MessageBoxResult.Cancel) return;
             }
             WorkField.Document.Blocks.Clear();
-            window.Title = "New file ・ " + Directory.GetCurrentDirectory();
+            window.Title = "New file";
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -234,7 +238,7 @@ namespace test
                         return;
                     }
                 }
-                window.Title = this.GetFileName(file.FileName) + " ・ " + Directory.GetCurrentDirectory();
+                window.Title = this.GetFileName(file.FileName);
                 this.SaveToRecentFilesHistory(file.FileName);
                 this.isChangesSaved = true;
             }
@@ -257,9 +261,10 @@ namespace test
             file.Filter = "All files (*.*)|*.*|Text File (*.txt)|*.txt|Rich Text Format (*.rtf)|*.rtf";
 
             if (file.ShowDialog() == true)
+            {
                 this.ReadFromFile(file.FileName);
-
-            this.SaveToRecentFilesHistory(file.FileName);
+                this.SaveToRecentFilesHistory(file.FileName);
+            }
         }
 
         private void OpenRecent_Click(object sender, RoutedEventArgs e)
@@ -355,7 +360,7 @@ namespace test
                 return false;
             }
             range.Load(fs, DataFormats.Rtf);
-            window.Title = this.GetFileName(fullPath) + " ・ " + Directory.GetCurrentDirectory();
+            window.Title = this.GetFileName(fullPath);
             this.isChangesSaved = true;
 
             return true;

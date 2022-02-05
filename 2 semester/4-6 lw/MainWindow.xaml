@@ -169,6 +169,7 @@
         </RichTextBox>
         <StatusBar Name="StatusBar" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom">
             <StatusBarItem x:Name="CharactersStatus" Content="Characters: 0"/>
+            <StatusBarItem x:Name="PathStatus" Content="Path:" Opacity="0.5"/>
         </StatusBar>
     </Grid>
 </Window>

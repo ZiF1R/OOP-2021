@@ -266,13 +266,25 @@ namespace test
 
             if (file.ShowDialog() == true)
             {
-                this.ReadFromFile(file.FileName);
-                this.SaveToRecentFilesHistory(file.FileName);
+                bool isSuccesfully = this.ReadFromFile(file.FileName);
+                if (isSuccesfully)
+                    this.SaveToRecentFilesHistory(file.FileName);
             }
         }
 
         private void OpenRecent_Click(object sender, RoutedEventArgs e)
         {
+            if (!this.isChangesSaved)
+            {
+                var answer = MessageBox.Show(
+                    "Are you sure? After this action all unsaved changes will disappear!",
+                    "Warning!",
+                    MessageBoxButton.OKCancel,
+                    MessageBoxImage.Warning
+                );
+                if (answer == MessageBoxResult.Cancel) return;
+            }
+
             MenuItem menuItem = sender as MenuItem;
             string filePath = menuItem.Header.ToString();
             if (menuItem != null && filePath != null)
@@ -450,6 +462,31 @@ namespace test
                     e.Cancel = true;
                 else e.Cancel = false;
             }
+        }
+
+        /// 
+        /// working with drag-and-drop
+        /// 
+        private void WorkField_DragOver(object sender, DragEventArgs e)
+        {
+            //DataFormats.FileDrop
+            if (!e.Data.GetDataPresent(typeof(string)))
+            {
+                e.Effects = DragDropEffects.None;
+                MessageBox.Show(
+                    "Rejected! The file don't contain any text information!",
+                    "Reject",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+                return;
+            }
+            e.Effects = DragDropEffects.All;
+        }
+
+        private void WorkField_Drop(object sender, DragEventArgs e)
+        {
+
         }
     }
 }

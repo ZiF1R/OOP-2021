@@ -164,7 +164,7 @@
                 </ComboBox>
             </ToolBar>
         </ToolBarTray>
-        <RichTextBox Background="{DynamicResource RichTextBoxBg}" Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,0,30" TextChanged="WorkField_TextChanged">
+        <RichTextBox Background="{DynamicResource RichTextBoxBg}" Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,0,30" TextChanged="WorkField_TextChanged" DragOver="WorkField_DragOver" Drop="WorkField_Drop">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"/>

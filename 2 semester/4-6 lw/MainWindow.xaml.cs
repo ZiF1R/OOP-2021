@@ -412,6 +412,16 @@ namespace test
             this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/VueTheme.xaml");
         }
 
+        private void ReactTheme_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/ReactTheme.xaml");
+        }
+
+        private void AngularTheme_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/AngularTheme.xaml");
+        }
+
         private void SetNewResource(ResourceDictionary oldResource, string newResourcePath)
         {
             Uri newSource = new Uri(newResourcePath);

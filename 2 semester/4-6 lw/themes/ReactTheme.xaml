@@ -1,0 +1,9 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:v="clr-namespace:System;assembly=System.Runtime">
+    <SolidColorBrush x:Key="ToolBarBg">#b3e5fc</SolidColorBrush>
+    <SolidColorBrush x:Key="MenuBg">#81d4fa</SolidColorBrush>
+    <SolidColorBrush x:Key="StatusBarBg">#e1f5fe</SolidColorBrush>
+    <SolidColorBrush x:Key="RichTextBoxBg">#e1f5fe</SolidColorBrush>
+    <SolidColorBrush x:Key="GridBg">#e1f5fe</SolidColorBrush>
+</ResourceDictionary>

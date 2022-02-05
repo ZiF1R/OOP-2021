@@ -22,4 +22,6 @@
     <v:String x:Key="Themes">スキン</v:String>
     <v:String x:Key="Default">デフォルト</v:String>
     <v:String x:Key="VueTheme">VueTheme</v:String>
+    <v:String x:Key="AngularTheme">AngularTheme</v:String>
+    <v:String x:Key="ReactTheme">ReactTheme</v:String>
 </ResourceDictionary>

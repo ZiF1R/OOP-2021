@@ -37,6 +37,8 @@
             <MenuItem Header="{DynamicResource Themes}">
                 <MenuItem x:Name="DefaultTheme" Header="{DynamicResource Default}" Click="DefaultTheme_Click" />
                 <MenuItem x:Name="VueTheme" Header="{DynamicResource VueTheme}" Click="VueTheme_Click" />
+                <MenuItem x:Name="ReactTheme" Header="{DynamicResource ReactTheme}" Click="ReactTheme_Click" />
+                <MenuItem x:Name="AngularTheme" Header="{DynamicResource AngularTheme}" Click="AngularTheme_Click" />
             </MenuItem>
         </Menu>
         <ToolBarTray Height="25" VerticalAlignment="Top" Margin="0,23,0,0">

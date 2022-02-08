@@ -16,6 +16,7 @@ namespace _1_lw
         private double prevNumber = 0;
         private double nextNumber = 0;
         private string selectedOperation = "";
+        private string memory = "";
 
         public Calculator()
         {
@@ -241,6 +242,16 @@ namespace _1_lw
                 number = Math.Sqrt(number);
                 OutputField.Text = Convert.ToString(number);
             }
+        }
+
+        private void MemoryButton_Click(object sender, EventArgs e)
+        {
+            this.memory = OutputField.Text;
+        }
+
+        private void ReadMemoryButton_Click(object sender, EventArgs e)
+        {
+            OutputField.Text = this.memory;
         }
 
         ///

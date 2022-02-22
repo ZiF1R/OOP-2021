@@ -36,11 +36,10 @@ namespace test
             this.FindRecentOpenedFiles();
             PathStatus.Content = "Path: " + Directory.GetCurrentDirectory();
             this.currentLang.Source = new Uri("pack://application:,,,/lang/en.xaml");
-            this.currentTheme.Source = new Uri("pack://application:,,,/themes/Default.xaml");
-            //this.Cursor = new Cursor("\\cursor.cur");
-            //var sri = Application.GetResourceStream(new Uri("icons/cursor.cur", UriKind.Relative));
-            //var customCursor = new Cursor(sri.Stream);
-            //this.Cursor = customCursor;
+            this.currentTheme.Source = new Uri("pack://application:,,,/theme/Default.xaml");
+            var sri = Application.GetResourceStream(new Uri("pack://application:,,,/cursor.cur", UriKind.RelativeOrAbsolute));
+            var customCursor = new Cursor(sri.Stream);
+            this.Cursor = customCursor;
         }
 
         private void SetDefaultEditorStyles()
@@ -416,22 +415,22 @@ namespace test
         /// 
         private void DefaultTheme_Click(object sender, RoutedEventArgs e)
         {
-            this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/Default.xaml");
+            this.SetNewResource(this.currentTheme, "pack://application:,,,/theme/Default.xaml");
         }
 
         private void VueTheme_Click(object sender, RoutedEventArgs e)
         {
-            this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/VueTheme.xaml");
+            this.SetNewResource(this.currentTheme, "pack://application:,,,/theme/VueTheme.xaml");
         }
 
         private void ReactTheme_Click(object sender, RoutedEventArgs e)
         {
-            this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/ReactTheme.xaml");
+            this.SetNewResource(this.currentTheme, "pack://application:,,,/theme/ReactTheme.xaml");
         }
 
         private void AngularTheme_Click(object sender, RoutedEventArgs e)
         {
-            this.SetNewResource(this.currentTheme, "pack://application:,,,/themes/AngularTheme.xaml");
+            this.SetNewResource(this.currentTheme, "pack://application:,,,/theme/AngularTheme.xaml");
         }
 
         private void SetNewResource(ResourceDictionary oldResource, string newResourcePath)

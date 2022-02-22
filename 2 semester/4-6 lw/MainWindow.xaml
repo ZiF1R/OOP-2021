@@ -10,8 +10,31 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="Language" Source="/lang/en.xaml"/>
-                <ResourceDictionary Source="/themes/Default.xaml"/>
+                <ResourceDictionary Source="/theme/Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button">
+                <Style.Triggers>
+                    
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="RichTextBox">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=WorkField, Path=IsFocused}" Value="true" >
+                        <Setter Property="Background" Value="tomato" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="Button">
+                <Style.Triggers>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsMouseOver" Value="true" />
+                            <Condition Property="IsPressed" Value="true" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="Background" Value="Tomato" />
+                    </MultiTrigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <Grid Background="{DynamicResource GridBg}">

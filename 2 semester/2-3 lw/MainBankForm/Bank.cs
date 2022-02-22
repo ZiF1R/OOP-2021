@@ -37,13 +37,8 @@ namespace _2_lw
         {
             Timer tmr = new Timer();
             tmr.Interval = 1000;
-            tmr.Tick += new EventHandler(tmr_Tick);
+            tmr.Tick += (object sender, EventArgs e) => CurrentTime.Text = $"Current time: {DateTime.Now}";
             tmr.Enabled = true;
-
-            void tmr_Tick(object sender, EventArgs e)
-            {
-                CurrentTime.Text = $"Current time: {DateTime.Now}";
-            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -60,9 +55,9 @@ namespace _2_lw
             }
 
             Owner owner = new Owner(
-                SurnameInput.Text,
-                NameInput.Text,
-                PatronimicInput.Text,
+                SurnameInput.Text.Trim(),
+                NameInput.Text.Trim(),
+                PatronimicInput.Text.Trim(),
                 BirthDate.Value,
                 new Passport(PassportInput.Text.ToUpper(), ExpiresDate.Value)
             );
@@ -117,11 +112,10 @@ namespace _2_lw
 
         private bool isFormFieldsDataCorrect()
         {
-            string[] depositTypes = { "Накопительный", "Расчетный", "Сберегательный", "Срочный" };
-
             if (BankAccountNumber.Text.Length != 11) return false;
-            if (!depositTypes.Contains(DepositTypeList.SelectedItem.ToString())) return false;
 
+            if (DepositTypeList.SelectedItem == null)
+                this.errorProvider1.SetError(DepositTypeList, "The value must contain word from the list!");
             // Full name fields should be filled and contain only alphabetic symbols
             if (SurnameInput.Text == "" || Regex.IsMatch(SurnameInput.Text, @"[\W|\d]")) return false;
             if (NameInput.Text == "" || Regex.IsMatch(NameInput.Text, @"[\W|\d]")) return false;
@@ -250,6 +244,68 @@ namespace _2_lw
                 MessageBox.Show("Serialization success!", "Serialization", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             LastAction.Text = "Last action: Save";
+        }
+
+        private void DepositTypeList_Validating(object sender, CancelEventArgs e)
+        {
+            //if (DepositTypeList.SelectedItem == null)
+            //{
+            //    e.Cancel = true;
+            //    this.errorProvider1.SetError(DepositTypeList, "The value must contain word from the list!");
+            //}
+            //else
+            //{
+            //    this.errorProvider1.Clear();
+            //}
+        }
+
+        private void BankAccountNumber_Validating(object sender, CancelEventArgs e)
+        {
+            //if (BankAccountNumber.Text.Length != 11)
+            //{
+            //    e.Cancel = true;
+            //    this.errorProvider1.SetError(BankAccountNumber, "Account number must be 9-digit number!");
+            //}
+            //else
+            //{
+            //    this.errorProvider1.Clear();
+            //}
+        }
+
+        private void ClearAccounts(object sender, EventArgs e)
+        {
+            DialogResult answer = MessageBox.Show(
+                "Вы уверны? Действие нельзя будет отменить!",
+                "Предупреждение",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning
+            );
+            if (answer == DialogResult.Cancel)
+                return;
+
+            this.bankAccounts = new BankAccount[] { };
+            CurrentAccountsCount.Text = $"Accounts: {this.bankAccounts.Length}";
+            LastAction.Text = "Last action: Clear";
+
+            MessageBox.Show(
+                "Данные были успешно удалены!",
+                "Успех",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
+        private void RemoveAccount(object sender, EventArgs e)
+        {
+            RemoveAccountForm removeAccountForm = new RemoveAccountForm(this.bankAccounts);
+            removeAccountForm.Activate();
+            removeAccountForm.Show();
+            removeAccountForm.Disposed += (object sender1, EventArgs e1) =>
+            {
+                this.bankAccounts = removeAccountForm.bankAccounts;
+                LastAction.Text = "Last action: Remove";
+                CurrentAccountsCount.Text = $"Accounts: {this.bankAccounts.Length}";
+            };
         }
     }
 }

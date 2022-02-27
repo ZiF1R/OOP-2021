@@ -13,6 +13,8 @@ using System.IO;
 using _2_lw.SearchForm;
 using _2_lw.SortForm;
 using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace _2_lw
 {
@@ -54,28 +56,44 @@ namespace _2_lw
                 return;
             }
 
-            Owner owner = new Owner(
-                SurnameInput.Text.Trim(),
-                NameInput.Text.Trim(),
-                PatronimicInput.Text.Trim(),
-                BirthDate.Value,
-                new Passport(PassportInput.Text.ToUpper(), ExpiresDate.Value)
-            );
+            try
+            {
+                Owner owner = new Owner(
+                    SurnameInput.Text.Trim(),
+                    NameInput.Text.Trim(),
+                    PatronimicInput.Text.Trim(),
+                    BirthDate.Value,
+                    new Passport(PassportInput.Text.ToUpper(), ExpiresDate1.Value)
+                );
 
-            BankAccount newAccount = new BankAccount(
-                Convert.ToInt32(Regex.Replace(BankAccountNumber.Text, @"-", "")),
-                DepositTypeList.SelectedItem.ToString(),
-                AccountOpeningDate.Value,
-                owner,
-                Convert.ToInt32(AccountBalance.Value),
-                SMSNotificationsCheckbox.Checked,
-                InternetBanking.Checked
-            );
+                BankAccount newAccount = new BankAccount(
+                    Convert.ToInt32(Regex.Replace(BankAccountNumber.Text, @"-", "")),
+                    DepositTypeList.SelectedItem.ToString(),
+                    AccountOpeningDate.Value,
+                    owner,
+                    Convert.ToInt32(AccountBalance.Value),
+                    SMSNotificationsCheckbox.Checked,
+                    InternetBanking.Checked
+                );
 
-            this.bankAccounts = this.bankAccounts.Append(newAccount).ToArray();
-            CurrentAccountsCount.Text = $"Accounts: {this.bankAccounts.Length}";
-            LastAction.Text = "Last action: Create account";
-            this.ClearFormFields();
+                var results = new List<ValidationResult>();
+                if (!Validator.TryValidateObject(newAccount, new ValidationContext(newAccount), results, true))
+                {
+                    foreach (var error in results)
+                        MessageBox.Show(error.ErrorMessage);
+                }
+                else
+                {
+                    this.bankAccounts = this.bankAccounts.Append(newAccount).ToArray();
+                    CurrentAccountsCount.Text = $"Accounts: {this.bankAccounts.Length}";
+                    LastAction.Text = "Last action: Create account";
+                    this.ClearFormFields();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void SerializeButton_Click(object sender, EventArgs e)
@@ -83,28 +101,30 @@ namespace _2_lw
             if (this.bankAccounts.Length > 0)
             {
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BankAccount[]));
-                using (FileStream fs = new FileStream("bankAccounts.json", FileMode.Create))
+                using (FileStream fs = new FileStream("accounts.json", FileMode.Create))
                 {
                     serializer.WriteObject(fs, this.bankAccounts);
-                    LastAction.Text = "Last action: Serialization";
-                    MessageBox.Show("Serialization success!", "Serialization", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                LastAction.Text = "Last action: Serialization";
+                MessageBox.Show("Serialization success!", "Serialization", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void DeserializeButton_Click(object sender, EventArgs e)
         {
-            if (File.Exists("bankAccounts.json"))
+            if (File.Exists("accounts.json"))
             {
                 Output.Text = String.Empty;
+
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BankAccount[]));
-                using (FileStream fs = new FileStream("bankAccounts.json", FileMode.Open))
+                using (FileStream fs = new FileStream("accounts.json", FileMode.OpenOrCreate))
                 {
-                    BankAccount[] restoredFigures = (BankAccount[])serializer.ReadObject(fs);
-                    this.bankAccounts = restoredFigures;
+                    BankAccount[] accounts = serializer.ReadObject(fs) as BankAccount[];
+                    this.bankAccounts = accounts;
                     CurrentAccountsCount.Text = $"Accounts: {this.bankAccounts.Length}";
                     LastAction.Text = "Last action: Deserialization";
-                    foreach (BankAccount bankAccount in restoredFigures)
+                    foreach (BankAccount bankAccount in accounts)
                         Output.Text += bankAccount.ToString() + Environment.NewLine;
                 }
             }
@@ -149,10 +169,13 @@ namespace _2_lw
                 SurnameInput.Text =
                 PatronimicInput.Text =
                 PassportInput.Text = String.Empty;
+
             DepositTypeList.SelectedIndex = 0;
-            AccountOpeningDate.Value =
-                ExpiresDate.Value =
-                BirthDate.Value = DateTime.Now;
+
+            AccountOpeningDate.Value = AccountOpeningDate.MinDate;
+            ExpiresDate1.Value = ExpiresDate1.MinDate;
+            BirthDate.Value = BirthDate.MinDate;
+
             AccountBalance.Value = AccountBalance.Minimum;
             SMSNotificationsCheckbox.Checked = false;
             InternetBanking.Checked = false;

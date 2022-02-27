@@ -34,7 +34,7 @@ namespace _2_lw
         [DataMember]
         [BirthDateValidation("2003-1-1",
             ErrorMessage = "The age of bank clients must be at least 18 years old")]
-        private DateTimeOffset birthDate;
+        private DateTime birthDate;
 
         [DataMember]
         [Required]
@@ -45,8 +45,7 @@ namespace _2_lw
             get => this.surname;
             set
             {
-                if(value.Length != 0)
-                    this.surname = value;
+                this.surname = value;
             }
         }
 
@@ -55,8 +54,7 @@ namespace _2_lw
             get => this.name;
             set
             {
-                if (value.Length != 0)
-                    this.name = value;
+                this.name = value;
             }
         }
 
@@ -65,12 +63,11 @@ namespace _2_lw
             get => this.patronimic;
             set
             {
-                if (value.Length != 0)
-                    this.patronimic = value;
+                this.patronimic = value;
             }
         }
 
-        public DateTimeOffset BirthDate
+        public DateTime BirthDate
         {
             get => this.birthDate;
             set
@@ -90,7 +87,7 @@ namespace _2_lw
 
         public Owner() { }
 
-        public Owner(string surname, string name, string patronimic, DateTimeOffset birthDate, Passport ownerPassport)
+        public Owner(string surname, string name, string patronimic, DateTime birthDate, Passport ownerPassport)
         {
             this.Surname = surname;
             this.Name = name;

@@ -26,7 +26,7 @@ namespace _2_lw
 
         [DataMember]
         [Required]
-        private DateTimeOffset openingDate;
+        private DateTime openingDate;
 
         [DataMember]
         [Required]
@@ -46,9 +46,7 @@ namespace _2_lw
             get => this.number;
             set
             {
-                if (value.ToString().Length == 9)
-                    this.number = value;
-                else throw new ArgumentException("Account number must be 9-digit number!");
+                this.number = value;
             }
         }
 
@@ -57,13 +55,11 @@ namespace _2_lw
             get => this.depositType;
             set
             {
-                string[] depositTypes = { "Накопительный", "Расчетный", "Сберегательный", "Срочный" };
-                if (depositTypes.Contains(value)) this.depositType = value;
-                else throw new ArgumentException("Invalid deposit type!");
+                this.depositType = value;
             }
         }
 
-        public DateTimeOffset OpeningDate
+        public DateTime OpeningDate
         {
             get => this.openingDate;
             set
@@ -83,7 +79,7 @@ namespace _2_lw
 
         public BankAccount() { }
 
-        public BankAccount(int number, string depositType, DateTimeOffset openingDate, Owner accountOwner, int balance, bool notifications, bool internetBanking)
+        public BankAccount(int number, string depositType, DateTime openingDate, Owner accountOwner, int balance, bool notifications, bool internetBanking)
         {
             this.Number = number;
             this.DepositType = depositType;

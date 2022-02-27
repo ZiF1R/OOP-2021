@@ -40,8 +40,8 @@
             this.AccountOpeningDateLabel = new System.Windows.Forms.Label();
             this.OwnerInfoGroup = new System.Windows.Forms.GroupBox();
             this.PassportDataGroup = new System.Windows.Forms.GroupBox();
+            this.ExpiresDate1 = new System.Windows.Forms.DateTimePicker();
             this.ExpiresDateLabel = new System.Windows.Forms.Label();
-            this.ExpiresDate = new System.Windows.Forms.DateTimePicker();
             this.PassportInputLabel = new System.Windows.Forms.Label();
             this.PassportInput = new System.Windows.Forms.TextBox();
             this.BirthDateLabel = new System.Windows.Forms.Label();
@@ -71,11 +71,6 @@
             this.SortOpeningDate = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveMenuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutProgram = new System.Windows.Forms.ToolStripMenuItem();
-            this.StatusBar = new System.Windows.Forms.StatusStrip();
-            this.CurrentAccountsCount = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LastAction = new System.Windows.Forms.ToolStripStatusLabel();
-            this.CurrentTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.sortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +81,11 @@
             this.openingDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatusBar = new System.Windows.Forms.StatusStrip();
+            this.CurrentAccountsCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LastAction = new System.Windows.Forms.ToolStripStatusLabel();
+            this.CurrentTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.AccountBalance)).BeginInit();
             this.OwnerInfoGroup.SuspendLayout();
             this.PassportDataGroup.SuspendLayout();
@@ -173,9 +173,12 @@
             // 
             this.AccountOpeningDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AccountOpeningDate.Location = new System.Drawing.Point(37, 173);
+            this.AccountOpeningDate.MaxDate = new System.DateTime(2022, 2, 27, 0, 0, 0, 0);
+            this.AccountOpeningDate.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
             this.AccountOpeningDate.Name = "AccountOpeningDate";
             this.AccountOpeningDate.Size = new System.Drawing.Size(271, 30);
             this.AccountOpeningDate.TabIndex = 2;
+            this.AccountOpeningDate.Value = new System.DateTime(2004, 12, 31, 0, 0, 0, 0);
             // 
             // AccountOpeningDateLabel
             // 
@@ -207,8 +210,8 @@
             // 
             // PassportDataGroup
             // 
+            this.PassportDataGroup.Controls.Add(this.ExpiresDate1);
             this.PassportDataGroup.Controls.Add(this.ExpiresDateLabel);
-            this.PassportDataGroup.Controls.Add(this.ExpiresDate);
             this.PassportDataGroup.Controls.Add(this.PassportInputLabel);
             this.PassportDataGroup.Controls.Add(this.PassportInput);
             this.PassportDataGroup.Location = new System.Drawing.Point(288, 25);
@@ -219,6 +222,17 @@
             this.PassportDataGroup.TabStop = false;
             this.PassportDataGroup.Text = "Passport data";
             // 
+            // ExpiresDate1
+            // 
+            this.ExpiresDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExpiresDate1.Location = new System.Drawing.Point(16, 119);
+            this.ExpiresDate1.MaxDate = new System.DateTime(2090, 12, 31, 0, 0, 0, 0);
+            this.ExpiresDate1.MinDate = new System.DateTime(2022, 2, 27, 0, 0, 0, 0);
+            this.ExpiresDate1.Name = "ExpiresDate1";
+            this.ExpiresDate1.Size = new System.Drawing.Size(250, 30);
+            this.ExpiresDate1.TabIndex = 13;
+            this.ExpiresDate1.Value = new System.DateTime(2022, 2, 27, 0, 0, 0, 0);
+            // 
             // ExpiresDateLabel
             // 
             this.ExpiresDateLabel.AutoSize = true;
@@ -227,15 +241,6 @@
             this.ExpiresDateLabel.Size = new System.Drawing.Size(55, 16);
             this.ExpiresDateLabel.TabIndex = 10;
             this.ExpiresDateLabel.Text = "Expires:";
-            // 
-            // ExpiresDate
-            // 
-            this.ExpiresDate.CustomFormat = "YYYY-MM";
-            this.ExpiresDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ExpiresDate.Location = new System.Drawing.Point(16, 108);
-            this.ExpiresDate.Name = "ExpiresDate";
-            this.ExpiresDate.Size = new System.Drawing.Size(250, 30);
-            this.ExpiresDate.TabIndex = 9;
             // 
             // PassportInputLabel
             // 
@@ -268,9 +273,12 @@
             // 
             this.BirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BirthDate.Location = new System.Drawing.Point(19, 223);
+            this.BirthDate.MaxDate = new System.DateTime(2004, 12, 31, 0, 0, 0, 0);
+            this.BirthDate.MinDate = new System.DateTime(1951, 1, 1, 0, 0, 0, 0);
             this.BirthDate.Name = "BirthDate";
             this.BirthDate.Size = new System.Drawing.Size(250, 30);
             this.BirthDate.TabIndex = 7;
+            this.BirthDate.Value = new System.DateTime(2004, 12, 31, 0, 0, 0, 0);
             // 
             // PatronimicInputLabel
             // 
@@ -423,7 +431,7 @@
             this.MenuToolbar.Name = "MenuToolbar";
             this.MenuToolbar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.MenuToolbar.ShowItemToolTips = true;
-            this.MenuToolbar.Size = new System.Drawing.Size(965, 28);
+            this.MenuToolbar.Size = new System.Drawing.Size(965, 30);
             this.MenuToolbar.TabIndex = 17;
             this.MenuToolbar.Text = "MenuToolbar";
             // 
@@ -437,7 +445,7 @@
             this.AboutProgram});
             this.MenuButton.Name = "MenuButton";
             this.MenuButton.ShortcutKeyDisplayString = "";
-            this.MenuButton.Size = new System.Drawing.Size(60, 24);
+            this.MenuButton.Size = new System.Drawing.Size(60, 26);
             this.MenuButton.Text = "Menu";
             // 
             // SearchByButton
@@ -454,28 +462,28 @@
             // SearchAccountNumber
             // 
             this.SearchAccountNumber.Name = "SearchAccountNumber";
-            this.SearchAccountNumber.Size = new System.Drawing.Size(224, 26);
+            this.SearchAccountNumber.Size = new System.Drawing.Size(201, 26);
             this.SearchAccountNumber.Text = "Account number";
             this.SearchAccountNumber.Click += new System.EventHandler(this.SearchAccountNumber_Click);
             // 
             // SearchFullName
             // 
             this.SearchFullName.Name = "SearchFullName";
-            this.SearchFullName.Size = new System.Drawing.Size(224, 26);
+            this.SearchFullName.Size = new System.Drawing.Size(201, 26);
             this.SearchFullName.Text = "Full name";
             this.SearchFullName.Click += new System.EventHandler(this.SearchFullName_Click);
             // 
             // SearchBalance
             // 
             this.SearchBalance.Name = "SearchBalance";
-            this.SearchBalance.Size = new System.Drawing.Size(224, 26);
+            this.SearchBalance.Size = new System.Drawing.Size(201, 26);
             this.SearchBalance.Text = "Balance";
             this.SearchBalance.Click += new System.EventHandler(this.SearchBalance_Click);
             // 
             // SearchDepositType
             // 
             this.SearchDepositType.Name = "SearchDepositType";
-            this.SearchDepositType.Size = new System.Drawing.Size(224, 26);
+            this.SearchDepositType.Size = new System.Drawing.Size(201, 26);
             this.SearchDepositType.Text = "Deposit type";
             this.SearchDepositType.Click += new System.EventHandler(this.SearchDepositType_Click);
             // 
@@ -491,14 +499,14 @@
             // SortDepositType
             // 
             this.SortDepositType.Name = "SortDepositType";
-            this.SortDepositType.Size = new System.Drawing.Size(224, 26);
+            this.SortDepositType.Size = new System.Drawing.Size(183, 26);
             this.SortDepositType.Text = "Deposit type";
             this.SortDepositType.Click += new System.EventHandler(this.SortDepositType_Click);
             // 
             // SortOpeningDate
             // 
             this.SortOpeningDate.Name = "SortOpeningDate";
-            this.SortOpeningDate.Size = new System.Drawing.Size(224, 26);
+            this.SortOpeningDate.Size = new System.Drawing.Size(183, 26);
             this.SortOpeningDate.Text = "Opening date";
             this.SortOpeningDate.Click += new System.EventHandler(this.SortOpeningDate_Click);
             // 
@@ -517,6 +525,82 @@
             this.AboutProgram.Size = new System.Drawing.Size(252, 26);
             this.AboutProgram.Text = "About program";
             this.AboutProgram.Click += new System.EventHandler(this.AboutProgram_Click);
+            // 
+            // sortByToolStripMenuItem
+            // 
+            this.sortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.accountNumberToolStripMenuItem,
+            this.fullNameToolStripMenuItem,
+            this.balanceToolStripMenuItem,
+            this.depositTypeToolStripMenuItem});
+            this.sortByToolStripMenuItem.Name = "sortByToolStripMenuItem";
+            this.sortByToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
+            this.sortByToolStripMenuItem.Text = "Search by";
+            // 
+            // accountNumberToolStripMenuItem
+            // 
+            this.accountNumberToolStripMenuItem.Name = "accountNumberToolStripMenuItem";
+            this.accountNumberToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.accountNumberToolStripMenuItem.Text = "Account number";
+            this.accountNumberToolStripMenuItem.Click += new System.EventHandler(this.SearchAccountNumber_Click);
+            // 
+            // fullNameToolStripMenuItem
+            // 
+            this.fullNameToolStripMenuItem.Name = "fullNameToolStripMenuItem";
+            this.fullNameToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.fullNameToolStripMenuItem.Text = "Full name";
+            this.fullNameToolStripMenuItem.Click += new System.EventHandler(this.SearchFullName_Click);
+            // 
+            // balanceToolStripMenuItem
+            // 
+            this.balanceToolStripMenuItem.Name = "balanceToolStripMenuItem";
+            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.balanceToolStripMenuItem.Text = "Balance";
+            this.balanceToolStripMenuItem.Click += new System.EventHandler(this.SearchBalance_Click);
+            // 
+            // depositTypeToolStripMenuItem
+            // 
+            this.depositTypeToolStripMenuItem.Name = "depositTypeToolStripMenuItem";
+            this.depositTypeToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.depositTypeToolStripMenuItem.Text = "Deposit type";
+            this.depositTypeToolStripMenuItem.Click += new System.EventHandler(this.SearchDepositType_Click);
+            // 
+            // sortByToolStripMenuItem1
+            // 
+            this.sortByToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.depositTypeToolStripMenuItem1,
+            this.openingDateToolStripMenuItem});
+            this.sortByToolStripMenuItem1.Name = "sortByToolStripMenuItem1";
+            this.sortByToolStripMenuItem1.Size = new System.Drawing.Size(70, 26);
+            this.sortByToolStripMenuItem1.Text = "Sort by";
+            // 
+            // depositTypeToolStripMenuItem1
+            // 
+            this.depositTypeToolStripMenuItem1.Name = "depositTypeToolStripMenuItem1";
+            this.depositTypeToolStripMenuItem1.Size = new System.Drawing.Size(183, 26);
+            this.depositTypeToolStripMenuItem1.Text = "Deposit type";
+            this.depositTypeToolStripMenuItem1.Click += new System.EventHandler(this.SortDepositType_Click);
+            // 
+            // openingDateToolStripMenuItem
+            // 
+            this.openingDateToolStripMenuItem.Name = "openingDateToolStripMenuItem";
+            this.openingDateToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.openingDateToolStripMenuItem.Text = "Opening date";
+            this.openingDateToolStripMenuItem.Click += new System.EventHandler(this.SortOpeningDate_Click);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(57, 26);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearAccounts);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(77, 26);
+            this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.RemoveAccount);
             // 
             // StatusBar
             // 
@@ -554,82 +638,6 @@
             // 
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
-            // 
-            // sortByToolStripMenuItem
-            // 
-            this.sortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.accountNumberToolStripMenuItem,
-            this.fullNameToolStripMenuItem,
-            this.balanceToolStripMenuItem,
-            this.depositTypeToolStripMenuItem});
-            this.sortByToolStripMenuItem.Name = "sortByToolStripMenuItem";
-            this.sortByToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
-            this.sortByToolStripMenuItem.Text = "Search by";
-            // 
-            // accountNumberToolStripMenuItem
-            // 
-            this.accountNumberToolStripMenuItem.Name = "accountNumberToolStripMenuItem";
-            this.accountNumberToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.accountNumberToolStripMenuItem.Text = "Account number";
-            this.accountNumberToolStripMenuItem.Click += new System.EventHandler(this.SearchAccountNumber_Click);
-            // 
-            // fullNameToolStripMenuItem
-            // 
-            this.fullNameToolStripMenuItem.Name = "fullNameToolStripMenuItem";
-            this.fullNameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.fullNameToolStripMenuItem.Text = "Full name";
-            this.fullNameToolStripMenuItem.Click += new System.EventHandler(this.SearchFullName_Click);
-            // 
-            // balanceToolStripMenuItem
-            // 
-            this.balanceToolStripMenuItem.Name = "balanceToolStripMenuItem";
-            this.balanceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.balanceToolStripMenuItem.Text = "Balance";
-            this.balanceToolStripMenuItem.Click += new System.EventHandler(this.SearchBalance_Click);
-            // 
-            // depositTypeToolStripMenuItem
-            // 
-            this.depositTypeToolStripMenuItem.Name = "depositTypeToolStripMenuItem";
-            this.depositTypeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.depositTypeToolStripMenuItem.Text = "Deposit type";
-            this.depositTypeToolStripMenuItem.Click += new System.EventHandler(this.SearchDepositType_Click);
-            // 
-            // sortByToolStripMenuItem1
-            // 
-            this.sortByToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.depositTypeToolStripMenuItem1,
-            this.openingDateToolStripMenuItem});
-            this.sortByToolStripMenuItem1.Name = "sortByToolStripMenuItem1";
-            this.sortByToolStripMenuItem1.Size = new System.Drawing.Size(70, 24);
-            this.sortByToolStripMenuItem1.Text = "Sort by";
-            // 
-            // depositTypeToolStripMenuItem1
-            // 
-            this.depositTypeToolStripMenuItem1.Name = "depositTypeToolStripMenuItem1";
-            this.depositTypeToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.depositTypeToolStripMenuItem1.Text = "Deposit type";
-            this.depositTypeToolStripMenuItem1.Click += new System.EventHandler(this.SortDepositType_Click);
-            // 
-            // openingDateToolStripMenuItem
-            // 
-            this.openingDateToolStripMenuItem.Name = "openingDateToolStripMenuItem";
-            this.openingDateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.openingDateToolStripMenuItem.Text = "Opening date";
-            this.openingDateToolStripMenuItem.Click += new System.EventHandler(this.SortOpeningDate_Click);
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearAccounts);
-            // 
-            // removeToolStripMenuItem
-            // 
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
-            this.removeToolStripMenuItem.Text = "Remove";
-            this.removeToolStripMenuItem.Click += new System.EventHandler(this.RemoveAccount);
             // 
             // Bank
             // 
@@ -697,7 +705,6 @@
         private System.Windows.Forms.CheckBox InternetBanking;
         private System.Windows.Forms.GroupBox PassportDataGroup;
         private System.Windows.Forms.Label ExpiresDateLabel;
-        private System.Windows.Forms.DateTimePicker ExpiresDate;
         private System.Windows.Forms.Label PassportInputLabel;
         private System.Windows.Forms.TextBox PassportInput;
         private System.Windows.Forms.Button AddButton;
@@ -732,6 +739,7 @@
         private System.Windows.Forms.ToolStripMenuItem openingDateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.DateTimePicker ExpiresDate1;
     }
 }
 

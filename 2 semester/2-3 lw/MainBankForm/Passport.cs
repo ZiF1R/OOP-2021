@@ -19,21 +19,20 @@ namespace _2_lw
         private string passportNumber;
 
         [DataMember]
-        public DateTimeOffset ExpiresDate { get; set; }
+        public DateTime ExpiresDate { get; set; }
 
         public string PassportNumber
         {
             get => this.passportNumber;
             set
             {
-                if (value.Length == 14)
                     this.passportNumber = value;
             }
         }
 
         public Passport() { }
 
-        public Passport(string number, DateTimeOffset expiresDate)
+        public Passport(string number, DateTime expiresDate)
         {
             this.ExpiresDate = expiresDate;
             this.PassportNumber = number;

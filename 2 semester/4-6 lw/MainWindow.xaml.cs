@@ -34,12 +34,15 @@ namespace test
             InitializeComponent();
             this.SetDefaultEditorStyles();
             this.FindRecentOpenedFiles();
-            PathStatus.Content = "Path: " + Directory.GetCurrentDirectory();
+            PathStatus.Content = Directory.GetCurrentDirectory();
             this.currentLang.Source = new Uri("pack://application:,,,/lang/en.xaml");
             this.currentTheme.Source = new Uri("pack://application:,,,/theme/Default.xaml");
             var sri = Application.GetResourceStream(new Uri("pack://application:,,,/cursor.cur", UriKind.RelativeOrAbsolute));
             var customCursor = new Cursor(sri.Stream);
             this.Cursor = customCursor;
+            WorkField.Cursor = customCursor;
+            WorkField.AddHandler(RichTextBox.DragOverEvent, new DragEventHandler(WorkField_DragOver), true);
+            WorkField.AddHandler(RichTextBox.DropEvent, new DragEventHandler(WorkField_Drop), true);
         }
 
         private void SetDefaultEditorStyles()
@@ -195,7 +198,7 @@ namespace test
             TextRange text = new TextRange(WorkField.Document.ContentStart, WorkField.Document.ContentEnd);
             int charactersNumber = Regex.Replace(text.Text, @"[\s\n\v\f\r]", "").Length;
             if (CharactersStatus != null)
-                CharactersStatus.Content = $"Characters: {charactersNumber}";
+                CharactersStatus.Content = charactersNumber;
         }
 
         /// 
@@ -241,7 +244,7 @@ namespace test
                         return;
                     }
                 }
-                window.Title = this.GetFileName(file.FileName);
+                window.Title = GetFileName(file.FileName);
                 this.SaveToRecentFilesHistory(file.FileName);
                 this.isChangesSaved = true;
             }
@@ -294,7 +297,7 @@ namespace test
             }
         }
 
-        private string GetFileName(string fullPath)
+        private static string GetFileName(string fullPath)
         {
             string fileName = Regex.Match(fullPath, @"\\[^\\]+\..+$").Value;
             fileName = Regex.Replace(fileName, @"\\", "");
@@ -375,7 +378,7 @@ namespace test
                 return false;
             }
             range.Load(fs, DataFormats.Rtf);
-            window.Title = this.GetFileName(fullPath);
+            window.Title = GetFileName(fullPath);
             this.isChangesSaved = true;
 
             return true;
@@ -468,24 +471,56 @@ namespace test
         /// 
         private void WorkField_DragOver(object sender, DragEventArgs e)
         {
-            //DataFormats.FileDrop
-            if (!e.Data.GetDataPresent(typeof(string)))
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 e.Effects = DragDropEffects.None;
-                MessageBox.Show(
-                    "Rejected! The file don't contain any text information!",
-                    "Reject",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error
-                );
-                return;
             }
-            e.Effects = DragDropEffects.All;
+            else
+            {
+                e.Effects = DragDropEffects.All;
+            }
+            e.Handled = false;
         }
 
         private void WorkField_Drop(object sender, DragEventArgs e)
         {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] docPath = (string[])e.Data.GetData(DataFormats.FileDrop);
 
+                // By default, open as Rich Text (RTF).
+                var dataFormat = DataFormats.Rtf;
+
+                // If the Shift key is pressed, open as plain text.
+                if (e.KeyStates == DragDropKeyStates.ShiftKey)
+                {
+                    dataFormat = DataFormats.Text;
+                }
+
+                System.Windows.Documents.TextRange range;
+                System.IO.FileStream fStream;
+                if (System.IO.File.Exists(docPath[0]))
+                {
+                    try
+                    {
+                        // Open the document in the RichTextBox.
+                        range = new System.Windows.Documents.TextRange(WorkField.Document.ContentStart, WorkField.Document.ContentEnd);
+                        fStream = new System.IO.FileStream(docPath[0], System.IO.FileMode.OpenOrCreate);
+                        range.Load(fStream, dataFormat);
+                        fStream.Close();
+                        this.SaveToRecentFilesHistory(docPath[0]);
+                    }
+                    catch (System.Exception)
+                    {
+                        MessageBox.Show(
+                            "File could not be opened. Make sure the file is a text file.",
+                            "Error",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error
+                        );
+                    }
+                }
+            }
         }
     }
 }

@@ -112,19 +112,6 @@ namespace test
         }
 
         /// 
-        /// RichBox's changes history manipulation
-        /// 
-        private void UndoButton_Click(object sender, RoutedEventArgs e)
-        {
-            WorkField.Undo();
-        }
-
-        private void RedoButton_Click(object sender, RoutedEventArgs e)
-        {
-            WorkField.Redo();
-        }
-
-        /// 
         /// Handlers for changing font style/decorations
         /// 
         private void BoldToggle_Checked(object sender, RoutedEventArgs e)
@@ -176,22 +163,7 @@ namespace test
 
         /// 
         /// Handlers for working with clipboard
-        /// 
-        private void Copy_Click(object sender, RoutedEventArgs e)
-        {
-            WorkField.Copy();
-        }
-
-        private void Paste_Click(object sender, RoutedEventArgs e)
-        {
-            WorkField.Paste();
-        }
-
-        private void Cut_Click(object sender, RoutedEventArgs e)
-        {
-            WorkField.Cut();
-        }
-
+        ///
         private void WorkField_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.isChangesSaved = false;

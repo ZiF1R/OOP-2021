@@ -41,9 +41,9 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="{DynamicResource Edit}">
-                <MenuItem Click="Copy_Click" Header="{DynamicResource Copy}" />
-                <MenuItem Click="Paste_Click" Header="{DynamicResource Paste}" />
-                <MenuItem Click="Cut_Click" Header="{DynamicResource Cut}" />
+                <MenuItem Command="Copy" Header="{DynamicResource Copy}" />
+                <MenuItem Command="Paste" Header="{DynamicResource Paste}" />
+                <MenuItem Command="Cut" Header="{DynamicResource Cut}" />
             </MenuItem>
             <MenuItem Header="{DynamicResource Lang}">
                 <MenuItem Click="RU_Click" Header="{DynamicResource RU}" />
@@ -71,22 +71,22 @@
 
                 <Separator Margin="5" />
 
-                <Button x:Name="Copy" ToolTip="{DynamicResource Copy}" Click="Copy_Click">
+                <Button x:Name="Copy" ToolTip="{DynamicResource Copy}" Command="Copy">
                     <Image Source="/copy.png" Height="13" Width="14" />
                 </Button>
-                <Button x:Name="Paste" ToolTip="{DynamicResource Paste}" Click="Paste_Click">
+                <Button x:Name="Paste" ToolTip="{DynamicResource Paste}" Command="Paste">
                     <Image Source="/paste.png" Height="15" Width="16" />
                 </Button>
-                <Button x:Name="Cut" ToolTip="{DynamicResource Cut}" Click="Cut_Click">
+                <Button x:Name="Cut" ToolTip="{DynamicResource Cut}" Command="Cut">
                     <Image Source="/cut.png" Height="13" Width="14" />
                 </Button>
 
                 <Separator Margin="5" />
 
-                <Button x:Name="UndoButton" ToolTip="{DynamicResource Undo}" Click="UndoButton_Click">
+                <Button x:Name="UndoButton" ToolTip="{DynamicResource Undo}" Command="Undo">
                     <Image Source="/undo.png" Height="13" Width="14" />
                 </Button>
-                <Button x:Name="RedoButton" ToolTip="{DynamicResource Redo}" Click="RedoButton_Click">
+                <Button x:Name="RedoButton" ToolTip="{DynamicResource Redo}" Command="Redo">
                     <Image Source="/redo.png" Height="13" Width="14" />
                 </Button>
 

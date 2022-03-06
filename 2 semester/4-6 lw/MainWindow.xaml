@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:test"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000" Icon="/text-editor.png" Closing="window_Closing">
@@ -12,16 +13,42 @@
                 <ResourceDictionary x:Name="Language" Source="/lang/en.xaml"/>
                 <ResourceDictionary Source="/theme/Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="Button">
-                <Style.Triggers>
+            
+            <system:String x:Key="StaticResource">StaticResource</system:String>
 
-                </Style.Triggers>
-            </Style>
             <Style TargetType="RichTextBox">
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding ElementName=WorkField, Path=IsFocused}" Value="true" >
-                        <Setter Property="Background" Value="tomato" />
+                    <DataTrigger Binding="{Binding ElementName=BoldToggle, Path=IsChecked}" Value="true" >
+                        <Setter Property="BorderThickness" Value="3" />
                     </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <!--<Style TargetType="Men">
+                <Style.Triggers>
+                </Style.Triggers>
+            </Style>-->
+
+            <Style TargetType="MenuItem">
+                <Setter Property="Foreground" Value="Black" />
+                <Style.Triggers>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsMouseOver" Value="True" />
+                            <Condition Property="IsPressed" Value="True" />
+                        </MultiTrigger.Conditions>
+                        <MultiTrigger.Setters>
+                            <Setter Property="FontSize" Value="13" />
+                            <Setter Property="Foreground" Value="{DynamicResource RichTextBoxBg}" />
+                        </MultiTrigger.Setters>
+                    </MultiTrigger>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" FillBehavior="Stop" Duration="0:0:0.3" To="14"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
                 </Style.Triggers>
             </Style>
         </ResourceDictionary>

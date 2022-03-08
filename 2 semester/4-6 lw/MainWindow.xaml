@@ -1,10 +1,11 @@
-﻿<Window x:Name="window" x:Class="test.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:test"
+        xmlns:components="clr-namespace:test.components" x:Name="window" x:Class="test.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000" Icon="/text-editor.png" Closing="window_Closing">
     <Window.Resources>
@@ -13,23 +14,18 @@
                 <ResourceDictionary x:Name="Language" Source="/lang/en.xaml"/>
                 <ResourceDictionary Source="/theme/Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            
+
             <system:String x:Key="StaticResource">StaticResource</system:String>
 
-            <Style TargetType="RichTextBox">
+            <Style TargetType="{x:Type RichTextBox}">
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding ElementName=BoldToggle, Path=IsChecked}" Value="true" >
+                    <DataTrigger Binding="{Binding IsChecked, ElementName=BoldToggle}" Value="true" >
                         <Setter Property="BorderThickness" Value="3" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
 
-            <!--<Style TargetType="Men">
-                <Style.Triggers>
-                </Style.Triggers>
-            </Style>-->
-
-            <Style TargetType="MenuItem">
+            <Style TargetType="{x:Type MenuItem}">
                 <Setter Property="Foreground" Value="Black" />
                 <Style.Triggers>
                     <MultiTrigger>
@@ -37,12 +33,10 @@
                             <Condition Property="IsMouseOver" Value="True" />
                             <Condition Property="IsPressed" Value="True" />
                         </MultiTrigger.Conditions>
-                        <MultiTrigger.Setters>
-                            <Setter Property="FontSize" Value="13" />
-                            <Setter Property="Foreground" Value="{DynamicResource RichTextBoxBg}" />
-                        </MultiTrigger.Setters>
+                        <Setter Property="FontSize" Value="13" />
+                        <Setter Property="Foreground" Value="{DynamicResource RichTextBoxBg}" />
                     </MultiTrigger>
-                    <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
                         <BeginStoryboard>
                             <Storyboard>
                                 <DoubleAnimation Storyboard.TargetProperty="FontSize" FillBehavior="Stop" Duration="0:0:0.3" To="14"/>
@@ -85,7 +79,7 @@
             </MenuItem>
         </Menu>
         <ToolBarTray Height="25" VerticalAlignment="Top" Margin="0,23,0,0" Background="{DynamicResource ToolBarBg}" Grid.ColumnSpan="2">
-            <ToolBar Height="26" Margin="0,0,-1000,558" Header="&#xD;&#xA;" Background="{DynamicResource ToolBarBg}" HorizontalAlignment="Left" Visibility="Visible">
+            <ToolBar Height="26" Margin="0,0,-1000,558" Header="&#xA;" Background="{DynamicResource ToolBarBg}" HorizontalAlignment="Left" Visibility="Visible">
                 <Button x:Name="_New" Click="New_Click" ToolTip="{DynamicResource New}">
                     <Image Height="15" Width="16" Source="/new.png" />
                 </Button>
@@ -119,90 +113,82 @@
 
                 <Separator Margin="5" />
 
-                <ToggleButton x:Name="BoldToggle" Padding="5 0 5 0" Checked="BoldToggle_Checked" Unchecked="BoldToggle_Unchecked">B</ToggleButton>
-                <ToggleButton x:Name="ItalicToggle" Padding="5 0 5 0" FontStyle="Italic" Checked="ItalicToggle_Checked" Unchecked="ItalicToggle_Unchecked">I</ToggleButton>
+                <ToggleButton x:Name="BoldToggle" Padding="5 0 5 0" Checked="BoldToggle_Checked" Unchecked="BoldToggle_Unchecked" Content="B"/>
+                <ToggleButton x:Name="ItalicToggle" Padding="5 0 5 0" FontStyle="Italic" Checked="ItalicToggle_Checked" Unchecked="ItalicToggle_Unchecked" Content="I"/>
                 <ToggleButton x:Name="UnderlineToggle" Padding="5 0 5 0" Checked="UnderlineToggle_Checked" Unchecked="UnderlineToggle_Unchecked">
-                    <TextBlock TextDecorations="Underline">U</TextBlock>
+                    <TextBlock TextDecorations="Underline"><Run Text="U"/></TextBlock>
                 </ToggleButton>
                 <ToggleButton x:Name="StrikeToggle" Padding="5 0 5 0" Checked="StrikeToggle_Checked" Unchecked="StrikeToggle_Unchecked">
-                    <TextBlock TextDecorations="Strikethrough">S</TextBlock>
+                    <TextBlock TextDecorations="Strikethrough"><Run Text="S"/></TextBlock>
                 </ToggleButton>
 
                 <Separator Margin="5" />
 
-                <ComboBox Padding="5 0 20 0" Name="FontFamily" SelectionChanged="FontFamily_SelectionChanged">
-                    <ComboBoxItem FontFamily="Arial">Arial</ComboBoxItem>
-                    <ComboBoxItem FontFamily="Arial Black">Arial Black</ComboBoxItem>
-                    <ComboBoxItem FontFamily="Calibri">Calibri</ComboBoxItem>
-                    <ComboBoxItem FontFamily="Cambria">Cambria</ComboBoxItem>
-                    <ComboBoxItem FontFamily="Consolas">Consolas</ComboBoxItem>
-                    <ComboBoxItem FontFamily="Impact">Impact</ComboBoxItem>
-                    <ComboBoxItem FontFamily="Segoe UI" IsSelected="True">Segoe UI</ComboBoxItem>
-                    <ComboBoxItem FontFamily="Segoe Print">Segoe Print</ComboBoxItem>
+                <ComboBox Padding="5 0 20 0" x:Name="FontFamily" SelectionChanged="FontFamily_SelectionChanged">
+                    <ComboBoxItem FontFamily="Arial" Content="Arial"/>
+                    <ComboBoxItem FontFamily="Arial Black" Content="Arial Black"/>
+                    <ComboBoxItem FontFamily="Calibri" Content="Calibri"/>
+                    <ComboBoxItem FontFamily="Cambria" Content="Cambria"/>
+                    <ComboBoxItem FontFamily="Consolas" Content="Consolas"/>
+                    <ComboBoxItem FontFamily="Impact" Content="Impact"/>
+                    <ComboBoxItem FontFamily="Segoe UI" IsSelected="True" Content="Segoe UI"/>
+                    <ComboBoxItem FontFamily="Segoe Print" Content="Segoe Print"/>
                 </ComboBox>
-                <ComboBox Padding="5 0 20 0" Name="FontSize" SelectionChanged="FontSize_SelectionChanged">
-                    <ComboBoxItem>8</ComboBoxItem>
-                    <ComboBoxItem>10</ComboBoxItem>
-                    <ComboBoxItem>12</ComboBoxItem>
-                    <ComboBoxItem IsSelected="True">14</ComboBoxItem>
-                    <ComboBoxItem>16</ComboBoxItem>
-                    <ComboBoxItem>18</ComboBoxItem>
-                    <ComboBoxItem>20</ComboBoxItem>
-                    <ComboBoxItem>24</ComboBoxItem>
-                    <ComboBoxItem>28</ComboBoxItem>
-                    <ComboBoxItem>32</ComboBoxItem>
-                    <ComboBoxItem>36</ComboBoxItem>
-                    <ComboBoxItem>42</ComboBoxItem>
-                    <ComboBoxItem>48</ComboBoxItem>
+                <ComboBox Padding="5 0 20 0" x:Name="FontSize" SelectionChanged="FontSize_SelectionChanged">
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="12"/>
+                    <ComboBoxItem IsSelected="True" Content="14"/>
+                    <ComboBoxItem Content="16"/>
+                    <ComboBoxItem Content="18"/>
+                    <ComboBoxItem Content="20"/>
+                    <ComboBoxItem Content="24"/>
+                    <ComboBoxItem Content="28"/>
+                    <ComboBoxItem Content="32"/>
+                    <ComboBoxItem Content="36"/>
+                    <ComboBoxItem Content="42"/>
+                    <ComboBoxItem Content="48"/>
                 </ComboBox>
-                <ComboBox Padding="5 0 20 0" Name="FontColor" SelectionChanged="FontColor_SelectionChanged">
+                <ComboBox Padding="5 0 20 0" x:Name="FontColor" SelectionChanged="FontColor_SelectionChanged">
                     <ComboBoxItem IsSelected="True">
-                        <TextBlock>
-                            <Rectangle Fill="Black" Height="10" Width="25"></Rectangle>
-                            Black
-                        </TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Rectangle Fill="Black" Height="10" Width="25"/>
+                            </InlineUIContainer><Run Text=" Black"/></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem>
-                        <TextBlock>
-                            <Rectangle Fill="Orange" Height="10" Width="25"></Rectangle>
-                            Orange
-                        </TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Rectangle Fill="Orange" Height="10" Width="25"/>
+                            </InlineUIContainer><Run Text=" Orange"/></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem>
-                        <TextBlock>
-                            <Rectangle Fill="Coral" Height="10" Width="25"></Rectangle>
-                            Coral
-                        </TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Rectangle Fill="Coral" Height="10" Width="25"/>
+                            </InlineUIContainer><Run Text=" Coral"/></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem>
-                        <TextBlock>
-                            <Rectangle Fill="Tomato" Height="10" Width="25"></Rectangle>
-                            Tomato
-                        </TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Rectangle Fill="Tomato" Height="10" Width="25"/>
+                            </InlineUIContainer><Run Text=" Tomato"/></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem>
-                        <TextBlock>
-                            <Rectangle Fill="Pink" Height="10" Width="25"></Rectangle>
-                            Pink
-                        </TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Rectangle Fill="Pink" Height="10" Width="25"/>
+                            </InlineUIContainer><Run Text=" Pink"/></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem>
-                        <TextBlock>
-                            <Rectangle Fill="LightBlue" Height="10" Width="25"></Rectangle>
-                            LightBlue
-                        </TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Rectangle Fill="LightBlue" Height="10" Width="25"/>
+                            </InlineUIContainer><Run Text=" LightBlue"/></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem>
-                        <TextBlock>
-                            <Rectangle Fill="Gray" Height="10" Width="25"></Rectangle>
-                            Gray
-                        </TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Rectangle Fill="Gray" Height="10" Width="25"/>
+                            </InlineUIContainer><Run Text=" Gray"/></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem>
-                        <TextBlock>
-                            <Rectangle Fill="LightGray" Height="10" Width="25"></Rectangle>
-                            LightGray
-                        </TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Rectangle Fill="LightGray" Height="10" Width="25"/>
+                            </InlineUIContainer><Run Text=" LightGray"/></TextBlock>
                     </ComboBoxItem>
                 </ComboBox>
             </ToolBar>
@@ -221,11 +207,12 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <StatusBar Name="StatusBar" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{DynamicResource StatusBarBg}">
+        <StatusBar x:Name="StatusBar" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="{DynamicResource StatusBarBg}">
             <StatusBarItem x:Name="label1" Content="{DynamicResource Characters}" HorizontalAlignment="Left"/>
             <StatusBarItem x:Name="CharactersStatus" Content="0" HorizontalAlignment="Left"/>
             <StatusBarItem x:Name="label2" Content="{DynamicResource Path}" Opacity="0.5" HorizontalAlignment="Left"/>
             <StatusBarItem x:Name="PathStatus" Content="" Opacity="0.5" HorizontalAlignment="Left"/>
         </StatusBar>
+        <components:CustomInput Foreground="Black" Margin="722,28,10,540"/>
     </Grid>
 </Window>

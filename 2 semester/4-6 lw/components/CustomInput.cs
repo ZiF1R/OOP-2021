@@ -44,7 +44,7 @@ namespace test.components
     ///     <MyNamespace:CustomInput/>
     ///
     /// </summary>
-    public class CustomInput : Control
+    public class CustomInput : TextBox
     {
         static CustomInput()
         {

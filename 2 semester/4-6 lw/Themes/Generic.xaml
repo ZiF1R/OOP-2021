@@ -5,44 +5,49 @@
 
 
     <Style TargetType="{x:Type local:CustomInput}"
-           BasedOn="{StaticResource {x:Type TextBlock}}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:CustomInput}">
-                    <Grid>
-                        <TextBlock 
-                            IsHitTestVisible="False"
-                            Text="CustomInput"
-                            Foreground="{TemplateBinding Foreground}"
-                            FontSize="20"
-                            IsEnabled="False"
-                            Padding="0,5,0,5"
-                            FontFamily="Segoe UI Light">
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Setter Property="Visibility" Value="Hidden" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Text, ElementName=Input}" Value="">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
+           BasedOn="{StaticResource {x:Type TextBox}}">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type local:CustomInput}">
+                        <Grid>
+                            <TextBlock
+                                Panel.ZIndex="1"
+                                IsHitTestVisible="False"
+                                Text="{TemplateBinding Text}"
+                                Foreground="{TemplateBinding Foreground}"
+                                FontSize="16"
+                                IsEnabled="False"
+                                Padding="0,5,0,5"
+                                FontFamily="Segoe UI Light">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Hidden" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=Input}" Value="">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
 
-                        <TextBox
-                            Height="37"
-                            Name="Input"
-                            Foreground="{TemplateBinding Foreground}"
-                            TextWrapping="Wrap"
-                            FontSize="20"
-                            FontFamily="Segoe UI Light"
-                            Padding="0,5,0,5"
-                            BorderThickness="0,0,0,1"
-                            Background="{x:Null}"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+                            <TextBox
+                                MinWidth="150"
+                                Panel.ZIndex="2"
+                                Height="32"
+                                Name="Input"
+                                Foreground="Black"
+                                TextWrapping="Wrap"
+                                FontSize="16"
+                                FontFamily="Segoe UI Light"
+                                Padding="0,5,0,5"
+                                BorderThickness="0,0,0,1"
+                                Background="{x:Null}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
     </Style>
 </ResourceDictionary>

@@ -135,13 +135,18 @@ In this repository I collect all my lab-works for such discipline like "OOP" in 
     </h5>
     <h5 id="secondSemester-fourthLab">
       №4-5. Создание WPF текстового редактора:
-      <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/4-6%20lw/4_5_WPF_%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%82%D0%BE%D1%80.docx">Tasks</a> |
-      <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/4-6%20lw">Solution</a>
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/4-7%20lw/4_5_WPF_%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%82%D0%BE%D1%80.docx">Tasks</a> |
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/4-7%20lw">Solution</a>
     </h5>
     <h5 id="secondSemester-sixthLab">
       №6. Ресурсы, стили, триггеры, шаблоны:
-      <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/4-6%20lw/6_WPF_%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D1%8B_%D1%81%D1%82%D0%B8%D0%BB%D0%B8_%D1%82%D1%80%D0%B8%D0%B3%D0%B3%D0%B5%D1%80%D1%8B.docx">Tasks</a> |
-      <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/4-6%20lw">Solution</a>
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/4-7%20lw/6_WPF_%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D1%8B_%D1%81%D1%82%D0%B8%D0%BB%D0%B8_%D1%82%D1%80%D0%B8%D0%B3%D0%B3%D0%B5%D1%80%D1%8B.docx">Tasks</a> |
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/4-7%20lw">Solution</a>
+    </h5>
+    <h5 id="secondSemester-sixthLab">
+      №7. Создание WPF пользовательских ЭУ:
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/4-7%20lw/7_UserControl.docx">Tasks</a> |
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/4-7%20lw">Solution</a>
     </h5>
   </ul>
 </details>

@@ -50,5 +50,27 @@ namespace test.components
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomInput), new FrameworkPropertyMetadata(typeof(CustomInput)));
         }
+
+        public static readonly DependencyProperty PlaceholderProperty =
+        DependencyProperty.Register(
+           name: "Placeholder",
+           propertyType: typeof(string),
+           ownerType: typeof(CustomInput),
+           typeMetadata: new FrameworkPropertyMetadata(
+               defaultValue: "Default value",
+               flags: FrameworkPropertyMetadataOptions.AffectsMeasure),
+           validateValueCallback: new ValidateValueCallback(IsValidReading));
+
+        public string Placeholder
+        {
+            get => (string)GetValue(PlaceholderProperty);
+            set => SetValue(PlaceholderProperty, value);
+        }
+
+        public static bool IsValidReading(object value)
+        {
+            string val = (string)value;
+            return val.All(ch => ch != '.');
+        }
     }
 }

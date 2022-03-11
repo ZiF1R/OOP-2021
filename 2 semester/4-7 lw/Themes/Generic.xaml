@@ -14,7 +14,7 @@
                             <TextBlock
                                 Panel.ZIndex="1"
                                 IsHitTestVisible="False"
-                                Text="{TemplateBinding Text}"
+                                Text="{TemplateBinding Placeholder}"
                                 Foreground="{TemplateBinding Foreground}"
                                 FontSize="16"
                                 IsEnabled="False"

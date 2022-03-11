@@ -26,4 +26,5 @@
     <v:String x:Key="VueTheme">VueTheme</v:String>
     <v:String x:Key="AngularTheme">AngularTheme</v:String>
     <v:String x:Key="ReactTheme">ReactTheme</v:String>
+    <v:String x:Key="Search">検索</v:String>
 </ResourceDictionary>

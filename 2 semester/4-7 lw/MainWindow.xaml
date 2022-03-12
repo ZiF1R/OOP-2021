@@ -215,7 +215,7 @@
             <StatusBarItem x:Name="PathStatus" Content="" Opacity="0.5" HorizontalAlignment="Stretch" Height="30" MinWidth="100"/>
         </StatusBar>
 
-        <components:CustomInput
+        <components:CustomTextBox
             Placeholder="{DynamicResource Search}"
             Foreground="Black"
             Margin="0,49,0,0"
@@ -223,15 +223,15 @@
             Grid.Column="1"
             d:LayoutOverrides="TopMargin, BottomMargin"/>
 
-        <components:CustomInput
+        <components:CustomTextBox
             Foreground="Black"
             Margin="0,89,0,0"
             VerticalAlignment="Top"
             Grid.Column="1"
             d:LayoutOverrides="TopMargin, BottomMargin"/>
 
-        <components:CustomInput
-            Placeholder="Wrong value."
+        <components:CustomTextBox
+            Placeholder=""
             Foreground="Black"
             Margin="0,129,0,0"
             VerticalAlignment="Top"

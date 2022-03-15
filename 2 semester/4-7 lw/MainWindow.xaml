@@ -8,6 +8,7 @@
         xmlns:components="clr-namespace:test.components" x:Name="window" x:Class="test.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000" Icon="/text-editor.png" Closing="window_Closing">
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,7 +16,7 @@
                 <ResourceDictionary Source="/theme/Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <system:String x:Key="StaticResource">StaticResource</system:String>
+            <system:String x:Key="StaticResourceString">StaticResource</system:String>
 
             <Style TargetType="{x:Type RichTextBox}">
                 <Style.Triggers>
@@ -47,6 +48,7 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
+    
     <Grid Background="{DynamicResource ToolBarBg}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="836*"/>

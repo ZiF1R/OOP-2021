@@ -53,7 +53,6 @@ namespace test.components
         private static void OnPlaceholderChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
         {
             depObj.CoerceValue(PlaceholderProperty);
-            depObj.CoerceValue(PlaceholderProperty);
         }
 
         private static object CoercePlaceholder(DependencyObject depObj, object value)

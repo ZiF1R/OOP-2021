@@ -48,6 +48,10 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:SaveCommand.Save" Executed="Save_Click" />
+    </Window.CommandBindings>
     
     <Grid Background="{DynamicResource ToolBarBg}">
         <Grid.ColumnDefinitions>
@@ -58,7 +62,7 @@
         <Menu Height="23" VerticalAlignment="Top" Grid.ColumnSpan="4" Background="{DynamicResource MenuBg}" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
             <MenuItem Header="{DynamicResource File}" Height="23">
                 <MenuItem Click="New_Click" Header="{DynamicResource New}" />
-                <MenuItem Click="Save_Click" Header="{DynamicResource Save}" />
+                <MenuItem Command="local:SaveCommand.Save" Header="{DynamicResource Save}" />
                 <MenuItem Header="{DynamicResource Open}">
                     <MenuItem Click="Open_Click" Header="{DynamicResource Other}" />
                     <MenuItem x:Name="OpenedFilesList" Header="{DynamicResource Recent}" />

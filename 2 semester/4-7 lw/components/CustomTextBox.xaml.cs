@@ -62,5 +62,26 @@ namespace test.components
                 (string)PlaceholderProperty.DefaultMetadata.DefaultValue :
                 currentVal;
         }
+
+        void CustomTextBox_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseClickEvent();
+        }
+
+        public static readonly RoutedEvent ClickEvent =
+           EventManager.RegisterRoutedEvent("CustomClick", RoutingStrategy.Bubble,
+           typeof(RoutedEventHandler), typeof(CustomTextBox));
+
+        public event RoutedEventHandler Click
+        {
+            add { AddHandler(ClickEvent, value); }
+            remove { RemoveHandler(ClickEvent, value); }
+        }
+
+        protected virtual void RaiseClickEvent()
+        {
+            RoutedEventArgs args = new(routedEvent: ClickEvent);
+            RaiseEvent(args);
+        }
     }
 }

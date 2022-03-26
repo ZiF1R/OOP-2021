@@ -6,8 +6,10 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:test"
         xmlns:components="clr-namespace:test.components" x:Name="window" x:Class="test.MainWindow"
+        xmlns:custom="clr-namespace:test.components"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" Icon="/text-editor.png" Closing="window_Closing">
+        Title="MainWindow" Height="600" Width="1000" Icon="/text-editor.png" Closing="window_Closing"
+        custom:CustomRoutedEvent.ConditionalClick="window_ConditionalClick">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -78,7 +80,7 @@
                 <MenuItem Click="EN_Click" Header="{DynamicResource EN}" />
                 <MenuItem Click="JP_Click" Header="{DynamicResource JP}" />
             </MenuItem>
-            <MenuItem Header="{DynamicResource Themes}">
+            <MenuItem Header="{DynamicResource Themes}" custom:CustomRoutedEvent.ConditionalClick="CustomTextBox_ConditionalClick">
                 <MenuItem x:Name="DefaultTheme" Header="{DynamicResource Default}" Click="DefaultTheme_Click" />
                 <MenuItem x:Name="VueTheme" Header="{DynamicResource VueTheme}" Click="VueTheme_Click" />
                 <MenuItem x:Name="ReactTheme" Header="{DynamicResource ReactTheme}" Click="ReactTheme_Click" />
@@ -200,7 +202,8 @@
                 </ComboBox>
             </ToolBar>
         </ToolBarTray>
-        <RichTextBox AllowDrop="True" Background="{DynamicResource RichTextBoxBg}" Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,13,30" TextChanged="WorkField_TextChanged" DragOver="WorkField_DragOver" Drop="WorkField_Drop" d:LayoutOverrides="TopMargin, BottomMargin">
+        <RichTextBox
+                 AllowDrop="True" Background="{DynamicResource RichTextBoxBg}" Foreground="Black" SpellCheck.IsEnabled="True" x:Name="WorkField" Margin="0,49,13,30" TextChanged="WorkField_TextChanged" DragOver="WorkField_DragOver" Drop="WorkField_Drop" d:LayoutOverrides="TopMargin, BottomMargin">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"/>
@@ -222,7 +225,7 @@
         </StatusBar>
 
         <components:CustomTextBox
-            Placeholder="{DynamicResource Search}"
+            Placeholder=""
             Foreground="Black"
             Margin="0,49,0,0"
             VerticalAlignment="Top"
@@ -243,5 +246,14 @@
             VerticalAlignment="Top"
             Grid.Column="1"
             d:LayoutOverrides="TopMargin, BottomMargin"/>
+
+        <StackPanel
+            Grid.Column="1" Name="StackPanel1" custom:CustomRoutedEvent.ConditionalClick="StackPanel1_ConditionalClick">
+            <custom:CustomRoutedEvent
+                ConditionalClick="CustomTextBox_ConditionalClick"
+                Content="Click to trigger a custom routed event"
+                Background="LightGray">
+            </custom:CustomRoutedEvent>
+        </StackPanel>
     </Grid>
 </Window>

@@ -22,6 +22,8 @@ namespace test
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
         string[] recentFilesHistory = { };
@@ -43,6 +45,7 @@ namespace test
             WorkField.Cursor = customCursor;
             WorkField.AddHandler(RichTextBox.DragOverEvent, new DragEventHandler(WorkField_DragOver), true);
             WorkField.AddHandler(RichTextBox.DropEvent, new DragEventHandler(WorkField_Drop), true);
+            //WorkField.AddHandler(MainWindow.ConditionalClickEvent, new RoutedEventHandler(CustomTextBox_ConditionalClick), true);
         }
 
         private void SetDefaultEditorStyles()
@@ -493,6 +496,21 @@ namespace test
                     }
                 }
             }
+        }
+
+        private void CustomTextBox_ConditionalClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Click on CustomTextBox");
+        }
+
+        private void window_ConditionalClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Click on Window");
+        }
+
+        private void StackPanel1_ConditionalClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Click on StackPanel");
         }
     }
 }

@@ -35,9 +35,49 @@ namespace _8_lw
         {
             InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection connection = new SqlConnection(this.connectionString);
+            try
+            {
+                connection.Open();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                CreateDBAndTables(connection);
+                MessageBox.Show(ex.Message);
+            }
 
             LoadAccounts();
             LoadAccountsOwners();
+        }
+
+        private void CreateDBAndTables(SqlConnection connection)
+        {
+            SqlCommand myCommand1 = new SqlCommand("use master create database Bank", connection);
+            myCommand1.ExecuteNonQuery();
+
+            SqlCommand myCommand2 = new SqlCommand(
+                "CREATE TABLE ACCOUNT_OWNER (" +
+                "    OWNER_ID int IDENTITY(1, 1) PRIMARY KEY," +
+                "    PASSPORT_NUMBER int UNIQUE," +
+                "    BIRTH_DATE date NOT NULL," +
+                "    SURNAME varchar(30) NOT NULL," +
+                "    NAME varchar(30) NOT NULL," +
+                "    PATRONIMIC varchar(30) NOT NULL" +
+                ");", connection);
+            myCommand2.ExecuteNonQuery();
+
+            SqlCommand myCommand3 = new SqlCommand(
+                "CREATE TABLE ACCOUNT(" +
+                "    NUMBER int PRIMARY KEY," +
+                "    ACCOUNT_OWNER int CONSTRAINT OWNER_FK FOREIGN KEY REFERENCES ACCOUNT_OWNER(OWNER_ID)," +
+                "    DEPOSIT_TYPE varchar(30)," +
+                "    BALANCE money CHECK(BALANCE >= 0) default(0) NOT NULL," +
+                "    OPENING_DATE date default(GETDATE()) NOT NULL," +
+                "    NOTIFICATIONS varchar(3) CHECK(NOTIFICATIONS IN('on', 'off')) default('off')," +
+	            "    INTERNET_BANKING varchar(3) CHECK(INTERNET_BANKING IN('on', 'off')) default('off')," +
+	            "    CLIENT_IMAGE varbinary(max)); ", connection);
+            myCommand3.ExecuteNonQuery();
         }
 
         private void LoadAccounts()
@@ -59,6 +99,7 @@ namespace _8_lw
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
             }
             finally
             {
@@ -104,7 +145,7 @@ namespace _8_lw
                 DepositType.Text.Length == 0 ||
                 AccountBalancy.Text.Length == 0 ||
                 OpeningDate.Text.Length == 0 ||
-                AccountOwnerImage.Length == 0 ||
+                AccountOwnerImage == null ||
                 !Int32.TryParse(AccountBalancy.Text, out int balance) ||
                 !Int32.TryParse(AccountNumber.Text, out int accNumber)
             )
@@ -156,6 +197,7 @@ namespace _8_lw
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
             }
         }
 
@@ -268,7 +310,7 @@ namespace _8_lw
                     $"UPDATE ACCOUNT " +
                     $"SET NUMBER = @num, DEPOSIT_TYPE = @deposit," +
                     $"BALANCE = @balance, OPENING_DATE = @opening, NOTIFICATIONS = @notifications," +
-                    $"INTERNET_BANKING = @internetBanking, CLIENT_IMAGE = @img" +
+                    $"INTERNET_BANKING = @internetBanking, CLIENT_IMAGE = @img " +
                     $"WHERE ACCOUNT_OWNER = {Convert.ToInt32(AccountOwnerId.Text)}");
 
                 using (SqlCommand command = new SqlCommand(addAccountCommand, connection))

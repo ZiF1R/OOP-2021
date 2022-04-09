@@ -122,6 +122,28 @@ namespace _8_lw
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(this.AccountsOwners);
                 AccountsOwnersGrid.ItemsSource = this.AccountsOwners.DefaultView;
+
+                command.CommandText =
+                    "SELECT OWNER_ID " +
+                    "FROM ACCOUNT_OWNER";
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    int[] ownersId = new int[] { };
+                    while (reader.Read())
+                    {
+                        ownersId = ownersId.Append(Convert.ToInt32(reader.GetValue(0))).ToArray();
+                    }
+
+                    AccountOwnerId.Items.Clear();
+
+                    ownersId = ownersId.OrderBy(x => x).ToArray();
+                    foreach (int id in ownersId)
+                    {
+                        AccountOwnerId.Items.Add(id);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -193,11 +215,22 @@ namespace _8_lw
 
                 LoadAccounts();
                 ClearAccountInputs();
+
+                string sqlExpression = "sp_GetUsers";
+                SqlCommand command1 = new SqlCommand(sqlExpression, connection);
+                command1.CommandType = System.Data.CommandType.StoredProcedure;
+
+                var result = command1.ExecuteScalar();
+                TotalOwnersCount.Text = result.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 MessageBox.Show(ex.StackTrace);
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
@@ -242,6 +275,28 @@ namespace _8_lw
 
                     command.ExecuteNonQuery();
                     transaction.Commit();
+
+                    command.CommandText =
+                        "SELECT OWNER_ID " +
+                        "FROM ACCOUNT_OWNER";
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        int[] ownersId = new int[] { };
+                        while (reader.Read())
+                        {
+                            ownersId = ownersId.Append(Convert.ToInt32(reader.GetValue(0))).ToArray();
+                        }
+
+                        AccountOwnerId.Items.Clear();
+
+                        ownersId = ownersId.OrderBy(x => x).ToArray();
+                        foreach (int id in ownersId)
+                        {
+                            AccountOwnerId.Items.Add(id);
+                        }
+                    }
                 }
 
                 LoadAccountsOwners();
@@ -279,23 +334,33 @@ namespace _8_lw
                 return;
             }
 
+            if (
+                AccountNumber.Text.Length != 6 &&
+                DepositType.Text.Length == 0 &&
+                AccountBalancy.Text.Length == 0 &&
+                OpeningDate.Text.Length == 0 &&
+                AccountOwnerImage == null
+            )
+            {
+                MessageBox.Show("Необходимо заполнить хотя бы одно поле!");
+                return;
+            }
+
+            string query = "UPDATE ACCOUNT SET ";
+            if (AccountNumber.Text.Length == 6) query += "NUMBER = @num";
+            if (DepositType.Text != "") query += ", DEPOSIT_TYPE = @deposit";
+            if (AccountBalancy.Text != "") query += ", BALANCE = @balance";
+            if (OpeningDate.Text != "") query += ", OPENING_DATE = @opening";
+            if (AccountOwnerImage != null) query += ", CLIENT_IMAGE = @img";
+            query += ", NOTIFICATIONS = @notifications, " +
+                    "INTERNET_BANKING = @internetBanking " +
+                    $"WHERE ACCOUNT_OWNER = {Convert.ToInt32(AccountOwnerId.Text)}";
+
+            query = Regex.Replace(query, @"SET ,", "SET ");
+
             AccountNumber.Text = AccountNumber.Text.Trim();
             AccountOwnerId.Text = AccountOwnerId.Text.Trim();
             AccountBalancy.Text = AccountBalancy.Text.Trim();
-
-            if (
-                AccountNumber.Text.Length != 6 ||
-                AccountOwnerId.Text.Length == 0 ||
-                DepositType.Text.Length == 0 ||
-                AccountBalancy.Text.Length == 0 ||
-                OpeningDate.Text.Length == 0 ||
-                !Int32.TryParse(AccountBalancy.Text, out int balance) ||
-                !Int32.TryParse(AccountNumber.Text, out int accNumber)
-            )
-            {
-                MessageBox.Show("Не все поля заполнены или имеют неверный формат!");
-                return;
-            }
 
             SqlConnection connection = new SqlConnection(this.connectionString);
             try
@@ -306,32 +371,33 @@ namespace _8_lw
                 string notifications = Notifications.IsChecked == true ? "on" : "off";
                 string internetBanking = InternetBanking.IsChecked == true ? "on" : "off";
 
-                var addAccountCommand = string.Format(
-                    $"UPDATE ACCOUNT " +
-                    $"SET NUMBER = @num, DEPOSIT_TYPE = @deposit," +
-                    $"BALANCE = @balance, OPENING_DATE = @opening, NOTIFICATIONS = @notifications," +
-                    $"INTERNET_BANKING = @internetBanking, CLIENT_IMAGE = @img " +
-                    $"WHERE ACCOUNT_OWNER = {Convert.ToInt32(AccountOwnerId.Text)}");
-
+                var addAccountCommand = string.Format(query);
                 using (SqlCommand command = new SqlCommand(addAccountCommand, connection))
                 {
                     command.Transaction = transaction;
 
-                    command.Parameters.AddWithValue("@num", accNumber);
-                    command.Parameters.AddWithValue("@deposit", DepositType.Text);
-                    command.Parameters.AddWithValue("@balance", balance);
-                    command.Parameters.AddWithValue("@opening", OpeningDate.SelectedDate);
+                    Int32.TryParse(AccountNumber.Text, out int accNumber);
+                    Int32.TryParse(AccountBalancy.Text, out int balance);
+
+                    if (AccountNumber.Text.Length == 6) command.Parameters.AddWithValue("@num", accNumber);
+                    if (DepositType.Text != "") command.Parameters.AddWithValue("@deposit", DepositType.Text);
+                    if (AccountBalancy.Text != "") command.Parameters.AddWithValue("@balance", balance);
+                    if (OpeningDate.Text != "") command.Parameters.AddWithValue("@opening", OpeningDate.SelectedDate);
+                                        
                     command.Parameters.AddWithValue("@notifications", notifications);
                     command.Parameters.AddWithValue("@internetBanking", internetBanking);
 
-                    byte[] imageData;
-                    string shortFileName = this.AccountOwnerImage.Substring(AccountOwnerImage.LastIndexOf('\\') + 1);
-                    using (System.IO.FileStream fs = new System.IO.FileStream(AccountOwnerImage, FileMode.Open))
+                    if (AccountOwnerImage != null)
                     {
-                        imageData = new byte[fs.Length];
-                        fs.Read(imageData, 0, imageData.Length);
+                        byte[] imageData;
+                        string shortFileName = this.AccountOwnerImage.Substring(AccountOwnerImage.LastIndexOf('\\') + 1);
+                        using (System.IO.FileStream fs = new System.IO.FileStream(AccountOwnerImage, FileMode.Open))
+                        {
+                            imageData = new byte[fs.Length];
+                            fs.Read(imageData, 0, imageData.Length);
+                        }
+                        command.Parameters.AddWithValue("@img", imageData);
                     }
-                    command.Parameters.AddWithValue("@img", imageData);
 
                     command.ExecuteNonQuery();
                     transaction.Commit();
@@ -382,6 +448,11 @@ namespace _8_lw
 
         private void EditAccountOwner_Click(object sender, RoutedEventArgs e)
         {
+            if (AccountOwnerId.Text == "")
+            {
+                MessageBox.Show("Необходимо заполнить поле с ID владельца!");
+                return;
+            }
 
             PassportNumber.Text = PassportNumber.Text.Trim();
             SurnameInput.Text = SurnameInput.Text.Trim();
@@ -389,17 +460,27 @@ namespace _8_lw
             PatronimicInput.Text = PatronimicInput.Text.Trim();
 
             if (
-                PassportNumber.Text == "" ||
-                SurnameInput.Text == "" ||
-                NameInput.Text == "" ||
-                PatronimicInput.Text == "" ||
-                BirthDate.Text == "" ||
-                !Int32.TryParse(PassportNumber.Text, out int passport)
+                PassportNumber.Text == "" &&
+                SurnameInput.Text == "" &&
+                NameInput.Text == "" &&
+                PatronimicInput.Text == "" &&
+                BirthDate.Text == ""
             )
             {
-                MessageBox.Show("Не все поля заполнены или имеют неверный формат!");
+                MessageBox.Show("Необходимо заполнить хотя бы одно поле!");
                 return;
             }
+
+            string query = "UPDATE ACCOUNT_OWNER SET ";
+
+            if (PassportNumber.Text != "") query += "PASSPORT_NUMBER = @PassNum";
+            if (SurnameInput.Text != "") query += ", SURNAME = @Surname";
+            if (NameInput.Text != "") query += ", NAME = @Name";
+            if (PatronimicInput.Text != "") query += ", PATRONIMIC = @Patronimic";
+            if (BirthDate.Text != "") query += ", BIRTH_DATE = @Birth";
+
+            query += $" WHERE OWNER_ID = {Convert.ToInt32(AccountOwnerId.Text)}";
+            query = Regex.Replace(query, @"SET ,", "SET ");
 
             SqlConnection connection = new SqlConnection(this.connectionString);
             try
@@ -407,21 +488,18 @@ namespace _8_lw
                 connection.Open();
                 SqlTransaction transaction = connection.BeginTransaction();
 
-                var addAccountOwnerCommand = string.Format(
-                    $"UPDATE ACCOUNT_OWNER " +
-                    $"SET PASSPORT_NUMBER = @PassNum, BIRTH_DATE = @Birth," +
-                    $"SURNAME = @Surname, NAME = @Name, PATRONIMIC = @Patronimic " +
-                    $"WHERE OWNER_ID = {Convert.ToInt32(AccountOwnerId.Text)}");
-
+                var addAccountOwnerCommand = string.Format(query);
                 using (SqlCommand command = new SqlCommand(addAccountOwnerCommand, connection))
                 {
                     command.Transaction = transaction;
 
-                    command.Parameters.AddWithValue("@PassNum", passport);
-                    command.Parameters.AddWithValue("@Birth", BirthDate.SelectedDate);
-                    command.Parameters.AddWithValue("@Surname", SurnameInput.Text);
-                    command.Parameters.AddWithValue("@Name", NameInput.Text);
-                    command.Parameters.AddWithValue("@Patronimic", PatronimicInput.Text);
+                    Int32.TryParse(PassportNumber.Text, out int passport);
+
+                    if (PassportNumber.Text != "") command.Parameters.AddWithValue("@PassNum", passport);
+                    if (SurnameInput.Text != "") command.Parameters.AddWithValue("@Surname", SurnameInput.Text);
+                    if (NameInput.Text != "") command.Parameters.AddWithValue("@Name", NameInput.Text);
+                    if (PatronimicInput.Text != "") command.Parameters.AddWithValue("@Patronimic", PatronimicInput.Text);
+                    if (BirthDate.Text != "") command.Parameters.AddWithValue("@Birth", BirthDate.SelectedDate);
 
                     command.ExecuteNonQuery();
                     transaction.Commit();
@@ -520,6 +598,45 @@ namespace _8_lw
             }
             finally
             {
+                connection.Close();
+            }
+        }
+
+        private void SortButton_Click(object sender, RoutedEventArgs e)
+        {
+            var connection = new SqlConnection(this.connectionString);
+
+            connection.Open();
+            SqlTransaction transaction = connection.BeginTransaction();
+            try
+            {
+                if (OrderAccountOwners.SelectedItem != null)
+                {
+                    DataTable Sort = new DataTable();
+                    var command = new SqlCommand($"Select * from ACCOUNT_OWNER Order by '{OrderAccountOwners.Text}'", connection);
+                    command.Transaction = transaction;
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(Sort);
+                    AccountsOwnersGrid.ItemsSource = Sort.DefaultView;
+                }
+                if (OrderAccounts.SelectedItem != null)
+                {
+                    DataTable Sort = new DataTable();
+                    var command = new SqlCommand($"Select * from ACCOUNT Order by '{OrderAccounts.Text}'", connection);
+                    command.Transaction = transaction;
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(Sort);
+                    AccountsGrid.ItemsSource = Sort.DefaultView;
+                }
+                transaction.Commit();
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show("Операция завершилась ошибкой!");
+            }
+            finally
+            {
+                transaction.Dispose();
                 connection.Close();
             }
         }

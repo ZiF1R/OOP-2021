@@ -51,6 +51,21 @@ namespace _8_lw
             LoadAccountsOwners();
         }
 
+        private void ExecuteProcedure()
+        {
+            SqlConnection connection = new SqlConnection(this.connectionString);
+            connection.Open();
+
+            string sqlExpression = "sp_GetUsers";
+            SqlCommand command1 = new SqlCommand(sqlExpression, connection);
+            command1.CommandType = System.Data.CommandType.StoredProcedure;
+
+            var result = command1.ExecuteScalar();
+            TotalOwnersCount.Text = result.ToString();
+            command1.Cancel();
+            connection.Close();
+        }
+
         private void CreateDBAndTables(SqlConnection connection)
         {
             SqlCommand myCommand1 = new SqlCommand("use master create database Bank", connection);
@@ -99,7 +114,6 @@ namespace _8_lw
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                MessageBox.Show(ex.StackTrace);
             }
             finally
             {
@@ -143,6 +157,7 @@ namespace _8_lw
                     {
                         AccountOwnerId.Items.Add(id);
                     }
+                    ExecuteProcedure();
                 }
             }
             catch (Exception ex)
@@ -215,18 +230,10 @@ namespace _8_lw
 
                 LoadAccounts();
                 ClearAccountInputs();
-
-                string sqlExpression = "sp_GetUsers";
-                SqlCommand command1 = new SqlCommand(sqlExpression, connection);
-                command1.CommandType = System.Data.CommandType.StoredProcedure;
-
-                var result = command1.ExecuteScalar();
-                TotalOwnersCount.Text = result.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show(ex.StackTrace);
+                MessageBox.Show("Добавление аккаунта завершилось ошибкой!");
             }
             finally
             {
@@ -296,6 +303,7 @@ namespace _8_lw
                         {
                             AccountOwnerId.Items.Add(id);
                         }
+                        ExecuteProcedure();
                     }
                 }
 
@@ -304,7 +312,11 @@ namespace _8_lw
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Добавление владельца завершилось ошибкой!");
+            }
+            finally
+            {
+                connection.Close();
             }
         }
 
@@ -408,7 +420,7 @@ namespace _8_lw
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Не удалось произвести редактирование!");
             }
         }
 
@@ -442,7 +454,7 @@ namespace _8_lw
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Не удалось произвести удаление!");
             }
         }
 
@@ -511,7 +523,7 @@ namespace _8_lw
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Не удалось произвести редактирование!");
             }
         }
 
@@ -543,10 +555,11 @@ namespace _8_lw
 
                 LoadAccountsOwners();
                 ClearAccountInputs();
+                ExecuteProcedure();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Не удалось произвести удаление!");
             }
         }
 
@@ -593,8 +606,7 @@ namespace _8_lw
             }
             catch (Exception er)
             {
-                MessageBox.Show(er.Message);
-                MessageBox.Show(er.StackTrace);
+                MessageBox.Show("Не удалось получить изображение!");
             }
             finally
             {

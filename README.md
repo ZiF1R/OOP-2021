@@ -148,5 +148,15 @@ In this repository I collect all my lab-works for such discipline like "OOP" in 
       <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/4-7%20lw/7_UserControl.docx">Tasks</a> |
       <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/4-7%20lw">Solution</a>
     </h5>
+    <h5 id="secondSemester-sixthLab">
+      №8. Создание WPF приложения управления базой данных:
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/8%20lw/8_%D0%91%D0%B0%D0%B7%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85_ADO_Net.docx">Tasks</a> |
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/8%20lw">Solution</a>
+    </h5>
+    <h5 id="secondSemester-sixthLab">
+      №9. Использование Entity Framework для доступа к данным:
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/9%20lw/9_%D0%91%D0%B0%D0%B7%D0%B0_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85_EF.docx">Tasks</a> |
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/9%20lw">Solution</a>
+    </h5>
   </ul>
 </details>

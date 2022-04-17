@@ -100,7 +100,6 @@ namespace _9lw
 
         private void AddAccount_Click(object sender, RoutedEventArgs e)
         {
-            AccountNumber.Text = AccountNumber.Text.Trim();
             AccountOwnerId.Text = AccountOwnerId.Text.Trim();
             AccountBalancy.Text = AccountBalancy.Text.Trim();
 
@@ -200,7 +199,6 @@ namespace _9lw
 
         private void ClearAccountInputs()
         {
-            AccountNumber.Text = "";
             AccountOwnerId.Text = "";
             DepositType.SelectedIndex = 0;
             AccountBalancy.Text = "";
@@ -242,7 +240,6 @@ namespace _9lw
                     var account = context.accounts.Find(Convert.ToInt32(AccountNumbers.Text));
 
                     if (account == null) return;
-                    //if (AccountNumbers.Text.Length == 6) account.NUMBER = Convert.ToInt32(AccountNumbers.Text);
                     if (DepositType.Text != "") account.DEPOSIT_TYPE = DepositType.Text;
                     if (AccountBalancy.Text != "") account.BALANCE = Convert.ToDecimal(AccountBalancy.Text);
                     if (OpeningDate.Text != "") account.OPENING_DATE = (DateTime)OpeningDate.SelectedDate;

@@ -25,9 +25,6 @@
             <StackPanel Grid.Row="1">
                 <Label Content="Номера аккаунтов для редактирования" FontSize="12" />
                 <ComboBox x:Name="AccountNumbers"/>
-                
-                <Label Content="Номер аккаунта" FontSize="12" />
-                <TextBox x:Name="AccountNumber" MaxLength="6" />
 
                 <Label Content="ID владельца" FontSize="12" />
                 <ComboBox x:Name="AccountOwnerId"/>

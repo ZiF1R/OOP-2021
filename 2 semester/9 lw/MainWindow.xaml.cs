@@ -73,11 +73,9 @@ namespace _9lw
                     GetAccountNumbers(context);
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Ошибка загрузки аккаунтов!");
-                MessageBox.Show(ex.Message);
-                MessageBox.Show(ex.StackTrace);
             }
         }
 

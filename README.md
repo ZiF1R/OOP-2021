@@ -33,8 +33,8 @@
           <li><a href="#secondSemester-seventhLab">№7. Создание WPF пользовательских ЭУ</a></li>
           <li><a href="#secondSemester-eighthLab">№8. Создание WPF приложения управления базой данных</a></li>
           <li><a href="#secondSemester-ninthLab">№9. Использование Entity Framework для доступа к данным</a></li>
-          <li><a href="#secondSemester-eleventhLab">№11. Реализация MVVM на WPF</a></li>
-          <li><a href="#secondSemester-twelfthLab">№12. Проектирование. Построение UML диаграмм</a></li>
+          <li><a href="#secondSemester-tenthLab">№10. Реализация MVVM на WPF</a></li>
+          <li><a href="#secondSemester-eleventhLab">№11. Проектирование. Построение UML диаграмм</a></li>
         </ul>
       </details>
   </ul>

@@ -33,7 +33,7 @@
           <li><a href="#secondSemester-seventhLab">№7. Создание WPF пользовательских ЭУ</a></li>
           <li><a href="#secondSemester-eighthLab">№8. Создание WPF приложения управления базой данных</a></li>
           <li><a href="#secondSemester-ninthLab">№9. Использование Entity Framework для доступа к данным</a></li>
-          <li><a href="#secondSemester-eleventhLab">№11. Реализация  MVVM на  WPF</a></li>
+          <li><a href="#secondSemester-eleventhLab">№11. Реализация MVVM на WPF</a></li>
           <li><a href="#secondSemester-twelfthLab">№12. Проектирование. Построение UML диаграмм</a></li>
         </ul>
       </details>
@@ -143,20 +143,25 @@ In this repository I collect all my lab-works for such discipline like "OOP" in 
       <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/4-7%20lw/6_WPF_%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D1%8B_%D1%81%D1%82%D0%B8%D0%BB%D0%B8_%D1%82%D1%80%D0%B8%D0%B3%D0%B3%D0%B5%D1%80%D1%8B.docx">Tasks</a> |
       <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/4-7%20lw">Solution</a>
     </h5>
-    <h5 id="secondSemester-sixthLab">
+    <h5 id="secondSemester-seventhLab">
       №7. Создание WPF пользовательских ЭУ:
       <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/4-7%20lw/7_UserControl.docx">Tasks</a> |
       <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/4-7%20lw">Solution</a>
     </h5>
-    <h5 id="secondSemester-sixthLab">
+    <h5 id="secondSemester-eighthLab">
       №8. Создание WPF приложения управления базой данных:
       <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/8%20lw/8_%D0%91%D0%B0%D0%B7%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85_ADO_Net.docx">Tasks</a> |
       <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/8%20lw">Solution</a>
     </h5>
-    <h5 id="secondSemester-sixthLab">
+    <h5 id="secondSemester-ninthLab">
       №9. Использование Entity Framework для доступа к данным:
       <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/9%20lw/9_%D0%91%D0%B0%D0%B7%D0%B0_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85_EF.docx">Tasks</a> |
       <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/9%20lw">Solution</a>
+    </h5>
+    <h5 id="secondSemester-tenthLab">
+      №10. Реализация MVVM на WPF:
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/blob/main/2%20semester/10%20lw/11_WPF_MVVM.docx">Tasks</a> |
+      <a href="https://github.com/ZiF1R/OOP-labs-2021/tree/main/2%20semester/10%20lw">Solution</a>
     </h5>
   </ul>
 </details>
